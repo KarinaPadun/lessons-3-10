@@ -46,6 +46,14 @@ result_add = num_1 + num_2
 result_sub = num_1 - num_2
 result_mul = num_1 * num_2
 result_div = num_1 / num_2
+result_div_2 = num_1 // num_2  # цілочисленне ділення
+result_div_3 = num_1 % num_2 # залишок ділення
+result_power = num_1 ** num_2 # зведення в ступінь
+result_root = num_1 ** 0,5  # корінь від числа
+
+######################################################################
+
+# string
 
 
 
