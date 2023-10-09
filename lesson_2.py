@@ -62,6 +62,27 @@ some_text = '''Hello'''
 
 print(some_text1)
 
+some_text = r"c\doc\new_fole.doc" #сира строка raw string
 
+print(some_text)
+
+name = "Nicolas"
+#some_text = f"Hello I\'m {name} " #format string
+
+
+some_text = f"Hello I\'m " + name # format string працює швидше
+print(some_text)
+
+# \t табуляція
+# \n нова строчка
+# \ ігнорувати символ
+
+name = "Nicolas"
+age = 24
+some_text = name + ' ' + str(age) # format string
+
+print(some_text)
+# int(age)
+# float(age)
 
 
