@@ -55,5 +55,13 @@ result_root = num_1 ** 0,5  # корінь від числа
 
 # string
 
+some_text = "Hello"
+some_text = 'Hello'
+some_text = """Hello"""
+some_text = '''Hello'''
+
+print(some_text)
+
+
 
 
