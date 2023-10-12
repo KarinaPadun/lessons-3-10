@@ -62,19 +62,22 @@ value_int = 20
 # and or
 
 #if value_int > 0 and value_int < 10:
-if 0 < value_int < 10: #спрощенний запис
-    print(f"{value_int} is bigger then 10")
-elif value_int > 0: #else if
-    print(f"{value_int} is bigger then 0")
-else:
-    print(f"{value_int} is less then 0")
+#if 0 < value_int < 10: #спрощенний запис
+   # print(f"{value_int} is bigger then 10")
+#elif value_int > 0: #else if
+    #print(f"{value_int} is bigger then 0")
+#else:
+ #   print(f"{value_int} is less then 0")
 
 
 
-############# input() #####################
+############# input() ##################### завжди строка ! (10+10=1010)
 # звіт данних
 
-value_1 = input("Please type a number:")
-value_2 = input("Please type another number: ")
-result= value_1 + value_2
+value_1 = int(input("Please type a number:"))
+value_2 =  int(input("Please type another number: "))
+# або звести в результаті!
+
+result= int(value_1) + int(value_2)
+
 print(result)
