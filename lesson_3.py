@@ -68,3 +68,13 @@ elif value_int > 0: #else if
     print(f"{value_int} is bigger then 0")
 else:
     print(f"{value_int} is less then 0")
+
+
+
+############# input() #####################
+# звіт данних
+
+value_1 = input("Please type a number:")
+value_2 = input("Please type another number: ")
+result= value_1 + value_2
+print(result)
