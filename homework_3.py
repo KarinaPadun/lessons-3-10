@@ -14,7 +14,7 @@
 
 
 
-inp = float (input('Welcome, please enter a number '))
+inp = float (input('Welcome, please enter '))
 print('You entered: ' , inp)
 
 number_1 = float (input('Enter first number: '))
