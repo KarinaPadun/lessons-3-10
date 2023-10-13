@@ -26,7 +26,7 @@ while number_1 is None:
     except (ValueError, NameError):
         print('Error: enter a valid number')
 
-input('Enter operator (+, -, *, /, **): ')
+op = input('Enter operator (+, -, *, /, **): ')
 
 number_2 = None
 while number_2 is None:
