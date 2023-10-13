@@ -27,11 +27,11 @@ print(value_print, type(value_print))
 value_bool_1 = True
 value_bool_2 =  False
 
-result = 1 > 2 # > , < , == , != (не дорівнює), >= <=
+#result = 1 > 2 # > , < , == , != (не дорівнює), >= <=
 
-result_str =  "lo" in "hello" # містить - in
+#result_str =  "lo" in "hello" # містить - in
 
-print(result_str)
+#print(result_str)
 
 
 ########### Type ##############
@@ -41,9 +41,18 @@ value_str = "2.3"
 
 # f " {} {}"
 
-result = value_int + float(value_str)
+#result = value_int + float(value_str)
 
-print(result)
+#print(result)
+
+value_int = 5 # значення не нуль - True
+print(bool(value_int))
+
+#value_str = "" - str 0
+
+
+
+
 
 
 ################# If statement  ####################
