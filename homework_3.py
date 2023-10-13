@@ -1,38 +1,39 @@
 def calculate(number_1 , number_2 , op):
-    number_1 = None
-    while number_1 is None:
-        try:
-            number_1 = float(input('Enter first number: '))
-        except (ValueError, NameError):
-            print('Error: enter a valid number')
 
-    input('Enter operator (+, -, *, /, **): ')
-
-    number_2 = None
-    while number_2 is None:
-        try:
-            number_2 = float(input('Enter second number: '))
-        except (ValueError, NameError):
-            print('Error: enter a valid number')
-
-
-if op == '+':
+  if op == '+':
         result = number_1 + number_2
-elif op == '-':
+  elif op == '-':
         result = number_1 - number_2
-elif op == '*':
+  elif op == '*':
         result = number_1 * number_2
-elif op == '/':
+  elif op == '/':
     if number_2 != 0:
        result = number_1 / number_2
-else:
-    return "Error: division by zero"
-elif op == '**':
-    result = number_1 ** number_2
-else:
-    return "Error: invalid statement"
-return result
+    else:
+       return "Error: division by zero"
 
+  elif op == '**':
+        result = number_1 ** number_2
+  else:
+       return "Error: invalid statement"
+  return result
+
+
+number_1 = None
+while number_1 is None:
+    try:
+        number_1 = float(input('Enter first number: '))
+    except (ValueError, NameError):
+        print('Error: enter a valid number')
+
+input('Enter operator (+, -, *, /, **): ')
+
+number_2 = None
+while number_2 is None:
+    try:
+        number_2 = float(input('Enter second number: '))
+    except (ValueError, NameError):
+        print('Error: enter a valid number')
 
 #try:
  #   number_1 = float(input('Enter first number: '))
