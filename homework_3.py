@@ -26,12 +26,12 @@ elif op == '/':
     if number_2 != 0:
        result = number_1 / number_2
 else:
-       return "Error: division by zero"
+    return "Error: division by zero"
 elif op == '**':
-        result = number_1 ** number_2
-     else:
-       return "Error: invalid statement"
-  return result
+    result = number_1 ** number_2
+else:
+    return "Error: invalid statement"
+return result
 
 
 #try:
