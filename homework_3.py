@@ -18,6 +18,8 @@ def calculate(number_1 , number_2 , op):
        return "Error: invalid statement"
   return result
 
+#continue_calculating = True
+#while continue_calculating is True:
 
 number_1 = None
 while number_1 is None:
@@ -35,30 +37,11 @@ while number_2 is None:
     except (ValueError, NameError):
         print('Error: enter a valid number')
 
-#try:
- #   number_1 = float(input('Enter first number: '))
-
-#except (ValueError,NameError):
- #   print('Error: enter number')
-#except NameError:
-    #number_1 = None
-    #print("It shoud be a number")
-
-#op = input('Enter operator (+,-,*,/,**): ')
-#try:
-     #number_2 = float(input('Enter second number: '))
-#except(ValueError, NameError):
-  #  print('Error: enter number')
-#except NameError:
-    #number_2 = None
-    #print("It shoud be a number")
-
-
-
-
 
 print(number_1,op,number_2)
 result = calculate (number_1,number_2,op)
 print('=' , result)
 
-
+#yes_or_no = input('Continue? (y/n): ')
+#if yes_or_no == 'n':
+    #continue_calculating = False
