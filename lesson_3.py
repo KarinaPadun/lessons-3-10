@@ -91,7 +91,7 @@ value_int = 20
 # звіт данних
 try:
     value_1 = int(input("Please type a number: "))
-except:
+except ValueError:
     print('It should be a number ')
 
 
