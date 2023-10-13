@@ -50,7 +50,14 @@ print(bool(value_int))
 
 #value_str = "" - str 0
 
+##### golf , ternary operator , not
 
+#golf - написати коротко код
+# ternary operator - метод написання коду ( в одну строчку
+#    )
+
+
+# not in , is not true
 
 
 
@@ -82,11 +89,16 @@ value_int = 20
 
 ############# input() ##################### завжди строка ! (10+10=1010)
 # звіт данних
+try:
+    value_1 = int(input("Please type a number: "))
+except:
+    print('It should be a number ')
 
-value_1 = int(input("Please type a number:"))
-value_2 =  int(input("Please type another number: "))
+
+value_2 = int(input("Please type another number: "))
+
 # або звести в результаті!
 
-result= int(value_1) + int(value_2)
+result= value_1 + value_2
 
 print(result)
