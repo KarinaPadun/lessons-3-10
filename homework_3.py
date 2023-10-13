@@ -12,6 +12,11 @@ def calculate(number_1,number_2,op):
         result = number_1/number_2
     elif op == '^':
         result = number_1**number_2
+    else:
+
+
+
+
     return result
 
 
