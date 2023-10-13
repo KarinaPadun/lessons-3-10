@@ -6,10 +6,15 @@ def calculate(number_1,number_2,op):
     elif op == '*':
         result = number_1*number_2
     elif op == '/':
-        result = number_1/number_2
+        if number_2 != 0:
+            result = number_1 / number_2
+        else:
+            return "Error: division by zero"
     elif op == '^':
         result = number_1**number_2
-    return result
+    else:
+        return "Error: invalid statement"
+
 
 
 number_1 = float(input('Enter first number: '))
