@@ -82,7 +82,7 @@
 # condition_2 = False
 # condition_3 = False
 #
-# while condition_1:
+# while condition_1 and not condition_2 and not condition_3 :
 #     print("1111")
 
 # while value < 10:
@@ -91,3 +91,35 @@
 #         continue - зупиняє цикл всередині циклу
 #
 #     print(value)
+
+############# while else ############
+
+# value = 1
+#
+# while value < 10:
+#     value += 1  # value = value + 1
+#     if value % 2:
+#         continue
+#
+#     # print(value)
+# else: (коли вайл закінчится виконай таку дію)
+#     print(value)
+# # вайл елс - конструкція яка виконує певну дію і коли вайл буде завершено,елс запрацює (один раз працює)
+# print("end")
+
+
+############# str methods ############
+# value_str = "quesrty"
+# index = 4 [] , у стрінг есть індекс, начінается с 0
+#
+# # value_str[2:2:2] - [початок, кінець, крок]
+#
+# # print(value_str[20]) #адреса (номер символу)
+# # print(value_str[1:10]) # з - включно, до - виключно
+# # print(value_str[19:]) # з - включно, до кінця
+#
+# # print(value_str[::-1])
+# # print(value_str[::2])
+# # print(value_str[0::2]) #чотні
+# # print(value_str[1::2]) #нечотні
+# # print(value_str[::-2])
