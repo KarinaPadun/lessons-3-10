@@ -48,4 +48,22 @@
 #
 # print(result)
 
-############# while (True, flag, value) ############
+############# while (True, flag, value) ############ while - поки ,  loop- цикл, петля, бульбашка
+
+#value = 1
+# is_true = True
+
+
+# while True:
+#     value += 1 # те саме що value = value + 1 (синтаксичний цукор, спрощення  )
+#     print(value)
+#     if value > 10:
+#         break
+
+# while з Умовою
+# while value < 10:
+#     value += 1  # value = value + 1
+#     if value % 2:
+#         continue
+#
+#     print(value)
