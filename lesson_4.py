@@ -123,3 +123,39 @@
 # # print(value_str[0::2]) #чотні
 # # print(value_str[1::2]) #нечотні
 # # print(value_str[::-2])
+
+# document = "file.exe"
+# # document = "file.py"
+# # "1000293.jpg" "nikolas_1.jpg"
+#
+# dot = document.find('.') # знаходить індекс підстроки
+# print(dot)
+# # extension = document[(dot+1):] пише розширення ЕХЕ
+# # # print(extension)
+# # # name = document[0:4]
+# # name = document[:dot]
+# # print(name)
+#
+# # name = document [0:4]
+# # [:(dot-1)]
+#
+# doc_length = len(document)
+#
+# extension = document[(doc_length - dot + 1):]
+# name = document[:(doc_length - dot)]
+# print(name)
+
+# str_1 = "hello"
+# str_2 = "Hello"
+# print(str_2.lower())
+# print(str_2.upper())
+# if str_1.lower() == str_2.lower():
+#     print("ok")
+
+
+# Email@email.com
+# email@email.com
+
+# first_name = input("name: ")
+#
+# print(first_name.capitalize())
