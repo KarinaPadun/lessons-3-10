@@ -67,3 +67,27 @@
 #         continue
 #
 #     print(value)
+
+# while за прапором
+# while is_true:
+#     value += 1  # value = value + 1
+#     print(value)
+#
+#     if value > 10:
+#         is_true = False
+
+
+############### break- прекратить , стоп , continue - продовжити
+# condition_1 = True
+# condition_2 = False
+# condition_3 = False
+#
+# while condition_1:
+#     print("1111")
+
+# while value < 10:
+#     value += 1  # value = value + 1
+#     if value % 2:
+#         continue - зупиняє цикл всередині циклу
+#
+#     print(value)
