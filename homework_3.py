@@ -1,23 +1,23 @@
 def calculate(number_1 , number_2 , op):
-
-  if op == '+':
+    if op == '+':
         result = number_1 + number_2
-  elif op == '-':
+    elif op == '-':
         result = number_1 - number_2
-  elif op == '*':
+    elif op == '*':
         result = number_1 * number_2
-  elif op == '/':
-    if number_2 != 0:
-       result = number_1 / number_2
-    else:
-       return "Error: division by zero"
+    elif op == '/':
+        if number_2 != 0:
+            result = number_1 / number_2
+        else:
+            result = None
+            return "Error: division by zero"
 
-  elif op == '**':
+    elif op == '**':
         result = number_1 ** number_2
-  else:
-       return "Error: invalid statement"
-  return result
-
+    else:
+        result = None
+        return "Error: invalid statement"
+    return result
 #continue_calculating = True
 #while continue_calculating is True:
 
@@ -38,9 +38,9 @@ while number_2 is None:
         print('Error: enter a valid number')
 
 
-print(number_1,op,number_2)
-result = calculate (number_1,number_2,op)
-print('=' , result)
+print(number_1, op, number_2)
+result = calculate(number_1, number_2, op)
+print('=', result)
 
 #yes_or_no = input('Continue? (y/n): ')
 #if yes_or_no == 'n':
