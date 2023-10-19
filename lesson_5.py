@@ -85,3 +85,7 @@ value_str= 'Hello'
 for letter in value_str:
     if letter.lower() in 'eyoiau':
         print(letter)
+
+
+    if letter.lower() in 'eyoiau' and letter.isalpha() and not letter.isspace(): #  перевірити чи виключать ці умови
+# перша умова має відсіяти найбільше варіантів
