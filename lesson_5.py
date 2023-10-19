@@ -27,4 +27,8 @@ for letter in value_str:
 # там де можна використати for , 100% можна і while
 # for не потребує умови , працює з індексованими об'єктами
 
-
+range(10)  # повертає об'єкт , видача від 0 до 10(виключно)
+#початоккінець крок
+for index in value_str:
+    #print(letter)
+    print(index)
