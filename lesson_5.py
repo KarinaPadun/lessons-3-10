@@ -60,5 +60,6 @@ for i in range(10): # k j виключення скороченних назв
 #########################################################
 value_str = 'hello1234'
 
-for letter in value_str
-    print(letter)
+for letter in value_str:
+    if letter.isalpha(): # лише літера
+         print(letter)
