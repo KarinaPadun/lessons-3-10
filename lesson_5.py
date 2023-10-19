@@ -63,3 +63,8 @@ value_str = 'hello1234'
 for letter in value_str:
     if letter.isalpha(): # лише літера
          print(letter)
+
+# value_str.startswith("h")  # якщо починається з якогось значення
+
+# value_srt ="img.jpg"
+# value_str.endswith(".jpg")   закінчується на значення
