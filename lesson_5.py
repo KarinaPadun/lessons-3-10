@@ -68,3 +68,8 @@ for letter in value_str:
 
 # value_srt ="img.jpg"
 # value_str.endswith(".jpg")   закінчується на значення
+
+# value_srt ="103764_IMG.jpg"
+# value_str.replace()   заменить
+
+# будь який метод створює копію!!! не змінює основний
