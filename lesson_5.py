@@ -19,3 +19,6 @@ index = 0
 
 for letter in value_str:
     print(letter)
+
+# там де можна використати while, скоріш за все і for
+# там де можна використати for , 100% можна і while
