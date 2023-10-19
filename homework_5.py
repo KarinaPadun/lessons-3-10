@@ -13,7 +13,7 @@ value_str = 'rtyuio'
 print(value_str[-2])
 
 #b2 виведіть передостанній символ цього рядка.
-
+value_str = 'rtyuio'
 
 #c.виведіть перші п'ять символів цього рядка.
 value_str = 'rtyuiocvb'
@@ -22,6 +22,11 @@ print(value_str[:5])
 value_str = 'rtyuiocvb'
 for i in range(5):
     print(value_str[i])
+#d виведіть весь рядок, крім двох останніх символів.
+value_str = 'rtyuiocvb'
+result_str = value_str[:-2]
+print(result_str)
+
 #rfind
 #string[::-1]
 
