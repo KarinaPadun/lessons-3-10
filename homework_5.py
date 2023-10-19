@@ -1,8 +1,15 @@
 #1
-
-value_str = 'tyrueieo'
+#a виведіть третій символ цього рядка.
+value_str = 'ttyrtg'
 
 for letter in value_str:
-    if letter [index] == 4
+    if value_str.index(letter) == 2:
+         print(letter)
 
-print()
+#b виведіть передостанній символ цього рядка.
+
+value_str = 'rtyuio'
+
+for letter in value_str:
+    if value_str.index(letter) == -1:
+         print(letter)
