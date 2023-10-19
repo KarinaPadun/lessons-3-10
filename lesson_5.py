@@ -17,10 +17,14 @@ index = 0
 # print(value_str[index])
 # index += 1
 
-#["H", "e", "l"] (next)
+#["H", "e", "l"] (next) автоматично продовжує і закінчуємо
 for letter in value_str:
-    print(letter)
+    #print(letter)
+    print(value_str.index(letter))
+    #print(value_str.find(letter)) - те саме буде видавати
 
 # там де можна використати while, скоріш за все і for
 # там де можна використати for , 100% можна і while
 # for не потребує умови , працює з індексованими об'єктами
+
+
