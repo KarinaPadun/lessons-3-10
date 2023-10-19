@@ -17,8 +17,10 @@ index = 0
 # print(value_str[index])
 # index += 1
 
+#["H", "e", "l"] (next)
 for letter in value_str:
     print(letter)
 
 # там де можна використати while, скоріш за все і for
 # там де можна використати for , 100% можна і while
+# for не потребує умови , працює з індексованими об'єктами
