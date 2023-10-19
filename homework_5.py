@@ -10,6 +10,12 @@ for letter in value_str:
 
 value_str = 'rtyuio'
 
-for letter in value_str:
-    if value_str.index(letter) == -1:
-         print(letter)
+print(value_str[-2])
+
+
+#string[::-1]
+
+#value_str = 'rtyuio'
+
+ #for value_str range(0,6):
+  #  print(value_str) string[ : 5 ]

@@ -87,9 +87,9 @@ for letter in value_str:
         print(letter)
 
 
-    if letter.lower() in 'eyoiau' and letter.isalpha() and not letter.isspace(): #  перевірити чи виключать ці умови
+   # if letter.lower() in 'eyoiau' and letter.isalpha() and not letter.isspace(): #  перевірити чи виключать ці умови
 # перша умова має відсіяти найбільше варіантів
 
 
 # з початку rfind()
-# з кінця ffind()
+#з кінця f.find()
