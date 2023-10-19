@@ -66,10 +66,22 @@ for letter in value_str:
 
 # value_str.startswith("h")  # якщо починається з якогось значення
 
-# value_srt ="img.jpg"
+# мalue_srt ="IMG.jpg"
 # value_str.endswith(".jpg")   закінчується на значення
 
 # value_srt ="103764_IMG.jpg"
 # value_str.replace()   заменить
 
 # будь який метод створює копію!!! не змінює основний
+value_str = value_str.replace('hello','test')
+print(value_str)
+
+# метод - функція
+# функція виконується до будь яких об'єктів , метод підв'язується під клас
+#функція видозмінює обєкт , метод робить копію
+
+
+value_str= 'Hello'
+for letter in value_str:
+    if letter.lower() in 'eyoiau':
+        print(letter)
