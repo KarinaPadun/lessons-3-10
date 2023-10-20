@@ -105,4 +105,14 @@ while True:
 print(f"Символ '{ch}' зустрічається {count} разів у рядку '{s}'.")
 
 #4. Дано рядок. Замініть у цьому рядку всі появи літери `h` на літеру `H`, крім першого та останнього входження.
-value_str = ("hello i am helena")
+
+value_str = "hello i am helena. I have a cat"
+
+
+first_h_position = value_str.find("h")
+last_h_position = value_str.rfind("h")
+
+
+result_str = value_str[:first_h_position + 1] + value_str[first_h_position + 1:last_h_position].replace("h", "H") + value_str[last_h_position:]
+
+print(result_str)

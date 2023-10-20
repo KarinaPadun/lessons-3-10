@@ -7,16 +7,13 @@
 #print(my_str[::-1])
 
 
-s = input("Введіть рядок s: ")
-ch = input("Введіть символ ch: ")
+value_str = "hello i am helena. I have a cat"
 
-count = 0
-index = -1
 
-while True:
-    index = s.find(ch, index + 1)
-    if index == -1:
-        break
-    count += 1
+first_h_position = value_str.find("h")
+last_h_position = value_str.rfind("h")
 
-print(f"Символ '{ch}' зустрічається {count} разів у рядку '{s}'.")
+
+result_str = value_str[:first_h_position + 1] + value_str[first_h_position + 1:last_h_position].replace("h", "H") + value_str[last_h_position:]
+
+print(result_str)
