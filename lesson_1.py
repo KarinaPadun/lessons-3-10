@@ -7,3 +7,6 @@
 #print(my_str[::-1])
 
 
+value_str_4 = 'Yuiot'
+for i in range(len(value_str_4) - 1, -1, -2):
+    print(value_str_4[i])

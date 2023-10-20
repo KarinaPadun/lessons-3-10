@@ -58,10 +58,13 @@ value_str_3 = 'Yuio'
 for i in range(len(value_str_3)-1,-1,-1):
     print(value_str_3[i])
 # h. виведіть усі символи рядка через один у зворотному порядку, починаючи з останнього.
-
-
+value_str_4 = 'Yuiot'
+for i in range(len(value_str_4) - 1, -1, -2):
+    print(value_str_4[i])
 # h2. виведіть усі символи рядка через один у зворотному порядку, починаючи з останнього.
-
+value_str_5 = '123456'
+i = value_str_5 [::-1][::2]
+print(i)
 #i. виведіть довжину цього рядка.
 
 value_str = 'yr6uiooo'
