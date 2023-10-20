@@ -75,3 +75,18 @@ if len(value_str) > 0:
 # i2. виведіть довжину цього рядка.
 value_str = 'yr6uiooo'
 print(len(value_str))
+
+
+# 2
+
+value_str = 'my name is Eric'
+words = value_str.split()
+k = len(words)
+print('кількість слів у рядку:',k)
+
+value_str = 'my name is Eric, i am 13'
+
+k = value_str.count(' ') + 1
+print('кількість слів у рядку:', k)
+
+
