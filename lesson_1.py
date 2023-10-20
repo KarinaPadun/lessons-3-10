@@ -6,14 +6,24 @@
 
 #print(my_str[::-1])
 
+my_string = '0123456789'
 
-value_str = "hello i am helena. I have a cat"
+number = 0
+while number < 100:
+    num_str = my_string[number // 10] + my_string[number % 10]
+    num_int = int(num_str)
+    print(num_int)
+    number += 1
 
 
-first_h_position = value_str.find("h")
-last_h_position = value_str.rfind("h")
+string = '0123456789'
 
-
-result_str = value_str[:first_h_position + 1] + value_str[first_h_position + 1:last_h_position].replace("h", "H") + value_str[last_h_position:]
-
-print(result_str)
+tens_digit = 0
+while tens_digit < 10:
+    ones_digit = 0
+    while ones_digit < 10:
+        num_str = string[tens_digit] + string[ones_digit]
+        num_int = int(num_str)
+        print(num_int)
+        ones_digit += 1
+    tens_digit += 1

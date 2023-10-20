@@ -22,4 +22,3 @@ for tens_digit in my_string:
         print(number_int)
 
 
-
