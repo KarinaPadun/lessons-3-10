@@ -27,3 +27,10 @@ while tens_digit < 10:
         print(num_int)
         ones_digit += 1
     tens_digit += 1
+
+my_string = '0123456789'
+
+number = 0
+while number < 100:
+    print(number)
+    number += 1
