@@ -39,3 +39,12 @@ number = 0
 while number < 100:
     print(number)
     number += 1
+
+my_string = '0123456789'
+
+number = 0
+while number < 100:
+    num_str = my_string[number // 10] + my_string[number % 10]
+    num_int = int(num_str)
+    print(num_int)
+    number += 1
