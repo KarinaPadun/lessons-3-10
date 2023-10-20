@@ -7,7 +7,16 @@
 #print(my_str[::-1])
 
 
+s = input("Введіть рядок s: ")
+ch = input("Введіть символ ch: ")
 
-value_str = 'my name is Eric'
-k = value_str.count(' ') + 1
-print('кількість слів у рядку:', k)
+count = 0
+index = -1
+
+while True:
+    index = s.find(ch, index + 1)
+    if index == -1:
+        break
+    count += 1
+
+print(f"Символ '{ch}' зустрічається {count} разів у рядку '{s}'.")
