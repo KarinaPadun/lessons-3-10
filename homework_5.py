@@ -13,8 +13,10 @@ value_str = 'rtyuio'
 print(value_str[-2])
 
 #b2 виведіть передостанній символ цього рядка.
-value_str = 'rtyuio'
-
+value_str = 'rtyuto'
+for i in range(len(value_str)):
+    if i == len(value_str) - 2:
+        print(value_str[i])
 #c.виведіть перші п'ять символів цього рядка.
 value_str = 'rtyuiocvb'
 print(value_str[:5])
