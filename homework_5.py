@@ -90,21 +90,29 @@ k = value_str.count(' ') + 1
 print('кількість слів у рядку:', k)
 
 # 3
-s= input('Введіть рядок : ')
-ch = input('Введіть один символ: ')
+while True:
+ s= input('Введіть рядок : ')
+ ch = input('Введіть один символ: ')
 
 # find для знаходження першого вміщення символу ch
-first_placement = s.find(ch)
+ first_placement = s.find(ch)
 
 #  rfind для знаходження останнього вміщення символу ch
-last_placement = s.rfind(ch)
+ last_placement = s.rfind(ch)
 
-if first_placement != -1:
+ if first_placement != -1:
     print(f"Перше входження символу '{ch}' знайдено на позиції {first_placement}.")
-else:
+ else:
     print(f"Символ '{ch}' не знайдено у рядку '{s}'.")
 
-if last_placement != -1:
+ if last_placement != -1:
     print(f"Останнє входження символу '{ch}' знайдено на позиції {last_placement}.")
-else:
+ else:
     print(f"Символ '{ch}' не знайдено у рядку '{s}'.")
+ input('Продовжити пошук? (y/n): ')
+
+ if continue_search.lower() != 'так':
+     break
+
+#4. Дано рядок. Замініть у цьому рядку всі появи літери `h` на літеру `H`, крім першого та останнього входження.
+value_str = ("hello i am helena")
