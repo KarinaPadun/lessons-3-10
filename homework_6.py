@@ -20,8 +20,14 @@ my_results = []
 
 for i in my_list:
     if i > 100:
-     my_results.append(i)
+        my_results.append(i)
 
 
+print(my_results)
+
+# 2.2 варіант
+
+my_list = [0, 1 , 999, 2020, 20, 102, 101, -3]
+my_results = [i for i in my_list if i > 100] # мой результат = і если i > 100 в my_list, цикл for перебирает значения в списке
 print(my_results)
 
