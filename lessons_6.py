@@ -103,3 +103,14 @@ print(val_list)
 # join обєднання
 final_str = "\\".join(val_list)
 print(final_str)
+
+
+###########sort
+
+base_list = [1, -4, 10, 2, 3]
+print(base_list)
+#base_list.sort()
+base_list.sort(reverse = True) #в обратную
+print(base_list)
+
+# sorted()
