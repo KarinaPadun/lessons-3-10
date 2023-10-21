@@ -38,13 +38,6 @@ value_tuple = (
 base_list = [1, 2, 3]
 new_list = [base_list.copy()] * 4 # copy() робить копію і не змінює лист
 print(new_list)
-
-
-
-
-
-
-
 #####################################################
 base_list = [1, 2, 3]
 my_new_list = base_list * 4 #працює з даними
@@ -63,3 +56,16 @@ print(f"my_new_list {my_new_list}")
 
 # в змінних value зберігається посилання
 # листи можна доповнювати
+#####################################################
+base_list = [1, 2, 3]
+base_list.append('hello') # працює з лістом
+print(base_list)
+
+value = ("Hello")
+value= value.lower() #  працює з копією
+print(value)
+
+#видаляє всі елементи clear()	Removes all the elements from the list
+
+base_list.pop(1)
+#видаляє останній обєкт якщо дужки пусті або той що в дужках
