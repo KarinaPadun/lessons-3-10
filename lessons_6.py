@@ -118,3 +118,8 @@ print(base_list)
 base_list = ['amd', 'bmd','aamd', 'rrr', 'att'] # за алфавітом
 
 print(sorted(base_list, reverse= False, key=len)) # за довжиною
+
+# key=аbс - за модулем
+# спочатку цифри , потім спецсимволи і букви
+
+############### ASCII - міжнародний стандарт розмітки
