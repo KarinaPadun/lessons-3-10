@@ -58,7 +58,7 @@ print(f"my_new_list {my_new_list}")
 # листи можна доповнювати
 #####################################################
 base_list = [1, 2, 3]
-base_list.append('hello') # працює з лістом
+base_list.append('hello') # працює з лістом Функция append() позволяет добавлять в список один новый элемент
 print(base_list)
 
 value = ("Hello")

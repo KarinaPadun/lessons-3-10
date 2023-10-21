@@ -35,8 +35,11 @@ print(my_results)
 # то в кінець додати значення 0. Якщо кількість елементів більша або дорівнює 2,
 # то додати суму останніх двох елементів. Кількість елементів у списку можна отримати за допомогою функції len(my_list)
 
-my_list = [-5, 0, ]
+my_list = [-5,4]
 
-for i in my_list:
-    if len(my_list) <2:
-        my_list.append(i)
+if len(my_list) < 2:
+    my_list.append(0)
+else:
+    my_list.append(my_list[-1] + my_list[-2])
+
+    print(my_list)
