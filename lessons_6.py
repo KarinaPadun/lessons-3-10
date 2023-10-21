@@ -68,4 +68,18 @@ print(value)
 #видаляє всі елементи clear()	Removes all the elements from the list
 
 base_list.pop(1)
-#видаляє останній обєкт якщо дужки пусті або той що в дужках
+#видаляє останній обєкт якщо дужки пусті або індекс того що в дужках
+deleted_val =base_list.pop(1)
+print(deleted_val) #видає видаленний обєкт
+
+websites = [
+    "www.site1.com"
+    "www.site2.com"
+    "www.site3.com"
+    "www.site4.com"
+    "www.site5.com"
+    "www.site6.com"
+]
+
+while True:
+    websites.pop()
