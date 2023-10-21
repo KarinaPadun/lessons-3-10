@@ -35,7 +35,17 @@ value_tuple = (
     "hello" ,
 )
 #####################################################
+base_list = [1, 2, 3]
+new_list = [base_list.copy()] * 4 # copy() робить копію і не змінює лист
+print(new_list)
 
+
+
+
+
+
+
+#####################################################
 base_list = [1, 2, 3]
 my_new_list = base_list * 4 #працює з даними
 print(my_new_list)
