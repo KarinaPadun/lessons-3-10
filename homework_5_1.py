@@ -23,12 +23,12 @@ for tens_digit in my_string:
 
 string = '0123456789'
 
-tens_digit = 0
+tens_digit = 0  # дві змінні відповідають за індекси для чисел
 while tens_digit < 10:
-    ones_digit = 0
+    ones_digit = 0 # став 1
     while ones_digit < 10:
-        num_str = string[tens_digit] + string[ones_digit]
-        num_int = int(num_str)
+        num_str = string[tens_digit] + string[ones_digit] # 0 + 0 - 0 +1
+        num_int = int(num_str) # 00- 0 , 01- 1
         print(num_int)
         ones_digit += 1
     tens_digit += 1
