@@ -81,5 +81,20 @@ websites = [
     "www.site6.com"
 ]
 
-while True:
-    websites.pop()
+while len(websites) != 0 :
+    deleted_val = websites.pop()
+    print(deleted_val)
+
+# while websites більш коротка умова
+
+
+
+# методи строк split(), rsplit() , join()
+#
+value = ('c/desktop/doc/file/img.jpg')
+
+# print(value.split('/', 2), type(value.split()))  #формує список
+# print(value.rsplit('.', 1), type(value.rsplit()))  # ріже з кінця
+
+val_list = value.rsplit(".", 1)
+val_list[1] = 'png'
