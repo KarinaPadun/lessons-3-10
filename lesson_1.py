@@ -5,9 +5,12 @@
 #my_str = value if len(value) < 5 else value[1::2]
 
 #print(my_str[::-1])
+my_list = [0, 1 , 999, 2020, 20, 102, 101, -3]
+my_results = []
 
-my_list = list("qwerty")
+for i in my_list:
+    if i > 100:
+     my_results.append(i)
 
-my_str = "".join(my_list[::-1])
 
-print(my_str[::-1])
+print(my_results)
