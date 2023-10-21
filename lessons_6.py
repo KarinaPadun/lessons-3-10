@@ -101,5 +101,5 @@ val_list[1] = 'png'
 print(val_list)
 
 # join обєднання
-final_str = '.'.join(val_list)
+final_str = "\\".join(val_list)
 print(final_str)
