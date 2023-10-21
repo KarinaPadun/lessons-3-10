@@ -5,12 +5,7 @@
 #my_str = value if len(value) < 5 else value[1::2]
 
 #print(my_str[::-1])
-my_list = [0, 1 , 999, 2020, 20, 102, 101, -3]
-my_results = []
 
-for i in my_list:
-    if i > 100:
-     my_results.append(i)
-
-
-print(my_results)
+my_list = [-5,4,3,1]
+my_list.append(0 if len(my_list) < 2 else my_list[-1] + my_list[-2])
+print(my_list)

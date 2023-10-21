@@ -35,11 +35,17 @@ print(my_results)
 # то в кінець додати значення 0. Якщо кількість елементів більша або дорівнює 2,
 # то додати суму останніх двох елементів. Кількість елементів у списку можна отримати за допомогою функції len(my_list)
 
-my_list = [-5,4]
+my_list = [-5, 4]
 
-if len(my_list) < 2:
+if len(my_list) < 2: # якщо кількість обєктів в my_list менше 2 , то додаємо 0
     my_list.append(0)
 else:
-    my_list.append(my_list[-1] + my_list[-2])
+    my_list.append(my_list[-1] + my_list[-2]) # в іншому випадку додаємо сумму останніх двох
 
     print(my_list)
+
+# 3.2  варіант
+my_list = [-5, 4, 3, 1]
+my_list.append(0 if len(my_list) < 2 else my_list[-1] + my_list[-2]) # додаємо 0 якщо кількість елементів в my_list менше 2 ,
+# в іншому сумму останніх двох
+print(my_list)
