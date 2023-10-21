@@ -72,3 +72,32 @@ print(my_list)
 my_str = 'eiri eir fvvf g '
 str_index= [1, 3, 5, 6, 8, 12]
 my_list = []
+
+
+
+
+
+# Дано ціле число (int). Визначити скільки цифр у цьому числі.
+#Наприклад: my_number = 228989
+#          Виведення на екран: 6
+value = '456993846'
+print(len(value))
+
+#Дано ціле число. Визначити найбільшу цифру у цьому числі.
+#Наприклад: my_number = 228989
+       #    Виведення на екран: 9
+value = '456003846'
+
+
+
+value_str = str(value)
+
+max_digit = 0
+
+
+for digit_str in value_str:
+    digit = int(digit_str)
+    if digit > max_digit:
+        max_digit = digit
+
+print(f"Найбільша цифра у числі {value_str} - це {max_digit}.")
