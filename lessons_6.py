@@ -10,10 +10,13 @@
 value_list = [1 , 1.1 , '&',None , True , [1]]
 value_tuple = (1 , 1.1 , '&',None , True , [1])
 
+
+value = 1
+value = 5 #  переподв'язывается
 #####################################################
 
 base_list = [1, 2, 3]
-my_new_list = base_list * 4
+my_new_list = base_list * 4 #працює з даними
 print(my_new_list)
 base_list[0] = 10
 print(f"base_list {base_list}")
@@ -21,8 +24,11 @@ print(f"my_new_list {my_new_list}")
 
 #####################################################
 base_list = [1, 2, 3]
-my_new_list = [base_list] * 4
+my_new_list = [base_list] * 4 #працює зі списком
 print(my_new_list)
 base_list[0] = 10
 print(f"base_list {base_list}")
 print(f"my_new_list {my_new_list}")
+
+# в змінних value зберігається посилання
+# листи можна доповнювати
