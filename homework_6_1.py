@@ -101,3 +101,15 @@ for digit_str in value_str:
         max_digit = digit
 
 print(f"Найбільша цифра у числі {value_str} - це {max_digit}.")
+
+
+value_1 = '99664210'
+
+
+value_1_str = str(value_1)
+
+
+max_digit = max(value_1, key=int)
+
+print(f"Найбільша цифра у числі {value_1} - це {max_digit}.")
+
