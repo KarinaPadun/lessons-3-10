@@ -98,3 +98,8 @@ value = ('c/desktop/doc/file/img.jpg')
 
 val_list = value.rsplit(".", 1)
 val_list[1] = 'png'
+print(val_list)
+
+# join обєднання
+final_str = '.'.join(val_list)
+print(final_str)
