@@ -16,14 +16,21 @@ value = 1
 value = 5 #  переподв'язывается
 #####################################################
 value_list = ["hello"]
-value_tuple = ("hello" , )
+value_tuple = ("hello" , ) # typle  поставити перед якщо один обєкт
+
 
 print(type(value_list ) )
 print(type(value_tuple))
 
 
-
-
+value_list = [
+    1 ,
+    1.1 ,
+    '&',
+    None ,
+    True ,
+]
+   #]
 
 #####################################################
 
