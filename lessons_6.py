@@ -109,8 +109,12 @@ print(final_str)
 
 base_list = [1, -4, 10, 2, 3]
 print(base_list)
-#base_list.sort()
+# base_list.sort() изменяет лист
 base_list.sort(reverse = True) #в обратную
 print(base_list)
 
-# sorted()
+# sorted() робить те саме, создает копию
+
+base_list = ['amd', 'bmd','aamd', 'rrr', 'att'] # за алфавітом
+
+print(sorted(base_list, reverse= False, key=len)) # за довжиною
