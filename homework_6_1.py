@@ -120,3 +120,27 @@ print(f"Найбільша цифра у числі {value_1} - це {max_digit}
 my_number = '45678'
 
 print(my_number[::-1])
+########################################
+my_number = '45678901'
+
+reversed_str = my_number[::-1]
+
+reversed_number = int(reversed_str)
+
+print(reversed_number)
+
+
+#Дано ціле число. Скласти число з цифрами в порядку зростання (зменшення).
+# зростання
+number = '6758438'
+
+
+sorted_number = ''.join(sorted(number))
+
+result = int(sorted_number)
+
+print(result)
+
+
+# зменшення
+number = '13580'
