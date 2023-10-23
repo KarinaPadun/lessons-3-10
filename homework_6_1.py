@@ -73,7 +73,11 @@ my_str = 'eiri eir fvvf g '
 str_index= [1, 3, 5, 6, 8, 12]
 my_list = []
 
+for index in str_index:
+    if 0 <= index < len(my_str): #проверяет находятся индексы в строке или нет
+        my_list.append(my_str[index])
 
+print(my_list)
 
 
 
