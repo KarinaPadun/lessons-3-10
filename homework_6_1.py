@@ -199,3 +199,20 @@ print(my_result)
 
 #############################################
 
+my_list_1 = [1, 2, 3, 4, 5, 6, 99, 101]
+my_list_2 = [8, 9, 10, 11, 12]
+my_result = []
+
+i = 0
+while i < min(len(my_list_1), len(my_list_2)):
+    my_result.append(my_list_1[i])
+    my_result.append(my_list_2[i])
+    i += 1
+
+#   добавляем остаток , если он есть extend - в конец списка
+my_result.extend(my_list_1[i:])
+my_result.extend(my_list_2[i:])
+
+print(my_result)
+
+
