@@ -144,3 +144,31 @@ print(result)
 
 # зменшення
 number = '13580'
+
+
+sorted_number = ''.join(sorted(number, reverse=True))
+
+
+result = int(sorted_number)
+
+print(result)
+
+
+
+
+#Дано списки my_list_1 та my_list_2. Створити список my_result в який помістити елементи
+#з my_list_1 та my_list_2 через один, починаючи з my_list_1.
+#a) кількість ел-тів однакове
+
+my_list_1 = [1,2,3,4,5,6]
+my_list_2= [7,8,9,10,11,12]
+my_result = []
+
+for i in range(len(my_list_1)):
+    my_result.append(my_list_1[i])
+    my_result.append(my_list_2[i])
+
+print(my_result)
+
+
+#б) кількість ел-тів різне
