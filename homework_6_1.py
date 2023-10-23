@@ -169,6 +169,33 @@ for i in range(len(my_list_1)):
     my_result.append(my_list_2[i])
 
 print(my_result)
+#2 v?
+my_list_1 = [1, 2, 3, 4, 5, 6]
+my_list_2 = [6, 8, 9, 10, 11, 12]
+
+
+my_result = [item for pair in zip(my_list_1, my_list_2) for item in pair] # zip только к словарям?
+
+print(my_result)
 
 
 #б) кількість ел-тів різне
+
+my_list_1 = [1, 2, 3, 4, 5, 6, 7]
+my_list_2 = [8, 9, 10, 11, 12]
+my_result = []
+
+min_length = min(len(my_list_1), len(my_list_2))
+
+for i in range(min_length):
+    my_result.append(my_list_1[i])
+    my_result.append(my_list_2[i])
+
+# Додаємо залишок елементів, якщо вони є
+my_result.extend(my_list_1[min_length:])
+my_result.extend(my_list_2[min_length:])
+
+print(my_result)
+
+#############################################
+
