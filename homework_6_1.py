@@ -15,7 +15,7 @@ print(count_unique_chars)
 
 my_str = "Ttt Oop  "
 unique_chars = []
-for char in my_str:
+for char in my_str.lower:
     if char not in unique_chars:
         unique_chars.append(char)
 
