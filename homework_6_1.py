@@ -91,13 +91,9 @@ print(len(value))
 #Наприклад: my_number = 228989
        #    Виведення на екран: 9
 value = '456003846'
-
-
-
 value_str = str(value)
 
 max_digit = 0
-
 
 for digit_str in value_str:
     digit = int(digit_str)
