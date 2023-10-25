@@ -5,6 +5,17 @@ count = num_1.count('0')
 print(count)
 
 
+# 1.2  Дано ціле число (int). Визначити скільки нулів у цьому числі.
+num = 1230000046
+num_1 = str(num)
+result = 0
+
+for i in num_1:
+    if i == 0:
+        result = +1
+
+print(result)
+
 
 
 
