@@ -6,6 +6,3 @@
 
 #print(my_str[::-1])
 
-my_list = [-5,4,3,1]
-my_list.append(0 if len(my_list) < 2 else my_list[-1] + my_list[-2])
-print(my_list)

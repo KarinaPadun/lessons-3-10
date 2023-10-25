@@ -6,20 +6,36 @@ print(count)
 
 
 # 1.2  Дано ціле число (int). Визначити скільки нулів у цьому числі.
-num = 1230000046
+num = 123000046
 num_1 = str(num)
 result = 0
 
 for i in num_1:
-    if i == 0:
-        result = +1
+    if i == '0':
+        result += 1
 
 print(result)
 
+# 1.3  Дано ціле число (int). Визначити скільки нулів у цьому числі.
 
+num = 123000046
+num_2 = str(num)
+result = 0
+i = 0
 
+while i < len(num_2):
+    if num_2[i] == '0':
+        result += 1
+    i += 1
 
+print(result)
 
+#2. Дано ціле число (int). Визначити скільки нулів наприкінці цього числа. Наприклад для числа 1002000 - три нулі
+
+num = 26460000
+num_str = str(num)
+result_1 = num_str.rfind('0')
+print(result_1)
 
 
 
