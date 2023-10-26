@@ -152,6 +152,26 @@ for word in words:
 print(total_sum)
 # 6. 1
 my_string = 'Каті 15 років, мамі-38, тату - 45'
+words = my_string.split()
+numbers = []
+num_str = ""
+
+for word in words:
+    for char in word:
+        if char.isdigit():
+            num_str += char
+        elif num_str:
+            numbers.append(int(num_str))
+            num_str = ""
+
+
+if num_str:
+    numbers.append(int(num_str))
+
+total_sum = sum(numbers)
+
+print(numbers)
+print(total_sum)
 
 #7. Наведено список чисел. Визначте, скільки в цьому списку елементів,
 #які більше суми двох своїх сусідів (ліворуч і праворуч), і НАДРУКАЙТЕ КІЛЬКІСТЬ таких елементів.

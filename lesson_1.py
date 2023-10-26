@@ -33,7 +33,7 @@ total_sum = sum(numbers)  # Обчислюємо суму чисел
 print(total_sum)  # Результат: 98
 
 
-my_string = 'Каті - 15 років, мамі - 37, тату - 45'
+my_string = '43 більше ніж 34, але менше ніж 56'
 words = my_string.split()
 
 numbers = []  # Створюємо список для збереження чисел
@@ -58,24 +58,27 @@ print(total_sum)
 
 
 
-my_list = [2, 4, 1, 5, 3, 9, 0, 7]
-count = 0
 
-for i in range(1, len(my_list) - 1):
-    if my_list[i] > my_list[i - 1] + my_list[i + 1]:
-        count += 1
+my_string = '43 більше ніж 34, але менше ніж 56'
+words = my_string.split()
 
-print(count)
+numbers = []  # Створюємо список для збереження чисел
 
+num_str = ""  # Змінна для збереження числа
 
-my_list = [2, 4, 1, 5, 3, 9, 0, 7]
-count = 0
-result_numbers = []
+for word in words:
+    for char in word:
+        if char.isdigit():
+            num_str += char
+        elif num_str:
+            numbers.append(int(num_str))
+            num_str = ""
 
-for i in range(1, len(my_list) - 1):
-    if my_list[i] > my_list[i - 1] + my_list[i + 1]:
-        count += 1
-        result_numbers.append(my_list[i])
+# Перевіряємо, чи є останній символ числовим
+if num_str:
+    numbers.append(int(num_str))
 
-print("Кількість елементів:", count)
-print("Елементи, які більше суми сусідів:", result_numbers)
+total_sum = sum(numbers)  # Обчислюємо суму чисел
+
+print(numbers)
+print(total_sum)
