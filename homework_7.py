@@ -127,3 +127,13 @@ my_list.append(deleted_char)
 
 print(my_list)
 
+#5.2
+my_list = [1, 2, 6, 5]
+
+if my_list:
+    first_char = my_list.pop(0)
+    my_list.append(first_char)
+
+print(my_list)
+
+#

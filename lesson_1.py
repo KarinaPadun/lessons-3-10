@@ -6,13 +6,12 @@
 
 #print(my_str[::-1])
 
-my_list = [2, 0, 3, 4]
-new_list = []
+my_list = [1, 2, 3, 4]
 
-for i in my_list[1:]:
-    new_list.append(i)
+if my_list:
+    first_char = my_list.pop(0)
+    my_list.append(first_char)
 
-new_list.append(my_list[0])
+print(my_list)
 
-print(new_list)
 
