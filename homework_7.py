@@ -32,12 +32,12 @@ print(result)
 
 #2. Дано ціле число (int). Визначити скільки нулів наприкінці цього числа. Наприклад для числа 1002000 - три нулі
 
-num = 26465000
+num = 264650000
 num_str = str(num)
 count_zeros = 0
 
-for char in reversed(num_str):
-    if char == '0':
+for i in reversed(num_str):
+    if i == '0':
         count_zeros += 1
     else:
         break
