@@ -1,7 +1,5 @@
 #print("hello world")
 
-
-
 my_string = 'Каті 15 років, мамі - 38, тату - 45'
 words = my_string.split()
 
@@ -13,8 +11,6 @@ for word in words:
             numbers.append(int(char))  # Додаємо число до списку чисел
 
 print(numbers)
-
-
 
 my_string = 'Каті 15 років, мамі - 38, тату - 45'
 words = my_string.split()
@@ -37,7 +33,7 @@ total_sum = sum(numbers)  # Обчислюємо суму чисел
 print(total_sum)  # Результат: 98
 
 
-my_string = 'Каті 15 років, мамі - 38, тату - 45'
+my_string = 'Каті - 15 років, мамі - 37, тату - 45'
 words = my_string.split()
 
 numbers = []  # Створюємо список для збереження чисел
