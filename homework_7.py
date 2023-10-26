@@ -282,3 +282,17 @@ print(result)
 #11. Дано два рядки. Створити список, у якому помістити ті символи, які є в обох рядках,
 #але в кожній ТІЛЬКИ З одного разу.
 #Приклад: для рядків "aaaasdf1" та "asdfff2" відповідь ["s", "d"], т.к. ці символи є в кожному рядку по одному разу
+
+my_str_1 = "aaawjk"
+my_str_2 = "asdfffet"
+result = []
+
+for i in my_str_1:
+    if my_str_1.count(i) == 1 and i not in result:
+        result.append(i)
+
+for char in my_str_2:
+    if my_str_2.count(i) == 1 and i not in result:
+        result.append(i)
+
+print(result)
