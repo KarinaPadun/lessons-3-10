@@ -5,13 +5,21 @@
 #my_str = value if len(value) < 5 else value[1::2]
 
 #print(my_str[::-1])
+my_string = 'Каті 12 років, її тату 45, а мамі 37'
+words = my_string.split()
+total_sum = 0
 
-my_list = [1, 2, 3, 4]
+for word in words:
+    if word.isdigit():
+        total_sum += int(word)
 
-if my_list:
-    first_char = my_list.pop(0)
-    my_list.append(first_char)
+print(total_sum)  # Результат: 94
 
-print(my_list)
+my_list = [1, 2, 3, "11", "22", 33]
+new_list = []
 
+for i in my_list:
+    if not isinstance(i, int):
+        new_list.append(i)
 
+print(new_list)
