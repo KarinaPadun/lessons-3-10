@@ -1,84 +1,58 @@
 #print("hello world")
+##Дано два рядка. Считайте список, в котором упоминаются те символы, которые находятся в обоих рядах, но в каждой ТИЛЬКЕ с одного раза.
+#Пример: для рядов "aaaasdf1" и "asdfff2"
+#повторения ["s", "d"], т.к. эти символы в каждом ряду по одному разу
+my_str_1 = "aaaasdf1"
+my_str_2 = "asdfff2"
+result = []
 
-my_string = 'Каті 15 років, мамі - 38, тату - 45'
-words = my_string.split()
+for i in my_str_1:
+    if my_str_1.count(i) == 1 and i not in result:
+        result.append(i)
 
-numbers = []  # Створюємо список для збереження чисел
+for i in my_str_2:
+    if my_str_2.count(i) == 1 and i not in result:
+        result.append(i)
 
-for word in words:
-    for char in word:
-        if char.isdigit():
-            numbers.append(int(char))  # Додаємо число до списку чисел
+print(result)
 
-print(numbers)
+my_str_1 = "aaaasdf1"
+my_str_2 = "asdfff2"
+result = []
 
-my_string = 'Каті 15 років, мамі - 38, тату - 45'
-words = my_string.split()
-numbers = []
+for char in my_str_1:
+    if my_str_1.count(char) == 1 and char not in my_str_2 and char not in result:
+        result.append(char)
 
-for word in words:
-    num_str = ''
-    for char in word:
-        if char.isdigit():
-            num_str += char
-        elif num_str:
-            numbers.append(int(num_str))
-            num_str = ''
+for char in my_str_2:
+    if my_str_2.count(char) == 1 and char not in result:
+        result.append(char)
 
-
-if num_str:
-    numbers.append(int(num_str))
-
-total_sum = sum(numbers)  # Обчислюємо суму чисел
-print(total_sum)  # Результат: 98
-
-
-my_string = '43 більше ніж 34, але менше ніж 56'
-words = my_string.split()
-
-numbers = []  # Створюємо список для збереження чисел
-
-for word in words:
-    num_str = ""
-    for char in word:
-        if char.isdigit():
-            num_str += char
-        elif num_str:
-            numbers.append(int(num_str))
-            num_str = ""
-
-# Перевіряємо, чи є останній символ числовим
-if num_str:
-    numbers.append(int(num_str))
-
-total_sum = sum(numbers)  # Обчислюємо суму чисел
-
-print(numbers)
-print(total_sum)
+print(result)
 
 
 
 
-my_string = '43 більше ніж 34, але менше ніж 56'
-words = my_string.split()
+my_str_1 = "aaaasdf1"
+my_str_2 = "asdfff2"
+unique_chars_1 = []
 
-numbers = []  # Створюємо список для збереження чисел
+for char in my_str_1:
+    if my_str_1.count(char) == 1 and char not in unique_chars_1:
+        unique_chars_1.append(char)
 
-num_str = ""  # Змінна для збереження числа
+# Створимо список для зберігання унікальних символів з другого рядка
+unique_chars_2 = []
+for char in my_str_2:
+    if my_str_2.count(char) == 1 and char not in unique_chars_2:
+        unique_chars_2.append(char)
 
-for word in words:
-    for char in word:
-        if char.isdigit():
-            num_str += char
-        elif num_str:
-            numbers.append(int(num_str))
-            num_str = ""
+# Створимо список для зберігання результатів
+result = []
 
-# Перевіряємо, чи є останній символ числовим
-if num_str:
-    numbers.append(int(num_str))
+# Перевіримо, які символи є в обох списках унікальних символів
+for char in unique_chars_1:
+    if char in unique_chars_2:
+        result.append(char)
 
-total_sum = sum(numbers)  # Обчислюємо суму чисел
-
-print(numbers)
-print(total_sum)
+print(result)

@@ -283,16 +283,23 @@ print(result)
 #але в кожній ТІЛЬКИ З одного разу.
 #Приклад: для рядків "aaaasdf1" та "asdfff2" відповідь ["s", "d"], т.к. ці символи є в кожному рядку по одному разу
 
-my_str_1 = "aaawjk"
-my_str_2 = "asdfffet"
-result = []
+my_str_1 = "aaaasdf1"
+my_str_2 = "asdfff2"
+new_list_1 = []
 
 for i in my_str_1:
-    if my_str_1.count(i) == 1 and i not in result:
-        result.append(i)
+    if my_str_1.count(i) == 1 and i not in new_list_1:
+        new_list_1.append(i)
 
-for char in my_str_2:
-    if my_str_2.count(i) == 1 and i not in result:
+new_list_2 = []
+for i in my_str_2:
+    if my_str_2.count(i) == 1 and i not in new_list_2:
+        new_list_2.append(i)
+
+result = []
+
+for i in new_list_1:
+    if i in new_list_2:
         result.append(i)
 
 print(result)
