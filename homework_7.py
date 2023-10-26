@@ -141,15 +141,17 @@ print(my_list)
 # Для цього прикладу відповідь - 133. (використовуйте split та перевірку isdigit)
 
 
-my_string = 'Каті 12 років, її тату - 45, а мамі - 37'
-my_string = my_string.split()
-result = 0
-for i in my_string:
-    if i.isdigit():
-        result += result + int(i)
+my_string = 'Каті 15 років, її тату - 45'
+words = my_string.split()
+total_sum = 0
 
-print(result)
+for word in words:
+    if word.isdigit():
+        total_sum += int(word)
 
+print(total_sum)
+# 6. 1
+my_string = 'Каті 15 років, мамі-38, тату - 45'
 
 #7. Наведено список чисел. Визначте, скільки в цьому списку елементів,
 #які більше суми двох своїх сусідів (ліворуч і праворуч), і НАДРУКАЙТЕ КІЛЬКІСТЬ таких елементів.

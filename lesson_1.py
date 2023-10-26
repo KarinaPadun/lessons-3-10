@@ -1,25 +1,19 @@
 #print("hello world")
 
-#value ="123456789"
 
-#my_str = value if len(value) < 5 else value[1::2]
 
-#print(my_str[::-1])
-my_string = 'Каті 12 років, її тату 45, а мамі 37'
+my_string = 'Каті 15 років, мамі - 38, тату - 45'
 words = my_string.split()
-total_sum = 0
+
+numbers = []  # Створюємо список для збереження чисел
 
 for word in words:
-    if word.isdigit():
-        total_sum += int(word)
+    for char in word:
+        if char.isdigit():
+            numbers.append(int(char))  # Додаємо число до списку чисел
 
-print(total_sum)  # Результат: 94
+print(numbers)
 
-my_list = [1, 2, 3, "11", "22", 33]
-new_list = []
+numbers_1 = numbers.join(i[0],i[1])
 
-for i in my_list:
-    if not isinstance(i, int):
-        new_list.append(i)
 
-print(new_list)
