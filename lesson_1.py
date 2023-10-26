@@ -58,14 +58,24 @@ print(total_sum)
 
 
 
-my_str_1 = "abcde"
-my_str_2 = "cdefg"
+my_list = [2, 4, 1, 5, 3, 9, 0, 7]
+count = 0
 
-result = []
+for i in range(1, len(my_list) - 1):
+    if my_list[i] > my_list[i - 1] + my_list[i + 1]:
+        count += 1
 
-for char in my_str_1:
-    if char in my_str_2:
-        if my_str_1.count(char) == 1 and my_str_2.count(char) == 1:
-            result.append(char)
+print(count)
 
-print(result)
+
+my_list = [2, 4, 1, 5, 3, 9, 0, 7]
+count = 0
+result_numbers = []
+
+for i in range(1, len(my_list) - 1):
+    if my_list[i] > my_list[i - 1] + my_list[i + 1]:
+        count += 1
+        result_numbers.append(my_list[i])
+
+print("Кількість елементів:", count)
+print("Елементи, які більше суми сусідів:", result_numbers)
