@@ -170,7 +170,7 @@ for i in my_list:
 
 print(new_list)
 
-# 8.1
+# 8.2
 
 my_list = [1, 2, 3, "11", "22", 33]
 new_list = []
@@ -188,7 +188,7 @@ new_list = [i for i in my_list if type(i) == str]
 print(new_list)
 
 
-# Дано рядок my_str. Створити список в який помістити символи з my_str,
+# 9 Дано рядок my_str. Створити список в який помістити символи з my_str,
 # які зустрічаються в рядку ТІЛЬКИ ОДИН разів.
 
 my_str = 'this is my home'
@@ -197,6 +197,20 @@ my_list = []
 for i in my_str:
     if my_str.count(i) == 1:
         my_list.append(i)
+
+print(my_list)
+
+# 9.1
+
+my_str = 'this is my home'
+my_list = []
+i = 0
+
+while i < len(my_str):
+    char = my_str[i]
+    if my_str.count(char) == 1:
+        my_list.append(char)
+    i += 1
 
 print(my_list)
 
