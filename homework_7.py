@@ -161,7 +161,7 @@ my_list = [2, 4, 1, 5, 3, 9, 0, 7]
 count = 0
 result_numbers = []
 
-for i in range(1, len(my_list) - 1):
+for i in range(1, len(my_list) - 1): # выдача от 1 символа до предпоследнего
     if my_list[i] > my_list[i - 1] + my_list[i + 1]:
         count += 1
         result_numbers.append(my_list[i])
