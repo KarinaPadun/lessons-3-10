@@ -6,17 +6,13 @@
 
 #print(my_str[::-1])
 
+my_list = [2, 0, 3, 4]
+new_list = []
 
-my_list_1 = [-3, 3, -455, 20, 114]
-my_list_2 = [3, 0, 9, 4, 8, 11]
-my_result = []
+for i in my_list[1:]:
+    new_list.append(i)
 
-for i in my_list_1:
-    if my_list_1.index(i) % 2 == 0:  #
-        my_result.append(i)
+new_list.append(my_list[0])
 
-for i in my_list_2:
-    if my_list_2.index(i) % 2 == 0:
-        my_result.append(i)
+print(new_list)
 
-print(my_result)

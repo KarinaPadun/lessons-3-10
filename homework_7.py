@@ -88,3 +88,30 @@ for i in my_list_2:
         my_result.append(i)
 
 print(my_result)
+
+
+# 4. Наведено список my_list. СТВОРИТИ НОВИЙ список new_list у якого перший елемент з my_list
+# стоїть на останньому місці. Якщо my_list [1,2,3,4], то new_list[2,3,4,1]
+
+my_list = [2, 0, 3, 4]
+new_list = []
+
+for i in my_list:
+    if my_list.index(i) != 0:
+        new_list.append(i)
+
+new_list.append(my_list[0])
+print(new_list)
+
+# 4.1
+
+my_list = [2, 0, 3, 4]
+new_list = []
+
+for i in my_list[1:]:
+    new_list.append(i)
+
+new_list.append(my_list[0])
+
+print(new_list)
+
