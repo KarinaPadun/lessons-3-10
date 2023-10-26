@@ -52,7 +52,7 @@ result = 0
 
 for i in num_str[::-1]:
     if i == '0':
-     result += 1
+        result += 1
     else:
         break
 print(result)
@@ -127,7 +127,7 @@ my_list.append(deleted_char)
 
 print(my_list)
 
-#5.2
+# 5.2
 my_list = [1, 2, 6, 5]
 
 if my_list:
@@ -143,13 +143,13 @@ print(my_list)
 
 my_string = 'Каті 15 років, її тату - 45'
 words = my_string.split()
-total_sum = 0
+result = 0
 
 for word in words:
     if word.isdigit():
-        total_sum += int(word)
+        result += int(word)
 
-print(total_sum)
+print(result)
 # 6. 1
 my_string = 'Каті 15 років, мамі-38, тату - 45'
 words = my_string.split()
