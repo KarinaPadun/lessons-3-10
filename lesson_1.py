@@ -58,20 +58,14 @@ print(total_sum)
 
 
 
-str1 = "abcde"
-str2 = "cdefg"
+my_str_1 = "abcde"
+my_str_2 = "cdefg"
 
-# Створюємо порожні список для результатів
 result = []
 
-# Перевіряємо кожен символ з першого рядка
-for char in str1:
-    if char in str2 and char not in result:
-        result.append(char)
-
-# Перевіряємо кожен символ з другого рядка
-for char in str2:
-    if char in str1 and char not in result:
-        result.append(char)
+for char in my_str_1:
+    if char in my_str_2:
+        if my_str_1.count(char) == 1 and my_str_2.count(char) == 1:
+            result.append(char)
 
 print(result)
