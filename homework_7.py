@@ -115,3 +115,15 @@ new_list.append(my_list[0])
 
 print(new_list)
 
+# 5. Даний список my_list. У цьому списку перший елемент переставити на останнє місце.
+# [1,2,3,4] -> [2,3,4,1]. Перестворювати список не можна! (використовуйте метод pop)
+
+my_list = [1, 2, 6, 5]
+
+deleted_char = my_list.pop(0)
+print(deleted_char)
+
+my_list.append(deleted_char)
+
+print(my_list)
+
