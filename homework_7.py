@@ -44,7 +44,17 @@ for i in reversed(num_str):
 
 print(count_zeros)
 
+# 2.1
 
+num = 26465000
+num_str = str(num)
+result = 0
+
+for i in num_str[::-1]:
+    if i == '0':
+     result += 1
+
+print(result)
 
 
 
