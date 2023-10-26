@@ -220,4 +220,16 @@ print(my_list)
 #10. Дано два рядки. Створити список, у якому помістити ті символи,
 # які є в обох рядках хоча б один раз.
 
-my_str = ''
+my_str = 'rtuff'
+my_str_2 = 'ertyu'
+result = []
+
+for i in my_str:
+    if i in my_str_2 and i not in result:
+        result.append(i)
+
+for i in my_str_2:
+    if i in my_str and i not in result:
+        result.append(i)
+
+print(result)

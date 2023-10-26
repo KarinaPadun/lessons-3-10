@@ -56,3 +56,22 @@ total_sum = sum(numbers)  # Обчислюємо суму чисел
 print(numbers)
 print(total_sum)
 
+
+
+str1 = "abcde"
+str2 = "cdefg"
+
+# Створюємо порожні список для результатів
+result = []
+
+# Перевіряємо кожен символ з першого рядка
+for char in str1:
+    if char in str2 and char not in result:
+        result.append(char)
+
+# Перевіряємо кожен символ з другого рядка
+for char in str2:
+    if char in str1 and char not in result:
+        result.append(char)
+
+print(result)
