@@ -146,7 +146,7 @@ my_string = my_string.split()
 result = 0
 for i in my_string:
     if i.isdigit():
-        result += int(i)
+        result += result + int(i)
 
 print(result)
 
@@ -167,5 +167,22 @@ new_list = []
 for i in my_list:
     if type(i) != int:
         new_list.append(i)
+
+print(new_list)
+
+# 8.1
+
+my_list = [1, 2, 3, "11", "22", 33]
+new_list = []
+
+for i in my_list:
+    if type(i) == str:
+        new_list.append(i)
+
+print(new_list)
+
+# 8.3
+my_list = [1, 2, 3, "11", "22", 33]
+new_list = [i for i in my_list if type(i) == str]
 
 print(new_list)
