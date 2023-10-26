@@ -32,7 +32,7 @@ print(result)
 
 #2. Дано ціле число (int). Визначити скільки нулів наприкінці цього числа. Наприклад для числа 1002000 - три нулі
 
-num = 264650000
+num = 2640650000
 num_str = str(num)
 count_zeros = 0
 
@@ -46,19 +46,16 @@ print(count_zeros)
 
 # 2.1
 
-num = 26465000
+num = 260465000
 num_str = str(num)
 result = 0
 
 for i in num_str[::-1]:
     if i == '0':
      result += 1
-
+    else:
+        break
 print(result)
-
-
-
-
 
 # 3 Дано списки my_list_1 та my_list_2.
 # Створити список my_result, який спочатку помістити
