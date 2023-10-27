@@ -101,6 +101,8 @@ print(my_result)
 
 my_list = [2, 0, 3, 4]
 new_list = []
+#new_list = [i for i in my_list if my_list.index(i) != 0]
+#new_list.append(my_list[0])
 
 for i in my_list:
     if my_list.index(i) != 0:
