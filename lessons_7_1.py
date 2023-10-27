@@ -20,12 +20,34 @@ value_str = [1, 2, 3, 4]
 # list comprehension - генератор списків . генерує списки та кладе туди елементи
 
 ################ sets
-# sets - множина
+# sets - множина , не має послідовності, зміняємий тип данних як і ліст
 
 # value_list = [1, 2, 2, 3, 24, 34, 9]
 # print(value_list)
-# value_set = set(value_list) - прінт унікальних значень
-
+# value_set = set(value_list) - прінт унікальних значень у фігурних скобках , інт - порядок один
 
 # print(value_set)
-# value_list = ["1", "2", "2", "3", "4", "4", "9"]
+
+# value_list = ["1", "2", "2", "3", "4", "4", "9"] - порядок видачі буде відрізнятися постійно
+
+#  інти розкладає в певному порядку , бо зазделегідь знає що буде з ними працювати.
+
+####### sets methods(union(), difference(), intersection())
+
+# Command + Option + L (mac)/ Ctrl + Alt + L (Win) - відрегувати по пеп 8, вирівняє
+
+# value_set_1 = {1, 2, 3, 4, 5, 30}
+# value_set_2 = {10, 2, 30}
+# value_set_1 = value_set_1.union(value_set_2) # "+"
+
+# union() - обєднання
+
+# print(value_set_1)
+
+# new_set_1 = value_set_1.difference(value_set_2) - убирает совпадение
+# difference() ВАЖЛИВИЙ ПОРЯДОК
+#
+# new_set = value_set_2.difference(value_set_1)"-" ПОРЯДОК ЗАПИСУ ВАЖЛИВИЙ
+
+
+# # value_set_1 = value_set_1.intersection(value_set_2) # перехрещення/порівняння (те що є в обидвох сетах)
