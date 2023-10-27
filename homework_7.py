@@ -115,7 +115,8 @@ print(new_list)
 
 my_list = [2, 0, 3, 4]
 new_list = []
-
+# new_list = [i for i in my_list[1:]]
+# new_list.append(my_list[0])
 for i in my_list[1:]:
     new_list.append(i)
 
