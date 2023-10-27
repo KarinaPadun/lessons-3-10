@@ -19,4 +19,13 @@ value_str = [1, 2, 3, 4]
 
 # list comprehension - генератор списків . генерує списки та кладе туди елементи
 
+################ sets
 # sets - множина
+
+# value_list = [1, 2, 2, 3, 24, 34, 9]
+# print(value_list)
+# value_set = set(value_list) - прінт унікальних значень
+
+
+# print(value_set)
+# value_list = ["1", "2", "2", "3", "4", "4", "9"]
