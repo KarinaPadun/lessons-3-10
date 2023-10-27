@@ -50,4 +50,15 @@ value_str = [1, 2, 3, 4]
 # new_set = value_set_2.difference(value_set_1)"-" ПОРЯДОК ЗАПИСУ ВАЖЛИВИЙ
 
 
-# # value_set_1 = value_set_1.intersection(value_set_2) # перехрещення/порівняння (те що є в обидвох сетах)
+# value_set_1 = value_set_1.intersection(value_set_2) # перехрещення/порівняння (те що є в обидвох сетах)
+
+
+# value_set_1 = value_set_1.union(value_set_2) # "+"
+# new_set_1 = value_set_1.difference(value_set_2)
+# print(new_set_1)
+#
+# new_set = value_set_2.difference(value_set_1)
+# print(new_set)
+# #
+# new_set_2 = new_set_1.union(new_set) # "-" ПОРЯДОК ЗАПИСУ ВАЖЛИВИЙ
+# print(new_set_2)
