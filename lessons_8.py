@@ -88,6 +88,10 @@
 #     "address": address
 # }
 #
-# our_group = [person, person_2]
+# our_group = [person, person_2] - лістом або талпл
+
+# value_str = "1234"
+# for value in enumerate(value_str): enumerate - видает индекс и символ
+#     print(value)
 
 
