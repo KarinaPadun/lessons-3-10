@@ -95,3 +95,16 @@
 #     print(value)
 
 
+# for key in person_2:   - видает ключи
+#     print(key, person_2[key]) - видает ключ + значение
+#
+# for key in person_2.items():
+#     print(key[0], key[1])
+#
+# for key, value in person_2.items():
+#     print(key, value)
+
+# .items() -схоже на enumerate дает кортеж , ключ значення
+
+# print(person_2.keys()) - видает ключи , через дикт, но не листом
+# print(person_2.values()) - видает  данние без ключей
