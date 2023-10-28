@@ -77,7 +77,7 @@
 # print(person["address"]["city"])
 # print(person) - друкує в однаковому порядку, ключ- значення. Словник не ідексований, не зберігає порядок
 
-
+# print(person["address"]["city"]) - видає Київ
 
 
 # person_2 = {
@@ -89,4 +89,5 @@
 # }
 #
 # our_group = [person, person_2]
+
 
