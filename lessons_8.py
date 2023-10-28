@@ -33,5 +33,29 @@
 #     value_1, value_2, value_3 = request_list
 
 # value_1, value_2, value_3, *tmp = value_list
+# for _ in range(10):
+#     print("hello")
 
+########### dict словники  {} , швидше відпрацьовують
+# немає індексу, є ключ- значення, ключ має бути унікальним
 
+# value_list = [1, 2, 3, 4, 5]
+# value_list[2]
+
+# value_dict = dict()
+
+# hash table for dict
+#
+# value_dict = {
+#     "key": "value",
+#     "key1": "value",
+#     "key2": "value",
+#     1: 3,
+#     тип данних ключа - незмінна
+#     # (1,2, [1,2]): 3, кортежі
+#     (1, 2): 3, інти , стрінга
+#     1.2: 3, дробі флоат
+#     True: 3,
+#     None: 3,
+# }
+# ключі не змінні на всю глибину
