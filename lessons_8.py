@@ -108,3 +108,23 @@
 
 # print(person_2.keys()) - видает ключи , через дикт, но не листом
 # print(person_2.values()) - видает  данние без ключей
+
+# если есть сору - то скорее всего змінний тип данних
+
+# person_3 = dict()
+# person_3["first_name"] = "Bogdan"
+# person_3["last_name"] = "Count"
+# person_3["email"] = "Count@"
+# # print(person_3)
+# print(person_3.keys())
+
+# .get ()допомагає витягти якісь данні зі словника при цьому перевіряє чи є там щось
+
+
+# if "email" not in person_3:
+#     print("Email is a nessesary field")
+
+# email_3 = person_3["email"]
+
+
+# email_3 = person_3.get('email', False)
