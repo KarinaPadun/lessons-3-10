@@ -59,3 +59,34 @@
 #     None: 3,
 # }
 # ключі не змінні на всю глибину
+
+#
+# address = {
+#     "country": "Ukraine",
+#     "city": "Kyiv",
+# }
+#
+# person = {
+#     "first_name": "Nick",
+#     "last_name": "Kozlan",
+#     "password": "111111",
+#     "email": "email@gmail.com",
+#     "address": address
+# }
+# print(person["first_name"]) - видает значение ключа first_name , Nick
+# print(person["address"]["city"])
+# print(person) - друкує в однаковому порядку, ключ- значення. Словник не ідексований, не зберігає порядок
+
+
+
+
+# person_2 = {
+#     "first_name": "Nick",
+#     "last_name": "Kozlan",
+#     "password": "111111",
+#     "email": "email@gmail.com",
+#     "address": address
+# }
+#
+# our_group = [person, person_2]
+
