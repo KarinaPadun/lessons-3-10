@@ -119,6 +119,8 @@
 # print(person_3.keys())
 
 # .get ()допомагає витягти якісь данні зі словника при цьому перевіряє чи є там щось
+# email_3 = person_3.get("email", False або None )  - ключ та дефолтне значення
+# print(email_3)
 
 
 # if "email" not in person_3:
