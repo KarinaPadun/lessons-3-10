@@ -13,10 +13,22 @@ for index, i in enumerate(my_list):
 
 print(my_result)
 
+# 1.2
+#my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
+#my_result = []
 
+# 1.3
+my_list = ['245', '567', '3578', '5645', '7564']
+my_result = []
 
+for index, string in enumerate(my_list):
+    if index % 2 == 1:
+        reversed_string = string[::-1]
+        my_result.append(reversed_string)
+    else:
+        my_result.append(string)
 
-
+print(my_result)
 
 
 #2. Наведено список рядків my_list. Створити новий список до якого помістити елементи my_list
