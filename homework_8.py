@@ -235,10 +235,22 @@ while i < len(value_dict):
 print(my_list)
 
 # 4 в) Порахувати середню вік усіх людей із початкового списку.
+value_dict = [
+    {"name": "John",
+     "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Makcs",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+my_result = []
+result =sum("age")/len(value_dict)
 
-
-
-
+print(result)
 
 
 
