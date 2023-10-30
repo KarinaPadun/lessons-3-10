@@ -2,6 +2,23 @@
 #Якщо рядок стоїть на непарному місці my_list, то його замінити на перевернутий рядок. "qwe" на "ewq".
 #Якщо на парному – залишити без зміни. Завдання зробити за допомогою enumerate або range.
 
+my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
+my_result = []
+
+for index, item in enumerate(my_list):
+    if index % 2 == 1:
+        my_result.append(item[::-1])  # Перевернути рядок
+    else:
+        my_result.append(item)
+
+print(my_result)
+
+
+
+
+
+
+
 #2. Наведено список рядків my_list. Створити новий список до якого помістити елементи my_list
 #у яких перший символ - буква "a".
 
