@@ -108,25 +108,149 @@ value_dict = [{
      "age": 35}
 ]
 
+min_age = min(i["age"] for i in value_dict)
+
+my_list = [i for i in value_dict if i["age"] == min_age]
+
+print(my_list)
+
+# 4.2 а)
+
+value_dict = [{
+    "name": "John",
+    "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Lora",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+
+min_age = min(i["age"] for i in value_dict)
+
 my_list = []
-min_age = 0
 
-while i in value_dict:
-    if i['age'] <
+for i in value_dict:
+    if i["age"] == min_age:
+        my_list.append(i)
 
-#max_name = 0
-# for i in value_dict:
-    #if i[len('name')] > max_name
-    # max_name = i my_list.append(max name)
+print(my_list)
+
+# 4.3 а)
+value_dict = [
+    {"name": "John",
+     "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Lora",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+
+min_age = min(i["age"] for i in value_dict)
+my_list = []
+
+i = 0
+while i < len(value_dict):
+    if value_dict[i]["age"] == min_age:
+        my_list.append(value_dict[i])
+    i += 1
+
+print(my_list)
+
+
+# 4 б) Створити список та помістити туди найдовше ім'я. Якщо довжина імені збігається - помістити такі імена.
+
+value_dict = [{
+    "name": "John",
+    "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Lora",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+
+max_name = max(len(i["name"]) for i in value_dict)
+
+my_list = []
+
+for i in value_dict:
+    if len(i["name"]) == max_name:
+        my_list.append(i)
+
+print(my_list)
+
+# 4.2 б)
+value_dict = [{
+    "name": "John",
+    "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Maksi",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+
+max_name = max(len(i["name"]) for i in value_dict)
+
+my_list = [i for i in value_dict if len(i["name"]) == max_name]
+
+print(my_list)
+
+# 4.3  б)
+value_dict = [
+    {"name": "John",
+     "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Makcs",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+my_list = []
+max_name_length = max(len(i["name"]) for i in value_dict)
+
+i = 0
+while i < len(value_dict):
+    if len(value_dict[i]["name"]) == max_name_length:
+        my_list.append(value_dict[i])
+    i += 1
+
+print(my_list)
+
+# 4 в) Порахувати середню вік усіх людей із початкового списку.
 
 
 
-#5) Дано два словники my_dict_1 і my_dict_2.
-#а) Створити список із ключів, які є в обох словниках.
-#б) Створити список із ключів, які є у першому, але немає у другому словнику.
-#в) Створити новий словник з пар {ключ:значення} для ключів, які є в першому, але немає в другому словнику.
-#г) Об'єднати ці два словники у новий словник за правилом:
-#якщо ключ є тільки в одному з двох словників - помістити пару ключ: значення,
-#якщо ключ є у двох словниках - помістити пару {ключ: [значення_з_першого_словника, значення_з_другого_словника]},
+
+
+
+
+# 5) Дано два словники my_dict_1 і my_dict_2.
+# а) Створити список із ключів, які є в обох словниках.
+# б) Створити список із ключів, які є у першому, але немає у другому словнику.
+# в) Створити новий словник з пар {ключ:значення} для ключів, які є в першому, але немає в другому словнику.
+# г) Об'єднати ці два словники у новий словник за правилом:
+# якщо ключ є тільки в одному з двох словників - помістити пару ключ: значення,
+# якщо ключ є у двох словниках - помістити пару {ключ: [значення_з_першого_словника, значення_з_другого_словника]},
 
 #{1:1, 2:2}, {11:11, 2:22} ---> {1:1, 11:11, 2:[2, 22]}
+
+#my_dict_1 =
+#my_dict_2 =
