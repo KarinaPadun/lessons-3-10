@@ -385,3 +385,44 @@ for key in keys_1:
 print(my_result)
 
 # 5. 2 б) Створити список із ключів, які є у першому, але немає у другому словнику.
+
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
+
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+
+keys_1 = {list(i.keys())[0] for i in my_dict_1}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+my_result = [key for key in keys_1 if key not in keys_2]
+print(my_result)
+
+# 5 в) Створити новий словник з пар {ключ:значення} для ключів, які є в першому, але немає в другому словнику.
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
+
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+
+keys_1 = {list(i.keys())[0] for i in my_dict_1}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+my_new_dict = [(key, value_dict) for key in keys_1 if key not in keys_2]
+print(my_new_dict)
