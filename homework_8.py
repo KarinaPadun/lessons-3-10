@@ -1,6 +1,6 @@
-#1. Наведено список рядків my_list. Створити новий список до якого помістити елементи з my_list за таким правилом:
-#Якщо рядок стоїть на непарному місці my_list, то його замінити на перевернутий рядок. "qwe" на "ewq".
-#Якщо на парному – залишити без зміни. Завдання зробити за допомогою enumerate або range.
+# 1. Наведено список рядків my_list. Створити новий список до якого помістити елементи з my_list за таким правилом:
+# Якщо рядок стоїть на непарному місці my_list, то його замінити на перевернутий рядок. "qwe" на "ewq".
+# Якщо на парному – залишити без зміни. Завдання зробити за допомогою enumerate або range.
 
 my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
 my_result = []
@@ -55,14 +55,42 @@ for i in my_list:
         my_result.append(i)
 
 print(my_result)
-# 2 .1
+# 2 .2
 my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
-my_result = [ i for i in my_list if i[0] == 'a']
+my_result = [i for i in my_list if i[0] == 'a']
+print(my_result)
+
+# 2 .3
+my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+my_result = []
+
+for i in range(len(my_list)):
+    if my_list[i][0] == 'a':
+        my_result.append(my_list[i])
+
+print(my_result)
+
+# 3. Наведено список рядків my_list. Створити новий список до якого помістити
+# елементи з my_list, у яких є символ - буква "a" на будь-якому місці.
+
+my_list = ['245', 'atyy', 'eta', 'ayu', 'ttae']
+my_result = []
+
+for i in my_list:
+    if 'a' in i:
+        my_result.append(i)
+
+print(my_result)
+
+# 3 . 2
+
+my_list = ['245', 'atyy', 'eta', 'ayu', 'ttae']
+my_result = [i for i in my_list if 'a' in i]
+
 print(my_result)
 
 
-#3. Наведено список рядків my_list. Створити новий список до якого помістити
-#елементи з my_list, у яких є символ - буква "a" на будь-якому місці.
+
 
 #4) Даний список словників людей у форматі [{"name": "John", "age": 15}, ..., {"name": "Jack", "age": 45}]
 #а) Створити список і помістити туди ім'я наймолодшої людини. Якщо вік збігається – помістити всі імена наймолодших.
