@@ -5,11 +5,11 @@
 my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
 my_result = []
 
-for index, item in enumerate(my_list):
+for index, i in enumerate(my_list):
     if index % 2 == 1:
-        my_result.append(item[::-1])  # Перевернути рядок
+        my_result.append(i[::-1])
     else:
-        my_result.append(item)
+        my_result.append(i)
 
 print(my_result)
 
