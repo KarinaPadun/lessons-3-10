@@ -302,6 +302,86 @@ my_dict_2 = [
     {"work": "shop assistant"}
 ]
 
-result = []
+keys_1 = {list(i.keys())[0] for i in my_dict_1}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+result = keys_1.intersection(keys_2)
+# result = list(keys_1.intersection(keys_2)) -другий вариант
+print(result)
+
+# 5.2  а)
+
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
 
 
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+my_result = []
+
+keys_1 = {list(i.keys())[0] for i in my_dict_1}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+for key in keys_1:
+    if key in keys_2:
+        my_result.append(key)
+
+print(my_result)
+
+# 5.3  а)
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
+
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+
+keys_1 = {list(i.keys())[0] for i in my_dict_1}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+my_result = [key for key in keys_1 if key in keys_2]
+
+print(my_result)
+
+# 5 б) Створити список із ключів, які є у першому, але немає у другому словнику.
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
+
+
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+my_result = []
+
+keys_1 = {list(i.keys())[0] for i in my_dict_1}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+for key in keys_1:
+    if not key in keys_2:
+        my_result.append(key)
+
+print(my_result)
+
+# 5. 2 б) Створити список із ключів, які є у першому, але немає у другому словнику.
