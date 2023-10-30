@@ -14,8 +14,10 @@ for index, i in enumerate(my_list):
 print(my_result)
 
 # 1.2
-#my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
-#my_result = []
+my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
+my_result = [i[::-1] if index % 2 == 1 else i for index, i in enumerate(my_list)]
+
+print(my_result)
 
 # 1.3
 my_list = ['245', '567', '3578', '5645', '7564']
@@ -29,10 +31,35 @@ for index, string in enumerate(my_list):
         my_result.append(string)
 
 print(my_result)
+# 1. 4
+my_list = ['245', '567', '3578', '5645', '7564']
+my_result = []
 
+for i in range(len(my_list)):
+    if i % 2 == 1:
+        reversed_string = my_list[i][::-1]
+        my_result.append(reversed_string)
+    else:
+        my_result.append(my_list[i])
 
-#2. Наведено список рядків my_list. Створити новий список до якого помістити елементи my_list
-#у яких перший символ - буква "a".
+print(my_result)
+
+# 2. Наведено список рядків my_list. Створити новий список до якого помістити елементи my_list
+# у яких перший символ - буква "a".
+
+my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+my_result = []
+
+for i in my_list:
+    if i[0] == 'a':
+        my_result.append(i)
+
+print(my_result)
+# 2 .1
+my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+my_result = [ i for i in my_list if i[0] == 'a']
+print(my_result)
+
 
 #3. Наведено список рядків my_list. Створити новий список до якого помістити
 #елементи з my_list, у яких є символ - буква "a" на будь-якому місці.
