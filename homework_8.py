@@ -247,10 +247,35 @@ value_dict = [
     {"name": "Den",
      "age": 35}
 ]
-my_result = []
-result =sum("age")/len(value_dict)
+
+ages = [i["age"] for i in value_dict]
+
+print(ages)
+
+result = sum(ages) / len(ages)
 
 print(result)
+
+# 4.2  в)
+
+value_dict = [
+    {"name": "John",
+     "age": 15},
+    {"name": "Emily",
+     "age": 12},
+    {"name": "Makcs",
+     "age": 12},
+    {"name": "Jack",
+     "age": 45},
+    {"name": "Den",
+     "age": 35}
+]
+
+result = sum([i["age"] for i in value_dict]) / len([i["age"] for i in value_dict])
+
+print(result)
+
+# 4.3 в)
 
 
 
