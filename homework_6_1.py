@@ -156,9 +156,9 @@ print(result)
 
 
 
-#Дано списки my_list_1 та my_list_2. Створити список my_result в який помістити елементи
-#з my_list_1 та my_list_2 через один, починаючи з my_list_1.
-#a) кількість ел-тів однакове
+# Дано списки my_list_1 та my_list_2. Створити список my_result в який помістити елементи
+# з my_list_1 та my_list_2 через один, починаючи з my_list_1.
+# a) кількість ел-тів однакове
 
 my_list_1 = [1,2,3,4,5,6]
 my_list_2= [7,8,9,10,11,12]
@@ -169,7 +169,7 @@ for i in range(len(my_list_1)):
     my_result.append(my_list_2[i])
 
 print(my_result)
-#2 v?
+# 2 v?
 my_list_1 = [1, 2, 3, 4, 5, 6]
 my_list_2 = [6, 8, 9, 10, 11, 12]
 
@@ -179,7 +179,7 @@ my_result = [item for pair in zip(my_list_1, my_list_2) for item in pair] # zip 
 print(my_result)
 
 
-#б) кількість ел-тів різне
+# б) кількість ел-тів різне
 
 my_list_1 = [1, 2, 3, 4, 5, 6, 7]
 my_list_2 = [8, 9, 10, 11, 12]
