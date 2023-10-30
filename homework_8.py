@@ -421,8 +421,68 @@ my_dict_2 = [
     {"work": "shop assistant"}
 ]
 
+my_new_dict = {}
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+for i in my_dict_1:
+    for key in i:
+        if key not in keys_2:
+            my_new_dict[key] = i[key]
+
+print(my_new_dict)
+
+# 5.2 в) Створити новий словник з пар {ключ:значення} для ключів, які є в першому, але немає в другому словнику.
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
+
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+
+keys_2 = {list(i.keys())[0] for i in my_dict_2}
+
+my_new_dict = [{key: i[key] for i in my_dict_1 for key in i if key not in keys_2}]
+
+print(my_new_dict)
+
+
+# 5 г) Об'єднати ці два словники у новий словник за правилом:
+# якщо ключ є тільки в одному з двох словників - помістити пару ключ: значення,
+# якщо ключ є у двох словниках - помістити пару {ключ: [значення_з_першого_словника, значення_з_другого_словника]},
+# {1:1, 2:2}, {11:11, 2:22} ---> {1:1, 11:11, 2:[2, 22]}
+
+
+my_dict_1 = [
+    {"name": "John"},
+    {"pets": "cat"},
+    {"city": "New York"},
+    {"work": "office"}
+]
+
+my_dict_2 = [
+    {"name": "Jonn"},
+    {"age": 43},
+    {"family": "mom and dad"},
+    {"work": "shop assistant"}
+]
+
+my_new_dict = {}
+
 keys_1 = {list(i.keys())[0] for i in my_dict_1}
 keys_2 = {list(i.keys())[0] for i in my_dict_2}
 
-my_new_dict = [(key, value_dict) for key in keys_1 if key not in keys_2]
+for key in keys_1:
+    if key in keys_2:
+        my_new_dict[key] = [i[key] for i in my_dict_1 if key in i] + [i[key] for i in my_dict_2 if key in i]
+    else:
+        my_new_dict[key] = [i[key] for i in my_dict_1 if key in i][0]
+
 print(my_new_dict)
+
