@@ -118,6 +118,9 @@ while i in value_dict:
 # for i in value_dict:
     #if i[len('name')] > max_name
     # max_name = i my_list.append(max name)
+
+
+
 #5) Дано два словники my_dict_1 і my_dict_2.
 #а) Створити список із ключів, які є в обох словниках.
 #б) Створити список із ключів, які є у першому, але немає у другому словнику.
