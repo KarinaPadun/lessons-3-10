@@ -46,7 +46,11 @@ print(my_result)
 
 # 2. Наведено список рядків my_list. Створити новий список до якого помістити елементи my_list
 # у яких перший символ - буква "a".
+my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+my_result = [i for i in my_list if i.startswith('a')]
+print(my_result)
 
+# 2.1
 my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
 my_result = []
 

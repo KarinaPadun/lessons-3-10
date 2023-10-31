@@ -62,3 +62,11 @@ for key in keys_1: # ключ из ключей один
         # если ключ есть в переменной
 
 print(my_new_dict)
+
+
+
+
+my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+my_result = [i for i in my_list if i.startswith('a')]
+print(my_result)
+

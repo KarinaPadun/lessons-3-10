@@ -130,3 +130,107 @@
 
 
 # email_3 = person_3.get('email', False)
+
+
+
+# if "email" not in person_3:
+#     print("Email is a nessesary field")  - перевірка
+
+# email_3 = person_3["email"]
+
+
+# email_3 = person_3.get('email', False) -перевірка емейлу чи є він там
+
+#
+# from random import randint
+#
+# result = randint(1,6)
+#
+# dice_dict = {
+#     1: "This is 1",
+#     2: "This is 2",
+#     3: "This is 3",
+#     4: "This is 4",
+#     5: "This is 5",
+#     6: "This is 6",
+# }
+#
+# print(dice_dict[result])
+
+# ASCII   ord() - повертає номер
+
+# print(ord("a"))
+# print(chr(97)) - показівает символт
+
+# alphabet_dict = {}
+#
+# for key in range(ord("a"), ord("z")+1):
+#     alphabet_dict[key] = chr(key) - ключ - значення
+#  value1, value 2 = value2 , value1 - синтаксичний цукор
+
+
+# for key in alphabet_dict:
+#     pass
+#
+# new_alphabet_dict = {}
+# print(new_alphabet_dict)
+#
+# for key in alphabet_dict:
+#     new_alphabet_dict[alphabet_dict[key]] = key  значення - ключ перевернули
+#
+# for key, value in alphabet_dict.items():
+#     new_alphabet_dict[value] = key - те саме
+#
+# print(new_alphabet_dict)
+
+########### dict comprehension генератор словників
+
+# value_list = [i for i in range(10)] генерує данні в лісті
+# print(value_list)
+
+# value_dict = {i: f"This is {i}" for i in range(1, 7)} - дві змінні , ключ - значення
+# value_dict = {i: i**2 for i in range(1, 7) if not i % 2}
+# print(value_dict)
+
+# update()
+
+# val_dict_1 = {
+#     1: "1111",
+#     2: "22222",
+# }
+
+# val_dict_2 = {
+#     2: "3333",
+#     4: "44444",
+# }
+#
+# val_dict_1.update(val_dict_2) - склеить , нічого не повертає, останнє значення - і лежить
+
+# print(a)
+# print(val_dict_1)
+
+
+# pop()
+
+# val_dict_1 = {
+#     "1": "1111",
+#     2: "22222",
+# }
+# print(val_dict_1)
+# a = val_dict_1.pop("1")
+# print(a)
+# print(val_dict_1)
+
+# value_str = "Hello"
+# value_str = [
+#     "jjjjj",
+#     2,
+#     [1,1,1]
+# ]
+# # value = "H"
+#
+#
+# for i in value_str:
+#     # value_int = 0 #-> 1 -> 2
+#     # value = "H" -> "e"
+#     print(i)
