@@ -21,11 +21,11 @@ my_new_dict = {}
 for key in my_dict_1: # ключ в моем словаре один
     if key not in my_dict_2: # если ключа нет в моем словаре 2
         my_new_dict[key] = my_dict_1[key] # добавляю в мой новий словарь ключ + значение
-
+print(my_new_dict)
 for key in my_dict_2: # ключ в моем словаре два
     if key not in my_dict_1: # если ключа нет в моем словаре 1
         my_new_dict[key] = my_dict_2[key] # добавляю в мой новий словарь ключ + значение
-
+print(my_new_dict)
 for key in my_dict_1: # ключ в моем словаре один
     if key in my_dict_2: # если ключ есть в моем словаре 2
         my_new_dict[key] = [my_dict_1[key], my_dict_2[key]] # добавляю в мой новий словарь ключ + значение из словаря один+значение из словаря два
@@ -67,6 +67,7 @@ print(my_new_dict)
 
 
 my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+
 my_result = [i for i in my_list if i.startswith('a')]
 print(my_result)
 
