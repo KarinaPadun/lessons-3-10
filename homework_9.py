@@ -2,13 +2,15 @@
 # елементи з my_list за таким правилом:
 # Якщо рядок стоїть на непарному місці my_list, то його замінити на перевернутий рядок. "qwe" на "ewq".
 # Якщо на парному – залишити без зміни.
-def new(my_list)
-    new_list =
+def new_list(my_list):
+    n_list = [i if my_list.index(i) % 2 == 0 else i[::-1] for i in my_list]
+    return n_list
+
 
 my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
+result = new_list(my_list)
+print(result)
 
-
-print(my_result)
 # 2. Написати функцію яка приймає один параметр – список рядків my_list.
 # Функція повертає новий список у якому міститься елементи my_list у яких перший символ - буква "a".
 

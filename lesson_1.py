@@ -64,8 +64,6 @@
 #print(my_new_dict)
 
 
-
-
 # my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
 
 # my_result = [i for i in my_list if i.startswith('a')]
@@ -74,6 +72,7 @@
 def new_list(my_list):
     n_list = [i if my_list.index(i) % 2 == 0 else i[::-1] for i in my_list]
     return n_list
+
 
 my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
 result = new_list(my_list)
