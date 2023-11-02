@@ -81,7 +81,7 @@ print(result)
 
 
 def new_str(string):
-    n_str = [item for item in set(my_str) if my_str.count(item) == 1]
+    n_str = [item for item in set(string) if my_str.count(item) == 1]
     return n_str
 
 
