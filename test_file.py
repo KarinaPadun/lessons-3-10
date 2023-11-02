@@ -1,28 +1,11 @@
-def new_list(i):
-    n_list = [i if my_list.index(i) % 2 == 0 else i[::-1] for i in my_list]
-    return n_list
+my_list = ['245', '567', '3578', '5645', '7564']
+my_result = []
 
+for i in range(len(my_list)):
+    if i % 2 == 1:
+        reversed_string = my_list[i][::-1]
+        my_result.append(reversed_string)
+    else:
+        my_result.append(my_list[i])
 
-my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
-result = new_list(my_list)
-print(result)
-
-
-def new_list(my_list):
-    n_list = [s if my_list.index(s) % 2 == 0 else s[::-1] for s in my_list]
-    return n_list
-
-
-my_strings = ['245', 'rtyy', 'et', 'yyu', 'ttie']
-result = new_list(my_strings)
-print(result)
-
-
-def new_list(list_1):
-    n_list = [i if list_1.index(i) % 2 == 0 else i[::-1] for i in list_1]
-    return n_list
-
-
-my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
-result = new_list(my_list)
-print(result)
+print(my_result)

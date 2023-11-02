@@ -15,7 +15,7 @@ print(result)
 
 
 def new_list(list_1):
-    n_list = [i for i in range(len(my_list)) if i % 2 == 1 else i]
+    n_list = [i[::-1] if index % 2 == 1 else i for index, i in enumerate(list_1)]
     return n_list
 
 
@@ -24,30 +24,41 @@ result = new_list(my_list)
 print(result)
 
 
-
-
 # 2. Написати функцію яка приймає один параметр – список рядків my_list.
 # Функція повертає новий список у якому міститься елементи my_list у яких перший символ - буква "a".
-
-
-def new_list(my_list):
-    new_list = [i for i in my_list if i.startswith('a')]
-    return new_list
+def new_list(list_2):
+    n_list = [i for i in list_2 if i.startswith('a')]
+    return n_list
 
 
 my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
 result = new_list(my_list)
 print(result)
 
+# 2. 2
 
 
+def new_list(list_2):
+    n_list = [i for i in list_2 if i[0] == 'a']
+    return n_list
 
 
+my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
+result = new_list(my_list)
+print(result)
 
 # 3. Написати функцію яка приймає один параметр – список рядків my_list.
 # Функція повертає новий список у якому міститься елементи з my_list, у яких є символ - буква "a" на будь-якому місці.
 
 
+def new_list(list_2):
+    n_list = [i for i in list_2 if 'a' in i]
+    return n_list
+
+
+my_list = ['245', 'atyy', 'eta', 'ayu', 'ttie', '4743eda']
+result = new_list(my_list)
+print(result)
 
 
 
