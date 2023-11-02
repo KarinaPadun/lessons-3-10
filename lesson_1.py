@@ -71,3 +71,16 @@ my_list = ['245', 'atyy', 'et', 'ayu', 'ttie']
 my_result = [i for i in my_list if i.startswith('a')]
 print(my_result)
 
+
+my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
+def modify_list(my_list):
+
+
+    new_list = []
+    for i in range(len(my_list)):
+        if i % 2 == 0:
+            new_list.append(my_list[i])
+        else:
+            new_list.append(my_list[i][::-1])
+    return new_list
+
