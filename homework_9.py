@@ -66,9 +66,40 @@ print(result)
 # Функція повертає новий список у якому містяться лише рядки з my_list.
 
 
+def new_list(list_2):
+    n_list = [i for i in list_2 if type(i) == str]
+    return n_list
+
+
+my_list = [876, 'atyy', 567, 'ayu', 'ttie']
+result = new_list(my_list)
+print(result)
+
 # 5. Написати функцію яка приймає один параметр – рядок my_str.
 # Функція повертає новий список у якому містяться ті символи з my_str,
 # які зустрічаються у рядку лише один раз.
+
+
+def new_str(string):
+    n_str = [i for i in set(my_str) if my_str.count(i) == 1]
+    return n_str
+
+
+my_str = 'ryttyyte'
+result = new_str(my_str)
+print(result)
+
+# 5. 2
+
+
+def new_str(string):
+    n_str = [i for i in set(my_str) if my_str.count(i) < 2]
+    return n_str
+
+
+my_str = 'ryttyyte'
+result = new_str(my_str)
+print(result)
 
 # 6. Написати функцію яка приймає один параметр - два рядки.
 # Функція повертає список у який помістити ті символи, які є в обох рядках хоча б один раз.
