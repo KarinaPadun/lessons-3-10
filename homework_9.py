@@ -93,7 +93,7 @@ print(result)
 
 
 def new_str(string):
-    n_str = [i for i in set(my_str) if my_str.count(i) < 2]
+    n_str = [i for i in set(string) if my_str.count(i) < 2]
     return n_str
 
 
@@ -101,8 +101,37 @@ my_str = 'ryttyyte'
 result = new_str(my_str)
 print(result)
 
+# 5. 3
+
+
+def unique_characters(string):
+    char_count = {}
+    unique_chars = []
+
+    for char in string:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+
+    for char, count in char_count.items():
+        if count == 1:
+            unique_chars.append(char)
+
+    return unique_chars
+
+
+my_str = "abrabrtyu"
+result = unique_characters(my_str)
+print(result)
+
+
+
 # 6. Написати функцію яка приймає один параметр - два рядки.
 # Функція повертає список у який помістити ті символи, які є в обох рядках хоча б один раз.
+
+
+
 
 # 7. Написати функцію яка приймає два параметри - два рядки.
 # Функція повертає список до якого входять ті символи, які є в обох рядках, але в кожному лише по одному разу.
