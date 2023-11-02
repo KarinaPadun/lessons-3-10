@@ -1,11 +1,20 @@
-my_list = ['245', '567', '3578', '5645', '7564']
-my_result = []
+def unique_characters(str1, str2):
+    unique_chars = []
 
-for i in range(len(my_list)):
-    if i % 2 == 1:
-        reversed_string = my_list[i][::-1]
-        my_result.append(reversed_string)
-    else:
-        my_result.append(my_list[i])
+    for char in str1:
+        if char in str2 and str1.count(char) == 1 and str2.count(char) == 1 and char not in unique_chars:
+            unique_chars.append(char)
 
-print(my_result)
+    for char in str2:
+        if char in str1 and str2.count(char) == 1 and str1.count(char) == 1 and char not in unique_chars:
+            unique_chars.append(char)
+
+    return unique_chars
+
+
+string_1 = 'Helloy'
+string_2 = 'Goodbye'
+result = unique_characters(string_1, string_2)
+print(result)
+
+
