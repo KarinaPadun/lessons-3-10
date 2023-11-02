@@ -1,24 +1,21 @@
 # print(), input(), int() ... built-in 1 рівень , вбудовані , які доступні одразу
 # офіційні модулі та бібліотеки 2 рівень, ті які знайдемо в списку, перевірені та затвердженні
 # не офіційні бібліотеки треба встановлювати
-
+# ВСІ ІМПОРТИ НА ГОРІ
 # import string ВСІ ІМПОРТИ НА ГОРІ
-# from string import ascii_uppercase, ascii_letters
-# from string import ascii_uppercase as alphabet
-# from string import *
+# from string import ascii_uppercase, ascii_letters - коли не більше 5 модулей треба, записують в списки або кортежі
+# from string import ascii_uppercase as alphabet -
+# from string import * (перегружає систему) , перезначають назви кейсів, назви , імпорт того в чому впевнені
+# різниця бібіліотеки і модуля -як працює (під капотом)
 
 
 # alphabet = string.ascii_lowercase ( всі букви з малої алфавіту)
 # alphabet = string.ascii_uppercase ( всі букви з великої алфавіту)
 # ascii_letters = ascii_uppercase
-
+# ФУНКЦІЯ ПРИЙМАЄ, ЩОСЬ РОБИТЬ ТА ПОВЕРТАЄ
 # print(alphabet)
-
-import random
-
-
-# dot_1 = {
-#     "x": random.randint(1,100),
+#     "x": random.randint(1,100), дані використовуються тільки всередині функції ,
+#     назви унікальні , щоб функція не могла вплинути на клд
 #     "y": random.randint(1,100),
 #     "z": random.randint(1,100),
 # }
@@ -38,7 +35,8 @@ def adding(first_num, second_num):
 
     result = first_num + second_num
 
-    return result
+    return result # набагато простіше, щось поверне
+# краще 1 функція- одна дія
 
 
 print(adding(2,3))
