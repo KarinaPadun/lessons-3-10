@@ -69,13 +69,20 @@
 # my_result = [i for i in my_list if i.startswith('a')]
 # print(my_result)
 
-def new_list(my_list):
-    n_list = [i if my_list.index(i) % 2 == 0 else i[::-1] for i in my_list]
-    return n_list
 
+def last_names_file(file_name):
+    last_names = []
 
-my_list = ['245', 'rtyy', 'et', 'yyu', 'ttie']
-result = new_list(my_list)
+    with open(file_name, 'r') as file:
+        for line in file:
+            data = line.strip().split('\t')  # Розділити рядок за символом табуляції
+            if len(data) > 1:
+                last_name = data[1]  # Прізвище зазвичай знаходиться в другому полі
+                last_names.append(last_name)
+
+    return last_names
+
+file_name = 'hom_1_2.py'
+result = last_names_file(file_name)
 print(result)
-
 
