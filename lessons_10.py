@@ -55,11 +55,15 @@
 # my_file = open(filename, 'r')               #'r' - read, 'w' - write, 'rb' - read binary, 'wb' - write binary
 # data = my_file.read()
 # my_file.close() - обовязково треба закрити , якщо читаємо то тип данних зажди стрінга
-#
+
+
+# binary - 1 та 0, окремий тип данних, наприклад зашифрованний, (картинки)
+
+
 # print(data)
 
 
-# 2 variant                  # context manager   #PREFERABLE
+# 2 variant                  # context manager   #PREFERABLE ПРЕДПОЧТИТЕЛЬНО
 
 
 # context manager - використовують щоб точно виконати дію, наприклад закриття файлу
@@ -67,18 +71,18 @@
 
 
 # with open(filename, 'r') as my_file:
-#     # data = my_file.read()
-#     # data = my_file.readline()                 # построково
-#     # for _ in range(6):
+#     # data = my_file.read() - використовувати рид коли маленький файл
+#     # data = my_file.readline()                 # построково читає, видає завжди наступну строку
+#     # for _ in range(6): - перші 6 рядків
 #     #     print(my_file.readline())
 #     data = my_file.readlines()                  # список з строками
 #
 # print(data)
 #
-# data.append("\n\t\tteeeest9999999")
+# data.append("\n\t\tteeeest9999999") - з нового рядка
 #
-# with open(filename + "_test", 'w') as my_file:
-#     # my_file.write(data)
+# with open(filename + "_test", 'w') as my_file: (додаємо тест в назву, створює новий файл)
+#     # my_file.write(data)  - працює як аппенд
 #     my_file.writelines(data)
 #
 #
