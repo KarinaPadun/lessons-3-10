@@ -81,3 +81,19 @@ print(result)
 
 # 2.2
 
+
+def read_last_names(file_name):
+    with open(file_name, 'r') as file:
+        return [line.strip().split('\t')[1] for line in file if len(line.strip().split('\t')) > 1]
+
+
+file_name = 'hom_1_2.py'
+result = read_last_names(file_name)
+print(result)
+
+
+# 3. Написати функцію, яка отримує у вигляді параметра ім'я файлу (authors.txt) та повертає список
+# словників виду {"date": date}
+# у яких date - це дата з рядка (якщо є),
+# Наприклад [{"date": "1st January 1919"}, {"date": "8th February 1828"}, ...]
+
