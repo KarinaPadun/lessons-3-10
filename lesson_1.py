@@ -69,10 +69,8 @@
 # my_result = [i for i in my_list if i.startswith('a')]
 # print(my_result)
 
-
 def process_authors_file(filename):
     date_list = []
-
     month_mapping = {
         "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
         "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
@@ -80,20 +78,17 @@ def process_authors_file(filename):
     }
 
     with open(filename, 'r') as file:
-        current_month = None
         for line in file:
             line = line.strip()
-            if line and not line[0].isdigit():
-                current_month = month_mapping.get(line)
-            elif current_month and line[0].isdigit():
-                date_parts = line.split(" - ")[0].split()
-                if len(date_parts) == 3:
-                    day, month, year = date_parts
-                    day = day.rstrip("stndrh")
-                    if len(day) == 1:
-                        day = "0" + day
-                    date_original = f"{day} {month} {year}"
-                    date_modified = f"{day}/{current_month}/{year}"
+            if not line:
+                continue
+            if line.isalpha():
+                current_month = line
+            elif current_month:
+                parts = line.split('-')
+                if len(parts) >= 2:
+                    date_original = parts[0].strip()
+                    date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
                     date_list.append({"date_original": date_original, "date_modified": date_modified})
 
     return date_list
