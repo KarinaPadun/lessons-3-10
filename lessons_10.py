@@ -83,7 +83,7 @@
 #
 # with open(filename + "_test", 'w') as my_file: (додаємо тест в назву, створює новий файл)
 #     # my_file.write(data)  - працює як аппенд
-#     my_file.writelines(data)
+#     my_file.writelines(data) - буде затирати старе і писати нове
 #
 #
 # print(data)
