@@ -39,6 +39,7 @@ print(result)
 
 # 1.3
 
+
 def domains_file(filename_1):
     domain_list = []
 
@@ -55,16 +56,16 @@ filename = 'hom_1_1.py'
 result = domains_file(filename)
 print(result)
 
-#2. Написати функцію, яка отримує як параметр ім'я файла (names.txt)
+# 2. Написати функцію, яка отримує як параметр ім'я файла (names.txt)
 # і повертає список усіх прізвищ із нього.
 # Кожен рядок файлу містить номер, прізвище, країну, кілька (таблиця взята з вікіпедії).
 # Розділювач - символ табуляції "t"
 
 
-def last_names_file(file_name):
+def last_names_file(filename):
     last_names = []
 
-    with open(file_name, 'r') as file:
+    with open(filename, 'r') as file:
         for line in file:
             data = line.strip().split('\t')
             if len(data) > 1:
@@ -74,6 +75,9 @@ def last_names_file(file_name):
     return last_names
 
 
-file_name = 'hom_1_2.py'
-result = last_names_file(file_name)
+filename = 'hom_1_2.py'
+result = last_names_file(filename)
 print(result)
+
+# 2.2
+
