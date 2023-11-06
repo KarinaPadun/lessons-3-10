@@ -13,18 +13,28 @@
 # **kwargs - ключевое слово, по ключу
 
 # *args **kwargs
-# def test_def(*args, **kwargs):
+# def test_def(*args, **kwargs): - 1 зірочка аргумент, 2 зірочки -кваргс
 #     print(args)
 #     for arg in args: - розібрало в стопчик
 #         print(arg)
-#
+
+# (*args, **kwargs) - летить як кортеж і дікт
+
 #     print(kwargs)
-#     for kwarg in kwargs:
+#     for kwarg in kwargs: працює як словник
 #         print(kwarg, kwargs[kwarg])
 #
 # test_def(1,2,3,4, key=1, value=2) - 4 елементи кортежами, між дефолт значеннями і аргументом немає пробелу
+# КЛЮЧ - ЗНАЧЕННЯ , ЯК СЛОВНИК ДРУКУЄ
 
-# def square_area(side_length: float, debug_mod: bool = False) -> float:
+# def square_area(side_length: float, debug_mod: bool = False) -> float: -types anotation АНОСТАЦІЯ ТИПІВ ,це показник
+# який дає інформацію про те , який тип данних буде летіти в аргументах і який тип данних буде повертатись
+# необовязково , для зручності
+# ніяк не буде протидіять але попередить
+
+# debug_mod: bool = False - правильний запис, дефолт значення - тип - значення
+
+
 #     area = side_length ** 2
 #
 #     if debug_mod:
