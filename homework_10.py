@@ -82,13 +82,13 @@ print(result)
 # 2.2
 
 
-def read_last_names(file_name):
+def last_names(file_name):
     with open(file_name, 'r') as file:
         return [line.strip().split('\t')[1] for line in file if len(line.strip().split('\t')) > 1]
 
 
 file_name = 'hom_1_2.py'
-result = read_last_names(file_name)
+result = last_names(file_name)
 print(result)
 
 
@@ -97,3 +97,30 @@ print(result)
 # у яких date - це дата з рядка (якщо є),
 # Наприклад [{"date": "1st January 1919"}, {"date": "8th February 1828"}, ...]
 
+
+def dates_from_file(filename):
+    date_list = []
+
+    with open(filename, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if any(month in line for month in ["January", "February", "March",
+                                               "April", "May", "June",
+                                               "July", "August", "September",
+                                               "October", "November", "December"]):
+                date_parts = line.split('-')
+                if date_parts:
+                    date_list.append({"date": date_parts[0].strip()})
+
+    return date_list
+
+
+filename = 'hom_1_3.py'
+result = dates_from_file(filename)
+print(result)
+
+# Написати функцію, яка отримує у вигляді параметра ім'я файлу (authors.txt) та повертає список
+# словників виду {"date_original": date_original, "date_modified": date_modified}
+# у яких date_original - це дата з рядка (якщо є),
+# а date_modified - ця ж дата, представлена у форматі "dd/mm/yyyy" (d-день, m-місяць, y-рік)
+# Наприклад [{"date_original": "8th February 1828", "date_modified": 08/02/1828}, ...]

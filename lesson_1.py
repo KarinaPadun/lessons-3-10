@@ -70,19 +70,35 @@
 # print(my_result)
 
 
-def last_names_file(file_name):
-    last_names = []
+def process_authors_file(filename):
+    date_list = []
 
-    with open(file_name, 'r') as file:
+    month_mapping = {
+        "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+        "November": "11", "December": "12"
+    }
+
+    with open(filename, 'r') as file:
+        current_month = None
         for line in file:
-            data = line.strip().split('\t')  # Розділити рядок за символом табуляції
-            if len(data) > 1:
-                last_name = data[1]  # Прізвище зазвичай знаходиться в другому полі
-                last_names.append(last_name)
+            line = line.strip()
+            if line and not line[0].isdigit():
+                current_month = month_mapping.get(line)
+            elif current_month and line[0].isdigit():
+                date_parts = line.split(" - ")[0].split()
+                if len(date_parts) == 3:
+                    day, month, year = date_parts
+                    day = day.rstrip("stndrh")
+                    if len(day) == 1:
+                        day = "0" + day
+                    date_original = f"{day} {month} {year}"
+                    date_modified = f"{day}/{current_month}/{year}"
+                    date_list.append({"date_original": date_original, "date_modified": date_modified})
 
-    return last_names
+    return date_list
 
-file_name = 'hom_1_2.py'
-result = last_names_file(file_name)
-print(result)
-
+filename = 'hom_1_3.py'
+result = process_authors_file(filename)
+for item in result:
+    print(item)
