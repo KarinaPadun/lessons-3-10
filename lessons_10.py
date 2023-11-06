@@ -54,12 +54,16 @@
 # filename = "homework/lesson_4" - шлях
 # my_file = open(filename, 'r')               #'r' - read, 'w' - write, 'rb' - read binary, 'wb' - write binary
 # data = my_file.read()
-# my_file.close()
+# my_file.close() - обовязково треба закрити , якщо читаємо то тип данних зажди стрінга
 #
 # print(data)
 
 
-#2 variant                  # context manager   #PREFERABLE
+# 2 variant                  # context manager   #PREFERABLE
+
+
+# context manager - використовують щоб точно виконати дію, наприклад закриття файлу
+
 
 
 # with open(filename, 'r') as my_file:
@@ -97,15 +101,16 @@
 # print(data)
 
 
-#How with(context manager) works
+# How with(context manager) works - контекстний менеджер - це обєкт який дозволяє зробити щось з файлом( прочитати
+# відкрити записати) а потім закрити його, автоматично робить якусь дію
 
-# try:
+# try: пробует прочить файл
 #     my_file = open(filename, 'r')     #'r' - read, 'w' - write
 #     data = my_file.read()
-# except:
+# except: если не смог прочитать - ошибка
 #     print('error')
-# finally:
-#     my_file.close()
+# finally: - наконец то
+#     my_file.close() закрил его
 
 
 
