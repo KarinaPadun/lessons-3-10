@@ -51,7 +51,7 @@
 
 # 1 variant
 
-# filename = "homework/lesson_4"
+# filename = "homework/lesson_4" - шлях
 # my_file = open(filename, 'r')               #'r' - read, 'w' - write, 'rb' - read binary, 'wb' - write binary
 # data = my_file.read()
 # my_file.close()
