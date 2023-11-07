@@ -109,7 +109,7 @@ def process_authors_file(filename):
     }
 
     with open(filename, 'r') as file:
-        current_month = "" # текущий месяц -
+        current_month = "" # текущий месяц равен пустой строке
         for line in file: # линия в файле
             line = line.strip() # линия = линия в которой удаляем символи
             if not line: # если нет линии - продолжаем
@@ -123,6 +123,7 @@ def process_authors_file(filename):
                     date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
                     # дата модификации равна дате оринигл где значение после дати равно пустоте
                     month_number = month_mapping.get(current_month, "00") #номер месяца равен месяцу которий отображает
+                    # get() позволяет вернуть значение словаря по ключу, если оно существует, или другое, если указано (по-умолчанию возвращает None )
                     # ключ -значение с словаря с месяцами віше, если его нет , он равен 00
                     date_modified = date_modified.replace(current_month, month_number) # дата модификации возвращает месяц с строчки заменненний на число
                     date_list.append({"date_original": date_original, "date_modified": date_modified}) # потом добавляем все в дата лист
