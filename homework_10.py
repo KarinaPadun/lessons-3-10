@@ -111,7 +111,8 @@ def dates_from_file(filename):
                 # тру если найдет месяц в линии из месяца в листе , в другом случае фолс
                 date_parts = line.split('-') # дата пари равна линии разделенной по -
                 if date_parts:
-                    date_list.append({"date": date_parts[0].strip()})
+                    date_list.append({"date": date_parts[0].strip()}) # дата лист добавляем дату и нулевой по инлексу
+                    # дату пари без символов
 
     return date_list
 
