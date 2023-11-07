@@ -103,12 +103,13 @@ def dates_from_file(filename):
 
     with open(filename, 'r') as file:
         for line in file:
-            line = line.strip()
+            line = line.strip() # линия = линия в которой удаляем символи
             if any(month in line for month in ["January", "February", "March",
                                                "April", "May", "June",
                                                "July", "August", "September",
                                                "October", "November", "December"]):
-                date_parts = line.split('-')
+                # тру если найдет месяц в линии из месяца в листе , в другом случае фолс
+                date_parts = line.split('-') # дата пари равна линии разделенной по -
                 if date_parts:
                     date_list.append({"date": date_parts[0].strip()})
 
