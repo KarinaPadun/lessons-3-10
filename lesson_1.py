@@ -112,7 +112,7 @@ def process_authors_file(filename):
         current_month = "" # текущий месяц -
         for line in file: # линия в файле
             line = line.strip() # линия = линия в которой удаляем символи
-            if not line: # если нет линии - продолжай
+            if not line: # если нет линии - продолжаем
                 continue
             if line.isalpha(): # если линия содержит букви
                 current_month = line # текущий месяц = линии
@@ -135,4 +135,35 @@ for item in result:
     print(item)
 
 
+def process_authors_file(filename):
+    date_list = []
+    month_mapping = {
+        "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+        "November": "11", "December": "12"
+    }
 
+    with open(filename, 'r') as file:
+        current_month = ""
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            if line.isalpha():
+                current_month = line
+            elif current_month:
+                parts = line.split('-')
+                if len(parts) >= 2:
+                    date_original = parts[0].strip()
+                    date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
+                    month_number = month_mapping.get(current_month, "00")
+                    date_modified = date_modified.replace(current_month, month_number)
+                    date_list.append({"date_original": date_original, "date_modified": date_modified})
+
+    return date_list
+
+
+filename = 'hom_1_3.py'
+result = process_authors_file(filename)
+for item in result:
+    print(item)
