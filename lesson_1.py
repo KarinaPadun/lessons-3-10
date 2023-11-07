@@ -109,22 +109,23 @@ def process_authors_file(filename):
     }
 
     with open(filename, 'r') as file:
-        current_month = ""
-        for line in file:
-            line = line.strip()
-            if not line:
+        current_month = "" # текущий месяц -
+        for line in file: # линия в файле
+            line = line.strip() # линия = линия в которой удаляем символи
+            if not line: # если нет линии - продолжай
                 continue
-            if line.isalpha():
-                current_month = line
-            elif current_month:
-                parts = line.split('-')
-                if len(parts) >= 2:
-                    date_original = parts[0].strip()
+            if line.isalpha(): # если линия содержит букви
+                current_month = line # текущий месяц = линии
+            elif current_month: # в другом случае
+                parts = line.split('-') # часть равна линии котрая разделена по знаку -
+                if len(parts) >= 2: # если длина части больше или равна 2
+                    date_original = parts[0].strip() # оригинальная дата равна паре нулевого символа разделенного через стрип
                     date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
-                    # Отримуємо числове представлення місяця з словника month_mapping
-                    month_number = month_mapping.get(current_month, "00")
-                    date_modified = date_modified.replace(current_month, month_number)
-                    date_list.append({"date_original": date_original, "date_modified": date_modified})
+                    # дата модификации равна дате оринигл где значение после дати равно пустоте
+                    month_number = month_mapping.get(current_month, "00") #номер месяца равен месяцу которий отображает
+                    # ключ -значение с словаря с месяцами віше, если его нет , он равен 00
+                    date_modified = date_modified.replace(current_month, month_number) # дата модификации возвращает месяц с строчки заменненний на число
+                    date_list.append({"date_original": date_original, "date_modified": date_modified}) # потом добавляем все в дата лист
 
     return date_list
 
