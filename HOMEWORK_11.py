@@ -4,12 +4,10 @@
 
 from homework_11_a import names_of_directories
 
-print("names_of_directories.py")
-
 
 # 2. Написати функцію, яка отримує два параметри – словник, описаний у пункті 1
 # і значення булю (True/False) - можна зробити за замовчуванням.
 # Функція повертає той самий словник, але з відсортованими іменами файлів та папок у відповідних списках.
 # Булеве значення True означає, що порядок сортування алфавітний, False – зворотний порядок.
 
-from homework_11_a import names_of_directories
+from homework_11_a import sort_directory_info

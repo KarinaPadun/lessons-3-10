@@ -7,7 +7,7 @@ import os
 
 def names_of_directories(my_directory_path) -> dict:
     if not os.path.exists(my_directory_path) or not os.path.isdir(my_directory_path):
-        return {"filenames": [], "dirnames": []}
+        return {"file_names": [], "dir_names": []}
 
     items = os.listdir(my_directory_path)
 
@@ -27,10 +27,10 @@ print(result)
 # Функція повертає той самий словник, але з відсортованими іменами файлів та папок у відповідних списках.
 # Булеве значення True означає, що порядок сортування алфавітний, False – зворотний порядок.
 
-def sort_directory_info(directory_info, ascending=True):
+def sort_directory_info(directory_info, alphabetically=True):
     sorted_info = {
-        'file_names': sorted(directory_info['file_names'], reverse=not ascending),
-        'dir_names': sorted(directory_info['dir_names'], reverse=not ascending)
+        'file_names': sorted(directory_info['file_names'], reverse=not alphabetically),
+        'dir_names': sorted(directory_info['dir_names'], reverse=not alphabetically)
     }
     return sorted_info
 
@@ -40,10 +40,10 @@ directory_info = names_of_directories(my_directory_path)
 
 
 sorted_info_ascending = sort_directory_info(directory_info)
-print("Ascending order:")
+print("Alphabetically order:")
 print(sorted_info_ascending)
 
 
-sorted_info_descending = sort_directory_info(directory_info, ascending=False)
-print("\nDescending order:")
+sorted_info_descending = sort_directory_info(directory_info, alphabetically=False)
+print("\nNo Alphabetically order:")
 print(sorted_info_descending)
