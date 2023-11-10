@@ -63,10 +63,12 @@ import os
 # def writing_json_file(file: str, data: str) -> list:
 #     with open(file, 'w') as f:
 #         # data = f.readlines()
-#         json.dump(data, f) -
+#         json.dump(data, f) - ЗАПИСУВАТИ ЧЕРЕЗ ДАМП
 #     return data
+
+# json -  ЦЕ ТИП (ФОРМАТ) ЗАПИСУ, А НЕ РОЗШИРЕННЯ
 #
-#
+
 # data = reading_json_readlines("utils/test.json") -те саме что текст в кінці
 # # writing_json_file("utils/test_1.json", [1, 2, 3])
 #
