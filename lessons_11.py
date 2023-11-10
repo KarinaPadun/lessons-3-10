@@ -50,7 +50,7 @@ import os
 #     ]
 # '''
 #
-# data = json.loads(some_json)
+# data = json.loads(some_json) - переробити на стрінгу
 # json_data = json.dumps(data)
 #
 # def reading_json_readlines(file: str) -> list:
@@ -60,7 +60,7 @@ import os
 #     return data
 #
 #
-# def writing_json_file(file: str, data: str) -> list: повертає ліст
+# def writing_json_file(file: str, data: str) -> list: повертає ліст , Може бути ліст, стрінг дікт
 #     with open(file, 'w') as f:
 #         # data = f.readlines()
 #         json.dump(data, f) - ЗАПИСУВАТИ ЧЕРЕЗ ДАМП
