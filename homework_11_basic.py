@@ -47,3 +47,8 @@ print(sorted_info_ascending)
 sorted_info_descending = sort_directory_info(directory_info, alphabetically=False)
 print("\nNo Alphabetically order:")
 print(sorted_info_descending)
+
+# 3 Написати функцію, яка отримує два параметри - словник, описаний у пункті 1 та рядок, який може бути
+# або ім'ям файлу, або ім'ям папки. (У імені файлу має бути точка).
+# Залежно від того, що функція отримала (ім'я файлу або ім'я папки) – записати його у відповідний список
+# та повернути оновлений словник.
