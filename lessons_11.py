@@ -122,7 +122,7 @@ import os
 #     some_str = create_rand_str(ascii_lowercase, 5, 7)
 #     # some_str = "".join(random.choice(ascii_lowercase) for _ in range(random.randint(5, 7)))
 #     # some_str = "".join("a" for _ in range(random.randint(5, 7)))
-#
+# choice працює з лістами, вибирает 1 из елементов по индексу
 #     # domain = random.choice(domains)
 #     domain = list_for_rand_choice(domains)
 #
@@ -144,3 +144,4 @@ some_dict = [
         "subject": "History2",
     }
 ]
+# ОДНА ФУНКЦІЯ - ОДНА ДІЯ
