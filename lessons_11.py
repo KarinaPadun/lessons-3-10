@@ -25,8 +25,8 @@ import os
 #         print(file)
 # #
 # # data = reading_text_file_readlines("homework/lesson_4") - в залежності від системи різний слеш
-# # data = reading_text_file_readlines(f"{filedir}/{some_dir}/{filename}")
-# data = reading_text_file_readlines(os.path.join(filedir, some_dir, filename))
+# # data = reading_text_file_readlines(f"{filedir}/{some_dir}/{filename}") -
+# data = reading_text_file_readlines(os.path.join(filedir, some_dir, filename)) - найкращий варіант
 #
 #
 # print(data)
