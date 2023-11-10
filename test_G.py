@@ -1,27 +1,24 @@
 import os
 
-
 def names_of_directories(my_directory_path) -> dict:
     if not os.path.exists(my_directory_path) or not os.path.isdir(my_directory_path):
         return {"file_names": [], "dir_names": []}
 
     items = os.listdir(my_directory_path)
+    full_path = os.path.abspath(my_directory_path)
 
-    file_names = [i for i in items if os.path.isfile(os.path.join(my_directory_path, i))]
-    dir_names = [i for i in items if os.path.isdir(os.path.join(my_directory_path, i))]
+    file_names = [os.path.join(full_path, i) for i in items if os.path.isfile(os.path.join(full_path, i))]
+    dir_names = [os.path.join(full_path, i) for i in items if os.path.isdir(os.path.join(full_path, i))]
 
     return {"file_names": file_names, "dir_names": dir_names}
 
-
-my_directory_path = '../lessons-3-10'
-result = names_of_directories(my_directory_path)
-print(result)
-
 def update_directory_info(directory_info, name):
-    if os.path.isfile(name):
-        directory_info['file_names'].append(name)
-    elif os.path.isdir(name):
-        directory_info['dir_names'].append(name)
+    full_path = os.path.abspath(name)
+
+    if os.path.isfile(full_path):
+        directory_info['file_names'].append(full_path)
+    elif os.path.isdir(full_path):
+        directory_info['dir_names'].append(full_path)
 
     return directory_info
 
