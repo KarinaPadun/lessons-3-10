@@ -47,7 +47,6 @@ print(updated_info_file)
 updated_info_dir = update_directory_info(updated_info_file, new_dir)
 print(updated_info_dir)
 
-
 import os
 
 def names_of_directories(my_directory_path) -> dict:
@@ -77,17 +76,15 @@ def update_directory_info(directory_info, item_name):
                 pass
             directory_info['file_names'].append(item_name)
         else:
-            # Получаем родительскую папку относительно my_directory_path
-            parent_path = os.path.abspath(os.path.join(directory_info['dir_path'], os.pardir))
             # Составляем полный путь для новой папки
-            new_dir_path = os.path.join(parent_path, item_name)
+            new_dir_path = os.path.join(directory_info['dir_path'], item_name)
             os.makedirs(new_dir_path)
             directory_info['dir_names'].append(item_name)
 
     return directory_info
 
 
-new_dir = 'lessons.45'
+new_dir = 'lessons.3'
 new_file = 'text.3552.txt'
 
 # Приклад використання
