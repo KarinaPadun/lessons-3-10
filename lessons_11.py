@@ -16,7 +16,8 @@ import os
 # some_dir = ""
 # filename = "lesson_4"
 #
-# files_list = os.listdir()
+# files_list = os.listdir() видає ліст з назвами папок та файлів , якщо нічого не вказати ,
+# видасть файли на одному рівні з яким працюємо
 # print(files_list)
 # for file in files_list:
 #     if os.path.isdir(file):
