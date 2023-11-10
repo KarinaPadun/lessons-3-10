@@ -29,13 +29,13 @@ my_directory_path = '../lessons-3-10'
 result = names_of_directories(my_directory_path)
 print(result)
 
-# Припустимо, у нас є словник, який ми хочемо оновити
+
 directory_info = {'file_names': ['file1.txt'], 'dir_names': ['subdir1']}
 
-# Додамо ім'я файлу до словника
+
 updated_info = update_directory_info(directory_info, 'file2.txt')
 
-# Додамо ім'я папки до словника
+
 updated_info = update_directory_info(updated_info, 'subdir2')
 
 print(updated_info)
