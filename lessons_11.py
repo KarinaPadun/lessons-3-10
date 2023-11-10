@@ -32,7 +32,9 @@ import os
 # print(data)
 
 
-################################# JSON #########################################################
+################################# JSON ######################################################### (джаваскріпт)
+# формат данних для взаємодії з фронтою (ключ- значення) не можна залишати кому _ помилка, всі данні у подвійних лапках
+# може бути як ліст з словників
 # import json
 # #
 # # some_json = '''
@@ -54,18 +56,18 @@ import os
 # def reading_json_readlines(file: str) -> list:
 #     with open(file, 'r') as f:
 #
-#         data = json.load(f)
+#         data = json.load(f) - лоад - завантаження
 #     return data
 #
 #
 # def writing_json_file(file: str, data: str) -> list:
 #     with open(file, 'w') as f:
 #         # data = f.readlines()
-#         json.dump(data, f)
+#         json.dump(data, f) -
 #     return data
 #
 #
-# data = reading_json_readlines("utils/test.json")
+# data = reading_json_readlines("utils/test.json") -те саме что текст в кінці
 # # writing_json_file("utils/test_1.json", [1, 2, 3])
 #
 # print(data, type(data))

@@ -8,7 +8,7 @@
 # makedir - створить 1 папку, вже немає функції
 # makedirs(exist_ok) - більш ефективна , містить в собі перевірку чи існує така папка,
 # обидві функції приймають імя та створюють папку
-# remove
+# remove - видаляє файл
 import os
 # import string
 from string import ascii_lowercase
@@ -36,11 +36,11 @@ def create_files(some_dir, ascii_lower):
 
 
 def remove_half_of_file(dir_name):
-    files_list = os.listdir(dir_name)
-    random.shuffle(files_list)
+    files_list = os.listdir(dir_name) # будує певний рандом, потім зберігає його, поки не завершить сессію
+    random.shuffle(files_list) # перемішує в рандом порядку
 
-    # file_to_delete = files_list[:len(files_list) // 2]
-    file_to_delete = files_list[::2]
+    # file_to_delete = files_list[:len(files_list) // 2] делим на два от 0
+    file_to_delete = files_list[::2] # крок 2
     for to_del in file_to_delete:
         os.remove(os.path.join(dir_name, to_del))
 
