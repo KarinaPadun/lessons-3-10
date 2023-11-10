@@ -10,21 +10,21 @@ import os
 #
 # print(data)
 
-######### os ##############
+######### os ############## відповідає за всю роботу з файлом
 
 # filedir = "homework"
 # some_dir = ""
 # filename = "lesson_4"
 #
 # files_list = os.listdir() видає ліст з назвами папок та файлів , якщо нічого не вказати ,
-# видасть файли на одному рівні з яким працюємо
+# видасть файли на одному рівні з яким працюємо. КРаще вказувати файл
 # print(files_list)
 # for file in files_list:
-#     if os.path.isdir(file):
-#     # if os.path.isfile(file):
+#     if os.path.isdir(file): - якщо це папка
+#     # if os.path.isfile(file): - якщо це файл
 #         print(file)
 # #
-# # data = reading_text_file_readlines("homework/lesson_4")
+# # data = reading_text_file_readlines("homework/lesson_4") - в залежності від системи різний слеш
 # # data = reading_text_file_readlines(f"{filedir}/{some_dir}/{filename}")
 # data = reading_text_file_readlines(os.path.join(filedir, some_dir, filename))
 #
