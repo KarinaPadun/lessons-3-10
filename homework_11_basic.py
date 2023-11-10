@@ -22,26 +22,8 @@ result = names_of_directories(my_directory_path)
 print(result)
 
 
+# 2 Написати функцію, яка отримує два параметри – словник, описаний у пункті 1
+# і значення булю (True/False) - можна зробити за замовчуванням.
+# Функція повертає той самий словник, але з відсортованими іменами файлів та папок у відповідних списках.
+# Булеве значення True означає, що порядок сортування алфавітний, False – зворотний порядок.
 
-def sort_directory_names(directory_info, ascending=True):
-    sorted_info = {
-        'file_names': sorted(directory_info['file_names'], reverse=not ascending),
-        'dir_names': sorted(directory_info['dir_names'], reverse=not ascending)
-    }
-    return sorted_info
-
-
-directory_info = {
-    'file_names': ["filenames": []",
-    'dir_names': []
-}
-
-sorted_info_ascending = sort_directory_names(directory_info)
-sorted_info_descending = sort_directory_names(directory_info, ascending=False)
-
-def display_sorted_info(info, order):
-    print(f"{order} order:")
-    print(info)
-
-display_sorted_info(sorted_info_ascending, "Ascending")
-display_sorted_info(sorted_info_descending, "Descending")

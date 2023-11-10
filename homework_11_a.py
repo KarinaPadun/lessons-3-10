@@ -16,3 +16,6 @@ def names_of_directories(my_directory_path) -> dict:
 my_directory_path = '../lessons-3-10'
 result = names_of_directories(my_directory_path)
 print(result)
+
+
+
