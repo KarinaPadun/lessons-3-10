@@ -27,3 +27,23 @@ print(result)
 # Функція повертає той самий словник, але з відсортованими іменами файлів та папок у відповідних списках.
 # Булеве значення True означає, що порядок сортування алфавітний, False – зворотний порядок.
 
+def sort_directory_info(directory_info, ascending=True):
+    sorted_info = {
+        'file_names': sorted(directory_info['file_names'], reverse=not ascending),
+        'dir_names': sorted(directory_info['dir_names'], reverse=not ascending)
+    }
+    return sorted_info
+
+
+my_directory_path = '../lessons-3-10'
+directory_info = names_of_directories(my_directory_path)
+
+
+sorted_info_ascending = sort_directory_info(directory_info)
+print("Ascending order:")
+print(sorted_info_ascending)
+
+
+sorted_info_descending = sort_directory_info(directory_info, ascending=False)
+print("\nDescending order:")
+print(sorted_info_descending)
