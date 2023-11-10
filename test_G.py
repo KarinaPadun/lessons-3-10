@@ -92,6 +92,7 @@ def update_directory_info(directory_info, item_name):
 
     return directory_info
 
+
 # Приклад використання
 my_directory_path = '../lessons-3-10'
 directory_info = names_of_directories(my_directory_path)
