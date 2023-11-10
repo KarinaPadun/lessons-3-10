@@ -1,5 +1,6 @@
 import os
 
+
 def names_of_directories(my_directory_path) -> dict:
     if not os.path.exists(my_directory_path) or not os.path.isdir(my_directory_path):
         return {"file_names": [], "dir_names": []}
@@ -12,6 +13,7 @@ def names_of_directories(my_directory_path) -> dict:
 
     return {"file_names": file_names, "dir_names": dir_names}
 
+
 def update_directory_info(directory_info, name):
     full_path = os.path.abspath(name)
 
@@ -22,7 +24,7 @@ def update_directory_info(directory_info, name):
 
     return directory_info
 
-# Приклад використання
+
 my_directory_path = '../lessons-3-10'
 result = names_of_directories(my_directory_path)
 print(result)
