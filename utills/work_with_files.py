@@ -17,3 +17,5 @@ def writelines_text_file(file: str, data: list):
 if __name__ == "__main__":
     data = reading_text_file_readlines("../homework/lesson_5.txt") # .. - путь до домашки
     print(data)
+
+    # __name__ - показує де знаходиться фаЙЛ, якщо імпорт пише звідки імпорт
