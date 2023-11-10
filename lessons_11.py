@@ -50,8 +50,8 @@ import os
 #     ]
 # '''
 #
-# data = json.loads(some_json) - переробити на стрінгу
-# json_data = json.dumps(data)
+# data = json.loads(some_json) - переробити на стрінгу , робить json из строк (розпаковуємо)
+# json_data = json.dumps(data) - строка в форматі json, пакуемо і отримуємо json файл , який можно відправити в фронту  (Запаков)
 #
 # def reading_json_readlines(file: str) -> list:
 #     with open(file, 'r') as f:
@@ -116,7 +116,7 @@ import os
 #     # name = random.choice(names)
 #     name = list_for_rand_choice(names)
 #
-#     # some_num = random.randint(100, 999)
+#     # some_num = random.randint(100, 999) - РАНДОМ ВКЛЮЧНО
 #     some_num = create_rand_int(100, 999)
 #
 #     some_str = create_rand_str(ascii_lowercase, 5, 7)
