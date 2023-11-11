@@ -66,26 +66,26 @@ def names_of_directories(my_directory_path) -> dict:
     return {"dir_path": my_directory_path, "file_names": file_names, "dir_names": dir_names}
 
 
-def updated_dictionary(directory_info, item_name):
-    full_path = os.path.abspath(os.path.join(directory_info['dir_path'], item_name))
+def updated_dictionary(dir_info, item_name):
+    full_path = os.path.abspath(os.path.join(dir_info['dir_path'], item_name))
 
     if os.path.isfile(full_path):
-        if item_name not in directory_info['file_names']:
-            directory_info['file_names'].append(item_name)
+        if item_name not in dir_info['file_names']:
+            dir_info['file_names'].append(item_name)
     elif os.path.isdir(full_path):
-        if item_name not in directory_info['dir_names']:
-            directory_info['dir_names'].append(item_name)
+        if item_name not in dir_info['dir_names']:
+            dir_info['dir_names'].append(item_name)
     else:
         if '.' in item_name:
             with open(full_path, 'w'):
                 pass
-            directory_info['file_names'].append(item_name)
+            dir_info['file_names'].append(item_name)
         else:
-            new_dir_path = os.path.join(directory_info['dir_path'], item_name)
+            new_dir_path = os.path.join(dir_info['dir_path'], item_name)
             os.makedirs(new_dir_path)
-            directory_info['dir_names'].append(item_name)
+            dir_info['dir_names'].append(item_name)
 
-    return directory_info
+    return dir_info
 
 
 new_dir = 'A'
@@ -95,7 +95,7 @@ new_file = 'text.3552.txt'
 my_directory_path = '../lessons-3-10'
 directory_info = names_of_directories(my_directory_path)
 
-updated_info_file = updated_dictionary(directory_info, new_file)
+updated_info_file = updated_dictionary(dir_info, new_file)
 print(updated_info_file)
 
 updated_info_dir = updated_dictionary(updated_info_file, new_dir)
