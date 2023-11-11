@@ -8,4 +8,4 @@ from homework_11_a import sort_directory_info
 
 # 3
 
-#from homework_11_a import
+from homework_11_a import updated_dictionary
