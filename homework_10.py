@@ -121,3 +121,103 @@ filename = 'hom_1_3.py'
 result = dates_from_file(filename)
 print(result)
 
+
+def process_authors_file(filename):
+    date_list = []
+    month_mapping = {
+        "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+        "November": "11", "December": "12"
+    }
+
+    with open(filename, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            if line.isalpha():
+                current_month = line
+            elif current_month:
+                parts = line.split('-')
+                if len(parts) >= 2:
+                    date_original = parts[0].strip()
+                    date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
+                    date_list.append({"date_original": date_original, "date_modified": date_modified})
+
+    return date_list
+
+filename = 'hom_1_3.py'
+result = process_authors_file(filename)
+for item in result:
+    print(item)
+
+
+
+def process_authors_file(filename):
+    date_list = []
+    month_mapping = {
+        "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+        "November": "11", "December": "12"
+    }
+
+    with open(filename, 'r') as file:
+        current_month = "" # текущий месяц равен пустой строке
+        for line in file: # линия в файле
+            line = line.strip() # линия = линия в которой удаляем символи
+            if not line: # если нет линии - продолжаем
+                continue
+            if line.isalpha(): # если линия содержит букви
+                current_month = line # текущий месяц = линии
+            elif current_month: # в другом случае
+                parts = line.split('-') # часть равна линии котрая разделена по знаку -
+                if len(parts) >= 2: # если длина части больше или равна 2
+                    date_original = parts[0].strip() # оригинальная дата равна паре нулевого символа разделенного через стрип
+                    date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
+                    # дата модификации равна дате оринигл где значение после дати равно пустоте
+                    month_number = month_mapping.get(current_month, "00") #номер месяца равен месяцу которий отображает
+                    # get() позволяет вернуть значение словаря по ключу, если оно существует, или другое, если указано (по-умолчанию возвращает None )
+                    # ключ -значение с словаря с месяцами віше, если его нет , он равен 00
+                    date_modified = date_modified.replace(current_month, month_number) # дата модификации возвращает месяц с строчки заменненний на число
+                    date_list.append({"date_original": date_original, "date_modified": date_modified}) # потом добавляем все в дата лист
+
+    return date_list
+
+filename = 'hom_1_3.py'
+result = process_authors_file(filename)
+for item in result:
+    print(item)
+
+
+def process_authors_file(filename):
+    date_list = []
+    month_mapping = {
+        "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+        "November": "11", "December": "12"
+    }
+
+    with open(filename, 'r') as file:
+        current_month = ""
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            if line.isalpha():
+                current_month = line
+            elif current_month:
+                parts = line.split('-')
+                if len(parts) >= 2:
+                    date_original = parts[0].strip()
+                    date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace('th', '')
+                    month_number = month_mapping.get(current_month, "00")
+                    date_modified = date_modified.replace(current_month, month_number)
+                    date_list.append({"date_original": date_original, "date_modified": date_modified})
+
+    return date_list
+
+
+filename = 'hom_1_3.py'
+result = process_authors_file(filename)
+for item in result:
+    print(item)
