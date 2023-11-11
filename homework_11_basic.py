@@ -95,7 +95,7 @@ new_file = 'text.3552.txt'
 my_directory_path = '../lessons-3-10'
 directory_info = names_of_directories(my_directory_path)
 
-updated_info_file = updated_dictionary(dir_info, new_file)
+updated_info_file = updated_dictionary(directory_info, new_file)
 print(updated_info_file)
 
 updated_info_dir = updated_dictionary(updated_info_file, new_dir)
