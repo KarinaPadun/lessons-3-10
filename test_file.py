@@ -1,2 +1,12 @@
+from collections.abc import Iterable
 
-index(0)	Searches the string for a specified value and returns the position of where it was foun
+list = [1, 2, 3, 4]
+
+
+def replace_first(items: list) -> Iterable:
+    list.pop()
+    return list
+
+print(list)
+
+
