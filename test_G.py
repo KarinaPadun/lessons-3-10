@@ -84,7 +84,7 @@ def update_directory_info(directory_info, item_name):
     return directory_info
 
 
-new_dir = 'lessons.3'
+new_dir = 'homework.a'
 new_file = 'text.3552.txt'
 
 # Приклад використання
