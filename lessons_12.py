@@ -3,22 +3,24 @@
 # DictReader DictWriter writerows, writeheader
 # assert raise
 
-###########JSON############
+###########JSON############ - тип (формат) данних який допомогає взаємодіяти з фронтою ( від сервісу до сервісу)
+# нагадує список словників
+
 
 # import json
 #
-# filename = "utils/test.json"
+# filename = "utils/test.json" - числа будут интой , в конце нет запятой , двойние лапки
 #
 #
 # def read_json(file):
 #     with open(file, 'r') as f:
-#         data = json.load(f)
+#         data = json.load(f) - вигрузить
 #     return data
 #
 #
 # def write_json(file, data):
 #     with open(file, 'w') as f:
-#         json.dump(data, f)
+#         json.dump(data, f) -
 #
 #
 # req = '''
