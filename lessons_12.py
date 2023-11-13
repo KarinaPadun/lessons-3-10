@@ -139,18 +139,18 @@
 #     res = price - discount
 #     if res < 0:
 #         raise Exception("Type some text for error raise raise") - використовується всередину функції,
-#         впаде всередині функції
+#         впаде всередині функції. Знак інший - негативний сценарій
 #     return res
 #
 #
 # result = discount_price(100, 999)
 # print(result)
 #
-# assert result > 0, "Type some text for error"
+# assert result > 0, "Type some text for error" -позитивний сценарій
 #
 # print("ok") - видає контрольовану  помилку
 
-####################### ООП ###############
+####################### ООП ############### - обектно орієнтовно програмування
 
 # class
 
