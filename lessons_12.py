@@ -129,7 +129,7 @@
 # write_csv_file_dict("utils/Workbook2.csv", data)
 
 
-# NumPy, Pandas
+# NumPy, Pandas - бібліотеки Pandas -коли розрахунки (Дата аналітик)
 
 
 ########## assert raise
