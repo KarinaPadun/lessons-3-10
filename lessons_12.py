@@ -74,6 +74,8 @@
 #         for row in reader:
 #             data.append(row) - добавить строчки
 #     return data прочитать по строчке ( видает лист в котором два листа)
+#
+#     ВИТЯГИВАЕТ ВСЕ ВСЕГДА СТРИНГОЙ!!
 
 
 # def write_csv_file(name, data):
