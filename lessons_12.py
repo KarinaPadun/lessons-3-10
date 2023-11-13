@@ -91,7 +91,7 @@
 # for row in data:    row- рядок (стала назва)
 #     row.append(float(row[1]) * float(row[2])) - треба зробити інт,флоат щоб працювало
 #
-#
+#ЕКСЕЛЬ - завжди ставить крапку з комою
 # data = [header] + data
 # print(data)
 #
@@ -102,18 +102,19 @@
 #     data = []
 #     with open(name, 'r') as f:
 #
-#         reader = csv.DictReader(f, delimiter=";")
+#         reader = csv.DictReader(f, delimiter=";") - викликати дікт рідер  , отримаємо словники
 #         for row in reader:
 #             data.append(row)
 #     return data
 #
-#
+# НАБАГАТО ВАЖЧЕ ДЛЯ СИСТЕМИ
 # def write_csv_file_dict(name, data):
 #     with open(name, 'w') as f:
-#         fieldnames = ["Price", "Month", "SoldItems", "Sum"]
+#         fieldnames = ["Price", "Month", "SoldItems", "Sum"] - послідовність
 #         # writer = csv.DictWriter(f, fieldnames=data[0].keys()) #delimiter=";",
+#         fieldnames - ПОСЛІДОВНІСТЬ
 #         writer = csv.DictWriter(f, fieldnames=fieldnames)
-#         writer.writeheader()
+#         writer.writeheader() - записує
 #         writer.writerows(data)
 #
 #
