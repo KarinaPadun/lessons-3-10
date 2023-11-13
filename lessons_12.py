@@ -20,7 +20,7 @@
 #
 # def write_json(file, data):
 #     with open(file, 'w') as f:
-#         json.dump(data, f) -
+#         json.dump(data, f) - запакувати
 #
 #
 # req = '''
@@ -41,15 +41,16 @@
 # '''
 #
 #
-# def some_def(request):
-#     some_data = json.loads(request)
+# def some_def(request): - прилітає сира строка
+#     some_data = json.loads(request) s - як стрінг
 #     return some_data
-#
+
+# loads,dumps -для роботи с сиримі данними
 #
 # send_data = [1, 2, 3]
 #
 #
-# def return_some_data(obj):
+# def return_some_data(obj): - обектом може бути все що завгодно  (відправити на фронту)
 #     some_data = json.dumps(obj)
 #     return some_data
 #
@@ -58,9 +59,9 @@
 # # print(read_json(filename))
 
 
-########## CSV (comma separated values) ##########
+########## CSV (comma separated values) ########## - таблица (данние разделенние сепаратором -запятой или другой)
 
-# import csv
+# import csv - пакет треба імпортувати
 #
 # filename = "utils/Workbook1.csv"
 #
@@ -68,10 +69,11 @@
 # def read_csv_file(name):
 #     data = []
 #     with open(name, 'r') as f:
-#         reader = csv.reader(f, delimiter=";")
+#         reader = csv.reader(f, delimiter=";") щоб прочитати трбеа створити обєкт
+#         delimiter- розділювальний символ
 #         for row in reader:
-#             data.append(row)
-#     return data
+#             data.append(row) - добавить строчки
+#     return data прочитать по строчке ( видает лист в котором два листа)
 
 
 # def write_csv_file(name, data):
