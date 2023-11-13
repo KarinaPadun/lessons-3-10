@@ -132,13 +132,14 @@
 # NumPy, Pandas - бібліотеки Pandas -коли розрахунки (Дата аналітик)
 
 
-########## assert raise
+########## assert raise - допомагає відловлювати небажані результати, спеціально викликає помилку
 
 
 # def discount_price(price, discount):
 #     res = price - discount
 #     if res < 0:
-#         raise Exception("Type some text for error raise raise")
+#         raise Exception("Type some text for error raise raise") - використовується всередину функції,
+#         впаде всередині функції
 #     return res
 #
 #
@@ -147,7 +148,7 @@
 #
 # assert result > 0, "Type some text for error"
 #
-# print("ok")
+# print("ok") - видає контрольовану  помилку
 
 ####################### ООП ###############
 
