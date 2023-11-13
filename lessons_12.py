@@ -78,24 +78,24 @@
 #     ВИТЯГИВАЕТ ВСЕ ВСЕГДА СТРИНГОЙ!!
 
 
-# def write_csv_file(name, data):
+# def write_csv_file(name, data): - імя і те що записати
 #     with open(name, 'w') as f:
 #         writer = csv.writer(f, delimiter=";")
-#         # writer.writerow()
-#         writer.writerows(data)
+#         # writer.writerow() - декілька рядків
+#         writer.writerows(data) -додае весь обект
 #
 # data = read_csv_file(filename)
 # header = data.pop(0)
-# header.append("Sum")
+# header.append("Sum") - додаемо колонку сумма
 #
-# for row in data:
-#     row.append(float(row[1]) * float(row[2]))
+# for row in data:    row- рядок (стала назва)
+#     row.append(float(row[1]) * float(row[2])) - треба зробити інт,флоат щоб працювало
 #
 #
 # data = [header] + data
 # print(data)
 #
-# write_csv_file("utils/Workbook2.csv", data)
+# write_csv_file("utils/Workbook2.csv", data) - записати новий файл в папку ютілс Воркбук2
 
 
 # def read_csv_file_dict(name):
