@@ -76,8 +76,8 @@
 #     result = side_1 * side_2
 #     return result
 #
-# a = get_rectangle_square(2,4)
-# a = (lambda side_1, side_2: side_1 * side_2)(2,4)
+# a = get_rectangle_square(2,4) - буде лежати результат функції
+# a = (lambda side_1, side_2: side_1 * side_2)(2,4) - буде лежати результат функції
 #
 # print(get_rectangle_square(2,4))
 #
