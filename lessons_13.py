@@ -86,7 +86,7 @@
 #################################### Наслідування ##########################################
 
 # class ClassMaker
-class Animal:
+class Animal:  # класи пишуться в однині
 
     # def __init__(self, name):
     #     self.name = name
@@ -100,7 +100,9 @@ class Zoo:
         return "mealZoo"
 
 
-class Tiger(Animal, Zoo):           # MRO-2 MRO-3
+class Tiger(Animal, Zoo):           # MRO-2 треба якийсь метод, шукаемо не тільки на 1 рівні , а заходимо вглиб
+    # MRO-3 - більш ефективний, він буде шукати по шарах, з 1 на 2 рівень
+    # технологія наслідування класів
     """hhhh"""
     def __init__(self, name, color):
         self.name = name
