@@ -5,12 +5,12 @@
 # Атрибут класу
 # Атрибут екземпляру класса
 
-# class Person:
-#     name: str = "Jack"      # Атрибут класу
+# class Person: - назва верблюдом (камел кейс), функція - дієслово , змінні - іменники
+#     name: str = "Jack"      # Атрибут класу - характеристка классу , за замовчанням
 #     age: int = 18
 #
 #
-# person_1 = Person()         # Екземпляр класу
+# person_1 = Person()         # Екземпляр класу - копія яка відноситься до классу, буде мати всі властивості классу
 # # print(person_1.age)
 # person_1.gender = "female"           # Атрибут екземпляру класса
 # # print(person_1.age)
@@ -22,24 +22,30 @@
 # print(person_1.gender)
 
 # class Person:
-#     # def __new__(cls, *args, **kwargs):
+#     # def __new__(cls, *args, **kwargs): створює класс - краще не видозмінювати  , селф не існує на момент створення
 #     #     pass
-#     def __init__(self, name, age, gender):                      #один з двох методів ініціалізації(створення екземпляру)
-#         # self.first_name = name.split()[0]
-#         # self.last_name = name.split()[1]
-#         self.name = name
+#    def __init__(self, name, age, gender):                 #один з двох методів ініціалізації(створення екземпляру)
+#
+# __init__ - створити , запустити якийсь метод.Відпоідає за створення екземплярів, краще видозмінювати
+# та не переписувати
+
+#         # self.first_name = name.split()[0] - додати лише перше (імя)
+#         # self.last_name = name.split()[1] - додати лише друге (призвіще)
+#         self.name = name - кладемо данні
 #         self.age = age
 #         self.gender = gender
 #
-#     def __str__(self):                                          # магічний метод представлення в консоль(у вигляді строки)
-#         return f"I'm {self.name}, I'm {self.age} years old"
+#     def __str__(self):                       # магічний метод представлення в консоль(у вигляді строки)
+#     self - сутність. екземпляр классу з яким ми зараз працюєм
+#         return f"I'm {self.name}, I'm {self.age} years old" - витягуємо данні , лише видача
 #
 #     # def __repr__(self):                                       # магічний метод який презентує екземпляр класу
 #     #     return self.name
 #
 #     def make_name_upper(self):
 #         self.name = self.name.upper()
-#
+# NEW - створює класс - краще не видозмінювати
+# init - ініціалізує
 #
 # person_1 = Person("Nick", 24, "male")         # Екземпляр класу
 # person_2 = Person("Anna", 29, "female")         # Екземпляр класу
@@ -64,7 +70,7 @@
 # print(some_str, type(some_str))
 # some_str.upper()
 
-###### lambda #######
+###### lambda ####### - анонімна функція в пайтоні, видати можна лише 1 раз, не можна викликати
 
 # def get_rectangle_square(side_1, side_2):
 #     result = side_1 * side_2
