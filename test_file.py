@@ -1,38 +1,33 @@
-class DomainList:
-    def __init__(self, file_name):
-        self.file_name = file_name
-        self.domain_list = self.load_domains()
+class LastName:
+    def __init__(self, filename):
+        self.filename = filename
+        self.last_names = self.read_last_names()
 
-    def load_domains(self):
-        domain_list = []
+    def read_last_names(self):
+        last_names = []
+
         try:
-            with open(self.file_name, 'r') as my_file:
-                for line in my_file:
-                    line = line.strip()
-                    if line and not line.startswith('#'):
-                        domain_list.append(line.split('.')[-1])
-
+            with open(self.filename, 'r') as file:
+                for line in file:
+                    data = line.strip().split('\t')
+                    if len(data) > 1:
+                        last_name = data[1]
+                        last_names.append(last_name)
         except FileNotFoundError:
-            print(f"Файл '{self.file_name}' не знайдено")
+            print(f"Файл з прізвищами не знайдено.")
 
-        return domain_list
+        return last_names
 
-    def create_name_list(self):
-        if self.domain_list:
-            name_list = [name for name in self.domain_list]
-            return name_list
-        else:
-            print("Список порожній.")
-            return []
-
-    def print_domains(self):
-        if self.domain_list:
-            print(self.domain_list)
+    def print_last_names(self):
+        if self.last_names:
+            print(self.last_names)
         else:
             print("Список порожній.")
 
 
-filename = 'hom_1_1.py'
-domain_instance = DomainList(filename)
-name_list = domain_instance.create_name_list()
-print(name_list)
+# Перевірка, чи код викликається як скрипт, а не імпортується
+if __name__ == '__main__':
+    # Створення об'єкта класу LastName
+    result = LastName('hom_1_2.py')
+    # Виклик методу для виведення списку прізвищ
+    result.print_last_names()

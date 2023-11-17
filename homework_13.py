@@ -128,10 +128,11 @@ print(name_list)
 class LastName:
     def __init__(self, filename):
         self.filename = filename
-        self.last_names = self.last_names_file()
+        self.last_names = self.read_last_names()
 
-    def last_names_file(self):
+    def read_last_names(self):
         last_names = []
+
         try:
             with open(self.filename, 'r') as file:
                 for line in file:
@@ -140,7 +141,7 @@ class LastName:
                         last_name = data[1]
                         last_names.append(last_name)
         except FileNotFoundError:
-            print(f"Призвіще не знайдено")
+            print(f"Файл не знайдено")
 
         return last_names
 
@@ -150,9 +151,12 @@ class LastName:
         else:
             print("Список порожній.")
 
-filename = 'hom_1_2.py'
-result = LastName(filename)
-print(result)
+
+if __name__ == '__main__':
+    result = LastName( "hom_1_2.py")
+    result.print_last_names()
+
+
 
 
 
