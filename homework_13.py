@@ -125,6 +125,37 @@ print(name_list)
 # Кожен рядок файлу містить номер, прізвище, країну, кілька (таблиця взята з вікіпедії).
 # Розділювач - символ табуляції "t"
 
+class LastName:
+    def __init__(self, last_name):
+        self.last_name = last_name
+
+    def last_names_file(filename):
+        last_names = []
+
+        with open(filename, 'r') as file:
+            for line in file:
+                data = line.strip().split('\t')
+                if len(data) > 1:
+                    last_name = data[1]
+                    last_names.append(last_name)
+
+        return last_names
+    def print_last_names(self):
+        if self.last_name:
+            print(self.last_name)
+        else:
+            print("Список порожній.")
+
+
+filename = 'hom_1_2.py'
+result = LastName(filename)
+print(result)
+
+
+
+
+
+
 # 3. Написати метод екземпляра класу, який повертає список
 # словників виду {"date": date} у яких date - це дата з рядка (якщо є),
 # Наприклад [{"date": "1st January 1919"}, {"date": "8th February 1828"}, ...]
