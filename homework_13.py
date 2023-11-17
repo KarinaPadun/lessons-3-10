@@ -128,28 +128,31 @@ print(name_list)
 class LastName:
     def __init__(self, last_name):
         self.last_name = last_name
+        self.last_names = self.last_names_file()
 
     def last_names_file(self):
         last_names = []
-
-        with open(self.file_name, 'r') as file:
-            for line in file:
-                data = line.strip().split('\t')
-                if len(data) > 1:
-                    last_name = data[1]
-                    last_names.append(last_name)
+        try:
+            with open(self.filename, 'r') as file:
+                for line in file:
+                    data = line.strip().split('\t')
+                    if len(data) > 1:
+                        last_name = data[1]
+                        last_names.append(last_name)
+        except FileNotFoundError:
+            print(f"Призвіще не знайдено")
 
         return last_names
 
-        def print_last_names(self):
-        if self.last_name:
-            print(self.last_name)
+    def print_last_names(self):
+        if self.last_names:
+            print(self.last_names)
         else:
             print("Список порожній.")
 
 
-file_name = 'hom_1_2.py'
-result = LastName(file_name)
+filename = 'hom_1_2.py'
+result = LastName(filename)
 print(result)
 
 
