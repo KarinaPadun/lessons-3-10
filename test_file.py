@@ -17,14 +17,26 @@ class DomainList:
 
         return domain_list
 
+    def create_name_list(self):
+        if self.domain_list:
+            name_list = [name for name in self.domain_list]
+            return name_list
+        else:
+            print("Список порожній.")
+            return []
+
     def print_domains(self):
         if self.domain_list:
             print(self.domain_list)
         else:
-            print("Список імен порожній.")
+            print("Список порожній.")
 
 
 filename = 'hom_1_1.py'
 domain_instance = DomainList(filename)
-domain_instance.print_domains()
 
+# Виклик нового методу create_name_list
+name_list = domain_instance.create_name_list()
+
+# Вивід списку імен
+print(name_list)
