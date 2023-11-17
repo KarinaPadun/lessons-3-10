@@ -129,10 +129,10 @@ class LastName:
     def __init__(self, last_name):
         self.last_name = last_name
 
-    def last_names_file(filename):
+    def last_names_file(self):
         last_names = []
 
-        with open(filename, 'r') as file:
+        with open(self.file_name, 'r') as file:
             for line in file:
                 data = line.strip().split('\t')
                 if len(data) > 1:
@@ -140,15 +140,16 @@ class LastName:
                     last_names.append(last_name)
 
         return last_names
-    def print_last_names(self):
+
+        def print_last_names(self):
         if self.last_name:
             print(self.last_name)
         else:
             print("Список порожній.")
 
 
-filename = 'hom_1_2.py'
-result = LastName(filename)
+file_name = 'hom_1_2.py'
+result = LastName(file_name)
 print(result)
 
 

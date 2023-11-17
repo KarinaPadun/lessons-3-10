@@ -34,9 +34,5 @@ class DomainList:
 
 filename = 'hom_1_1.py'
 domain_instance = DomainList(filename)
-
-# Виклик нового методу create_name_list
 name_list = domain_instance.create_name_list()
-
-# Вивід списку імен
 print(name_list)
