@@ -157,8 +157,6 @@ if __name__ == '__main__':
     result.print_last_names()
 
 
-
-
 # 3. Написати метод екземпляра класу, який повертає список
 # словників виду {"date": date} у яких date - це дата з рядка (якщо є),
 # Наприклад [{"date": "1st January 1919"}, {"date": "8th February 1828"}, ...]
@@ -170,20 +168,18 @@ class Date:
 
     def dates_from_file(self):
         date_list = []
-
-    with open(filename, 'r') as file:
-        for line in file:
-            line = line.strip() # линия = линия в которой удаляем символи
-            if any(month in line for month in ["January", "February", "March",
+        with open(filename, 'r') as file:
+            for line in file:
+                line = line.strip()
+                if any(month in line for month in ["January", "February", "March",
                                                "April", "May", "June",
                                                "July", "August", "September",
                                                "October", "November", "December"]):
-                # тру если найдет месяц в линии из месяца в листе , в другом случае фолс
-                date_parts = line.split('-') # дата пари равна линии разделенной по -
-                if date_parts:
-                    date_list.append({"date": date_parts[0].strip()}) # дата лист добавляем дату и нулевой по инлексу
-                    # дату пари без символов
-                return date_list
+                    date_parts = line.split('-')
+                    if date_parts:
+                        date_list.append({"date": date_parts[0].strip()})
+                        return date_list
+
     def print_dates(self):
         if self.date_list:
             print(self.date_list)
@@ -192,6 +188,6 @@ class Date:
 
 
 if __name__ == '__main__':
-    result = Date( "hom_1_3.py")
+    result = Date("hom_1_3.py")
     result.print_dates()
 
