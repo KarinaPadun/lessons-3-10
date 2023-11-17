@@ -7,8 +7,8 @@ class FileName:
         self.file_name = file_name
 
 
-my_object = FileName("homework_13.py")
-print(my_object.file_name)
+my_file = FileName("homework_13.py")
+print(my_file.file_name)
 
 # 2.1 Написати метод екземпляра класу, який створює атрибут екземпляра класу
 # у вигляді списку рядків (назви повертати без крапки)
