@@ -1,6 +1,19 @@
 # Написати клас та реалізувати його методи: (основа – ДЗ № 10)
 
 # 1. Ініціалізація класу з одним параметром – ім'я файлу.
+
+class FileName:
+    def __init__(self, file_name):
+        self.file_name = file_name
+
+
+my_object = FileName("homework_13.py")
+print(my_object.file_name)
+
+# 2. Написати метод екземпляра класу, який створює атрибут екземпляра класу
+# у вигляді списку рядків (назви повертати без крапки)
+
+
 class DomainList:
     def __init__(self, file_name):
         self.file_name = file_name
@@ -31,7 +44,7 @@ filename = 'hom_1_1.py'
 domain_instance = DomainList(filename)
 domain_instance.print_domains()
 
-# 1.2
+# 2.2
 
 
 class DomainList:
@@ -65,10 +78,6 @@ filename = 'hom_1_1.py'
 domain_instance = DomainList(filename)
 domain_instance.print_domains()
 
-
-
-# 2. Написати метод екземпляра класу, який створює атрибут екземпляра класу
-# у вигляді списку рядків (назви повертати без крапки)
 
 # 2. Написати метод екземпляра класу, який повертає список усіх прізвищ із файлу.
 # Кожен рядок файлу містить номер, прізвище, країну, кілька (таблиця взята з вікіпедії).
