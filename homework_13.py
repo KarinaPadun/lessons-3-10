@@ -150,7 +150,6 @@ class LastName:
         else:
             print("Список порожній.")
 
-
 filename = 'hom_1_2.py'
 result = LastName(filename)
 print(result)
