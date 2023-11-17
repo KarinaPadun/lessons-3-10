@@ -126,8 +126,8 @@ print(name_list)
 # Розділювач - символ табуляції "t"
 
 class LastName:
-    def __init__(self, last_name):
-        self.last_name = last_name
+    def __init__(self, filename):
+        self.filename = filename
         self.last_names = self.last_names_file()
 
     def last_names_file(self):
