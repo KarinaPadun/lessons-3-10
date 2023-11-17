@@ -1,33 +1,34 @@
-class LastName:
+class Date:
     def __init__(self, filename):
         self.filename = filename
-        self.last_names = self.read_last_names()
+        self.date_list = self.dates_from_file()
 
-    def read_last_names(self):
-        last_names = []
+    def dates_from_file(self):
+        date_list = []
 
         try:
             with open(self.filename, 'r') as file:
                 for line in file:
-                    data = line.strip().split('\t')
-                    if len(data) > 1:
-                        last_name = data[1]
-                        last_names.append(last_name)
+                    line = line.strip()
+                    if any(month in line for month in ["January", "February", "March",
+                                               "April", "May", "June",
+                                               "July", "August", "September",
+                                               "October", "November", "December"]):
+                        date_parts = line.split('-')
+                        if date_parts:
+                            date_list.append({"date": date_parts[0].strip()})
         except FileNotFoundError:
-            print(f"Файл з прізвищами не знайдено.")
+            print(f"Файл не знайдено")
 
-        return last_names
+        return date_list
 
-    def print_last_names(self):
-        if self.last_names:
-            print(self.last_names)
+    def print_dates(self):
+        if self.date_list:
+            print(self.date_list)
         else:
             print("Список порожній.")
 
 
-# Перевірка, чи код викликається як скрипт, а не імпортується
 if __name__ == '__main__':
-    # Створення об'єкта класу LastName
-    result = LastName('hom_1_2.py')
-    # Виклик методу для виведення списку прізвищ
-    result.print_last_names()
+    result = Date("hom_1_3.py")
+    result.print_dates()

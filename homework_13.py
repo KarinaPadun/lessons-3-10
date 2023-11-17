@@ -168,17 +168,22 @@ class Date:
 
     def dates_from_file(self):
         date_list = []
-        with open(filename, 'r') as file:
-            for line in file:
-                line = line.strip()
-                if any(month in line for month in ["January", "February", "March",
+
+        try:
+            with open(self.filename, 'r') as file:
+                for line in file:
+                    line = line.strip()
+                    if any(month in line for month in ["January", "February", "March",
                                                "April", "May", "June",
                                                "July", "August", "September",
                                                "October", "November", "December"]):
-                    date_parts = line.split('-')
-                    if date_parts:
-                        date_list.append({"date": date_parts[0].strip()})
-                        return date_list
+                        date_parts = line.split('-')
+                        if date_parts:
+                            date_list.append({"date": date_parts[0].strip()})
+        except FileNotFoundError:
+            print(f"Файл не знайдено")
+
+        return date_list
 
     def print_dates(self):
         if self.date_list:
