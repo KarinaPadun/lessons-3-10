@@ -1,28 +1,38 @@
-class Date:
+class DateMod:
     def __init__(self, filename):
         self.filename = filename
-        self.date_list = self.dates_from_file()
+        self.date_list = self.process_authors_file()
 
-    def dates_from_file(self):
+    def process_authors_file(self):
         date_list = []
 
-        try:
-            with open(self.filename, 'r') as file:
-                for line in file:
-                    line = line.strip()
-                    if any(month in line for month in ["January", "February", "March",
-                                               "April", "May", "June",
-                                               "July", "August", "September",
-                                               "October", "November", "December"]):
-                        date_parts = line.split('-')
-                        if date_parts:
-                            date_list.append({"date": date_parts[0].strip()})
-        except FileNotFoundError:
-            print(f"Файл не знайдено")
+        month_mapping = {
+            "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+            "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+            "November": "11", "December": "12"
+        }
+
+        with open(self.filename, 'r') as file:
+            current_month = ""
+            for line in file:
+                line = line.strip()
+                if not line:
+                    continue
+                if line.isalpha():
+                    current_month = line
+                elif current_month:
+                    parts = line.split('-')
+                    if len(parts) >= 2:
+                        date_original = parts[0].strip()
+                        date_modified = date_original.replace('st', '').replace('nd', '').replace('rd', '').replace(
+                            'th', '')
+                        month_number = month_mapping.get(current_month, "00")
+                        date_modified = date_modified.replace(current_month, month_number)
+                        date_list.append({"date_original": date_original, "date_modified": date_modified})
 
         return date_list
 
-    def print_dates(self):
+    def print_mod_dates(self):
         if self.date_list:
             print(self.date_list)
         else:
@@ -30,5 +40,5 @@ class Date:
 
 
 if __name__ == '__main__':
-    result = Date("hom_1_3.py")
-    result.print_dates()
+    result = DateMod("hom_1_3.py")
+    result.print_mod_dates()
