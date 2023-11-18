@@ -156,6 +156,26 @@ if __name__ == '__main__':
     result = LastName( "hom_1_2.py")
     result.print_last_names()
 
+# 2. 2
+class LastName:
+    def __init__(self, filename):
+        self.filename = filename
+        self.last_names = self.read_last_names()
+
+    def read_last_names(self):
+        with open(self.filename, 'r') as file:
+            return [line.strip().split('\t')[1] for line in file if len(line.strip().split('\t')) > 1]
+
+    def print_last_names(self):
+        if self.last_names:
+            print(self.last_names)
+        else:
+            print("Список порожній.")
+
+
+if __name__ == '__main__':
+    result = LastName("hom_1_2.py")
+    result.print_last_names()
 
 # 3. Написати метод екземпляра класу, який повертає список
 # словників виду {"date": date} у яких date - це дата з рядка (якщо є),
