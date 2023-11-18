@@ -10,6 +10,29 @@ class FileName:
 my_file = FileName("homework_13.py")
 print(my_file.file_name)
 
+# 1.2 повертає імя файлів (без папок)
+
+
+class NameFile:
+
+    def __init__(self, file_name):
+        self.file_name = file_name
+
+    def names_of_directories(my_directory_path) -> dict:
+    if not os.path.exists(my_directory_path) or not os.path.isdir(my_directory_path):
+        return {"file_names": [], "dir_names": []}
+
+    items = os.listdir(my_directory_path)
+
+    file_names = [i for i in items if os.path.isfile(os.path.join(my_directory_path, i))]
+    dir_names = [i for i in items if os.path.isdir(os.path.join(my_directory_path, i))]
+
+    return {"file_names": file_names, "dir_names": dir_names}
+
+my_directory_path = '../lessons-3-10'
+result = names_of_directories(my_directory_path)
+print(result)
+
 # 2.1 Написати метод екземпляра класу, який створює атрибут екземпляра класу
 # у вигляді списку рядків (назви повертати без крапки)
 
