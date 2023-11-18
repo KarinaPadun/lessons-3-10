@@ -157,6 +157,8 @@ if __name__ == '__main__':
     result.print_last_names()
 
 # 2. 2
+
+
 class LastName:
     def __init__(self, filename):
         self.filename = filename
@@ -180,6 +182,7 @@ if __name__ == '__main__':
 # 3. Написати метод екземпляра класу, який повертає список
 # словників виду {"date": date} у яких date - це дата з рядка (якщо є),
 # Наприклад [{"date": "1st January 1919"}, {"date": "8th February 1828"}, ...]
+
 
 class Date:
     def __init__(self, filename):
