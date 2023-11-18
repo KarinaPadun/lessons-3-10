@@ -20,8 +20,8 @@ class NameFile:
 
 directory_path = '../lessons-3-10'
 result = NameFile(directory_path)
-files_result = result.names_of_files()
-print(files_result)
+res = result.names_of_files()
+print(res)
 
 # 1.2 повертає імя файлів та папок
 
@@ -107,7 +107,6 @@ class DomainList:
             print(self.domain_list)
         else:
             print("Список порожній.")
-
 
 
 filename = 'hom_1_1.py'
