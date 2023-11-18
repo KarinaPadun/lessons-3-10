@@ -1,7 +1,29 @@
 # Написати клас та реалізувати його методи: (основа – ДЗ № 10)
-
 # 1. Ініціалізація класу з одним параметром – ім'я файлу.
+# повертає імя файлів (без папок)
+import os
 
+
+class NameFile:
+    def __init__(self, directory_path):
+        self.directory_path = directory_path
+
+    def names_of_files(self):
+        if not os.path.exists(self.directory_path) or not os.path.isdir(self.directory_path):
+            return {"file_names": []}
+
+        items = os.listdir(self.directory_path)
+        file_names = [i for i in items if os.path.isfile(os.path.join(self.directory_path, i))]
+
+        return {"file_names": file_names}
+
+
+directory_path = '../lessons-3-10'
+result = NameFile(directory_path)
+files_result = result.names_of_files()
+print(files_result)
+
+# 1.2 повертає імя файлів та папок
 class FileName:
     def __init__(self, file_name):
         self.file_name = file_name
@@ -9,29 +31,6 @@ class FileName:
 
 my_file = FileName("homework_13.py")
 print(my_file.file_name)
-
-# 1.2 повертає імя файлів (без папок)
-
-
-class NameFile:
-
-    def __init__(self, file_name):
-        self.file_name = file_name
-
-    def names_of_directories(my_directory_path) -> dict:
-    if not os.path.exists(my_directory_path) or not os.path.isdir(my_directory_path):
-        return {"file_names": [], "dir_names": []}
-
-    items = os.listdir(my_directory_path)
-
-    file_names = [i for i in items if os.path.isfile(os.path.join(my_directory_path, i))]
-    dir_names = [i for i in items if os.path.isdir(os.path.join(my_directory_path, i))]
-
-    return {"file_names": file_names, "dir_names": dir_names}
-
-my_directory_path = '../lessons-3-10'
-result = names_of_directories(my_directory_path)
-print(result)
 
 # 2.1 Написати метод екземпляра класу, який створює атрибут екземпляра класу
 # у вигляді списку рядків (назви повертати без крапки)
