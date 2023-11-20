@@ -1,64 +1,86 @@
 import random
 import json
+import os
 
 
-class Trader:
-    def __init__(self, config_path):
-        with open(config_path) as f:
-            config = json.load(f)
-        self.delta = config["delta"]
-        self.rate = 36.00
-        self.uah_balance = 10000.00
-        self.usd_balance = 0.00
+def get_rate(state):
+    return state["rate"]
 
-    def get_rate(self):
-        return self.rate
 
-    def get_available_balance(self):
-        return {"USD": self.usd_balance, "UAH": self.uah_balance}
+def get_available_balance(state):
+    return {"UAH": state["uah_balance"], "USD": state["usd_balance"]}
 
-    def buy(self, amount):
-        if self.uah_balance < amount * self.rate:
-            print("UNAVAILABLE, REQUIRED BALANCE UAH {} , AVAILABLE {}".format(amount * self.rate, self.uah_balance))
-            return
-        self.uah_balance -= amount * self.rate
-        self.usd_balance += amount
 
-    def sell(self, amount):
-        if self.usd_balance < amount:
-            print("UNAVAILABLE, REQUIRED BALANCE USD {} , AVAILABLE {}".format(amount, self.usd_balance))
-            return
-        self.usd_balance -= amount
-        self.uah_balance += amount / self.rate
+def buy_usd(state, amount):
+    if amount > state["uah_balance"]:
+        raise ValueError("UNAVAILABLE, REQUIRED BALANCE UAH {}".format(amount))
 
-    def next_rate(self):
-        self.rate = self.rate + random.uniform(-self.delta, self.delta)
+    state["uah_balance"] -= amount
+    state["usd_balance"] += amount / state["rate"]
 
-    def restart(self):
-        self.rate = 36.00
-        self.uah_balance = 10000.00
-        self.usd_balance = 0.00
+
+def sell_usd(state, amount):
+    if amount > state["usd_balance"]:
+        raise ValueError("UNAVAILABLE, REQUIRED BALANCE USD {}".format(amount))
+
+    state["uah_balance"] += amount * state["rate"]
+    state["usd_balance"] -= amount
+
+
+def next_rate(state):
+    state["rate"] += random.uniform(-state["delta"], state["delta"])
+
+
+def restart(state):
+    state["rate"] = 36
+    state["uah_balance"] = 10000
+    state["usd_balance"] = 0
+
+
+def load_state(filename):
+    if not os.path.isfile(filename):
+        with open(filename, "w") as f:
+            json.dump({
+                "rate": 36,
+                "uah_balance": 10000,
+                "usd_balance": 0,
+                "delta": 0.5
+            }, f)
+
+    with open(filename, "r") as f:
+        state = json.load(f)
+
+    if "delta" not in state:
+        state["delta"] = 0.5
+
+    return state
+
+
+
+def save_state(state, filename):
+    with open(filename, "w") as f:
+        json.dump(state, f)
 
 
 def main():
-    trader = Trader("config.json")
+    state = load_state("state.json")
 
     while True:
         command = input("Введіть команду: ")
         if command == "RATE":
-            print(trader.get_rate())
+            print("Курс: {}".format(get_rate(state)))
         elif command == "AVAILABLE":
-            print(trader.get_available_balance())
+            print(get_available_balance(state))
         elif command.startswith("BUY"):
-            amount = float(command[4:])
-            trader.buy(amount)
+            amount = int(command[4:])
+            buy_usd(state, amount)
         elif command.startswith("SELL"):
-            amount = float(command[5:])
-            trader.sell(amount)
+            amount = int(command[5:])
+            sell_usd(state, amount)
         elif command == "NEXT":
-            trader.next_rate()
+            next_rate(state)
         elif command == "RESTART":
-            trader.restart()
+            restart(state)
         else:
             print("Невідома команда")
 

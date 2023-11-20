@@ -1,48 +1,83 @@
-Валютний трейдер USD-UAH
-Складність 4/4
-
-Реалізувати функціонал обміну USD та UAH валют за допомогою CLI Python.
-
-User Story:
-Початкові умови (можна винести у config.json):
-     курс: 36.00
-     на гривневому рахунку: 10000.00 UAH
-     на доларовому рахунку: 0.00 USD
-     дельта: 0.5
-
-Правила зміни курсу долара:
-     випадковим чином у діапазоні:
-     price - delta <new_price <price + delta (у прикладі від 35.50 до 36.50)
-
-Всі розрахунки ведемо з точністю 2 знаки після коми!
-
-Аргументи запуску файлу:
-     RATE – отримання поточного курсу (USD/UAH)
-     AVAILABLE - отримання залишків за рахунками
-     BUY XXX - покупка xxx доларів. За відсутності гирвень для покупки виводить повідомлення типу UNAVAILABLE, REQUIRED BALANCE UAH 2593.00, AVAILABLE 1000.00
-     SELL XXX - продаж доларів. У разі відсутності доларів для продажу виводить повідомлення типу UNAVAILABLE, REQUIRED BALANCE USD 200.00, AVAILABLE 135.00
-     BUY ALL – купівля доларів на всі можливі гривні.
-     SELL ALL - продаж всіх доларів.
-     NEXT – отримати наступний курс
-     RESTART - розпочати гру з початку (з початковими умовами)
-
-Tech Requirements:
-Мінімум три файли: 1) trader.py, 2) config.json 3) Стан системи (можна з історією дій) – свою назву
-Стан системи (курс і доступний баланс кожної валюти) зчитується і зберігається у окремому файлі (формат файлу не розсуд розробника).
-config.json
-     Поля:
-         "delta": 0.5
+import random
+import json
+import os
 
 
-Приклад використання:
->>>python trader.py NEXT
->>>python trader.py RATE
-26.27
->>>python trader.py NEXT
->>>python trader.py NEXT
->>>python trader.py NEXT
->>>python trader.py RATE
-25.93
->>>python trader.py BUY 100
->>>python trader.py AVAILABLE
-USD 100.0 UAH 7407.0
+def get_rate(state):
+    return state["rate"]
+
+
+def get_available_balance(state):
+    return {"UAH": state["uah_balance"], "USD": state["usd_balance"]}
+
+
+def buy_usd(state, amount):
+    if amount > state["uah_balance"]:
+        raise ValueError("UNAVAILABLE, REQUIRED BALANCE UAH {}".format(amount))
+
+    state["uah_balance"] -= amount
+    state["usd_balance"] += amount / state["rate"]
+
+
+def sell_usd(state, amount):
+    if amount > state["usd_balance"]:
+        raise ValueError("UNAVAILABLE, REQUIRED BALANCE USD {}".format(amount))
+
+    state["uah_balance"] += amount * state["rate"]
+    state["usd_balance"] -= amount
+
+
+def next_rate(state):
+    state["rate"] += random.uniform(-state["delta"], state["delta"])
+
+
+def restart(state):
+    state["rate"] = 36
+    state["uah_balance"] = 10000
+    state["usd_balance"] = 0
+
+
+def load_state(filename):
+    if not os.path.isfile(filename):
+        with open(filename, "w") as f:
+            json.dump({
+                "rate": 36,
+                "uah_balance": 10000,
+                "usd_balance": 0
+            }, f)
+
+    with open(filename, "r") as f:
+        state = json.load(f)
+    return state
+
+
+def save_state(state, filename):
+    with open(filename, "w") as f:
+        json.dump(state, f)
+
+
+def main():
+    state = load_state("state.json")
+
+    while True:
+        command = input("Введіть команду: ")
+        if command == "RATE":
+            print("Курс: {}".format(get_rate(state)))
+        elif command == "AVAILABLE":
+            print(get_available_balance(state))
+        elif command.startswith("BUY"):
+            amount = int(command[4:])
+            buy_usd(state, amount)
+        elif command.startswith("SELL"):
+            amount = int(command[5:])
+            sell_usd(state, amount)
+        elif command == "NEXT":
+            next_rate(state)
+        elif command == "RESTART":
+            restart(state)
+        else:
+            print("Невідома команда")
+
+
+if __name__ == "__main__":
+    main()

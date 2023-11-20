@@ -1,58 +1,74 @@
-# история системи сколько денег сколько куплено какой курс
-# Стан системи (курс і доступний баланс кожної валюти) зчитується і зберігається
-# у окремому файлі (формат файлу не розсуд розробника).
-import argparse
-import json
 import random
-import os
+import json
 
 
-# Завантаження конфігурації з файлу
-def load_config():
-    with open('config.json', 'r') as file:
-        return json.load(file)
+def get_rate(state):
+    return state["rate"]
 
 
-# Отримання поточного курсу
-def get_current_rate(config):
-    return round(config['rate'] + random.uniform(-config['delta'], config['delta']), 2)
+def get_available_balance(state):
+    return {"UAH": state["uah_balance"], "USD": state["usd_balance"]}
 
 
-# Збереження стану системи у файл
-def save_system_state(system_state):
-    with open('system_state.txt', 'w') as file:
-        file.write(json.dumps(system_state))
+def buy_usd(state, amount):
+    if amount > state["uah_balance"]:
+        raise ValueError("UNAVAILABLE, REQUIRED BALANCE UAH {}".format(amount))
+
+    state["uah_balance"] -= amount
+    state["usd_balance"] += amount / state["rate"]
 
 
-# Завантаження стану системи з файлу
-def load_system_state():
-    if os.path.exists('system_state.txt'):
-        with open('system_state.txt', 'r') as file:
-            return json.load(file)
-    else:
-        return {
-            'rate': 36.00,
-            'balance_uah': 10000.00,
-            'balance_usd': 0.00
-        }
+def sell_usd(state, amount):
+    if amount > state["usd_balance"]:
+        raise ValueError("UNAVAILABLE, REQUIRED BALANCE USD {}".format(amount))
+
+    state["uah_balance"] += amount * state["rate"]
+    state["usd_balance"] -= amount
 
 
-# Покупка доларів
-def buy_dollars(amount, config, system_state):
-    required_amount = amount / get_current_rate(config)
-    if system_state['balance_uah'] >= required_amount:
-        system_state['balance_uah'] -= required_amount
-        system_state['balance_usd'] += amount
-        return True
-    else:
-        print(f'UNAVAILABLE, REQUIRED BALANCE UAH {required_amount:.2f}, AVAILABLE {system_state["balance_uah"]:.2f}')
-        return False
+def next_rate(state):
+    state["rate"] += random.uniform(-state["delta"], state["delta"])
 
 
-# Продаж доларів
-def sell_dollars(amount, config, system_state):
-    required_amount = amount * get_current_rate(config)
-    if system_state['balance_usd'] >= amount:
-        system_state['balance_uah'] += required_amount
-        system_state['balance_usd'] -= amount
+def restart(state):
+    state["rate"] = 36
+    state["uah_balance"] = 10000
+    state["usd_balance"] = 0
 
+
+def load_state(filename):
+    with open(filename, "r") as f:
+        state = json.load(f)
+    return state
+
+
+def save_state(state, filename):
+    with open(filename, "w") as f:
+        json.dump(state, f)
+
+
+def main():
+    state = load_state("state.json")
+
+    while True:
+        command = input("Введіть команду: ")
+        if command == "RATE":
+            print("Курс: {}".format(get_rate(state)))
+        elif command == "AVAILABLE":
+            print(get_available_balance(state))
+        elif command.startswith("BUY"):
+            amount = int(command[4:])
+            buy_usd(state, amount)
+        elif command.startswith("SELL"):
+            amount = int(command[5:])
+            sell_usd(state, amount)
+        elif command == "NEXT":
+            next_rate(state)
+        elif command == "RESTART":
+            restart(state)
+        else:
+            print("Невідома команда")
+
+
+if __name__ == "__main__":
+    main()
