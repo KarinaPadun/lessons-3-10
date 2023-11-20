@@ -117,3 +117,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    def sell_all(self):
+        amount = self.usd_balance
+        self.sell(amount)

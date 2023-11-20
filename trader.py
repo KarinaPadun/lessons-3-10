@@ -48,7 +48,11 @@ class Trader:
 
     def sell_all(self):
         amount = self.usd_balance
-        self.sell(amount)
+        self.usd_balance = 0
+        uah_amount = amount * self.rate
+        self.uah_balance += uah_amount
+        self.save_to_history("SELL", amount)
+        return uah_amount
 
     def next_rate(self):
         self.rate = round(self.rate + random.uniform(-self.delta, self.delta), 2)
