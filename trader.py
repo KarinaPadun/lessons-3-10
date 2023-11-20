@@ -112,7 +112,7 @@ def main():
             print("Unknown")
 
 
-...
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Currency Trader")
