@@ -1,29 +1,7 @@
-from argparse import ArgumentParser
-
-args = ArgumentParser()
-
-args.add_argument("RATE", type=str)
-args.add_argument("AVAILABLE", type=str)
-args.add_argument("BUY XXX", type=str)
-args.add_argument("SELL XXX", type=str)
-args.add_argument("BUY ALL", type=str)
-args.add_argument("SELL ALL", type=str)
-args.add_argument("NEXT", type=str)
-args.add_argument("RESTART", type=str)
-
-
-def buy(self, amount):
-    if self.uah_balance < amount * self.rate:
-        print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f} , AVAILABLE {self.uah_balance: .2f}")
-        return
-    self.uah_balance -= amount * self.rate
-    self.usd_balance += amount
-    self.save_to_history("BUY", amount)
-
-
 import random
 import json
 from datetime import datetime
+import argparse
 
 
 class Trader:
@@ -35,11 +13,12 @@ class Trader:
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
         self.history_path = history_path
+        self.history = []
 
     def save_to_history(self, action, amount):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open(self.history_path, 'a') as history_file:
-            history_file.write(f"{timestamp} - {action} {amount} USD\n")
+        transaction = {"timestamp": timestamp, "action": action, "amount": amount}
+        self.history.append(transaction)
 
     def get_rate(self):
         return round(self.rate, 2)
@@ -48,8 +27,6 @@ class Trader:
         return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
 
     def buy(self, amount):
-        if isinstance(amount, str):
-            amount = self.uah_balance / self.rate
         if self.uah_balance < amount * self.rate:
             print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f} , AVAILABLE {self.uah_balance:.2f}")
             return
@@ -71,7 +48,11 @@ class Trader:
 
     def sell_all(self):
         amount = self.usd_balance
-        self.sell(amount)
+        self.usd_balance = 0
+        uah_amount = amount * self.rate
+        self.uah_balance += uah_amount
+        self.save_to_history("SELL", amount)
+        return uah_amount
 
     def next_rate(self):
         self.rate = round(self.rate + random.uniform(-self.delta, self.delta), 2)
@@ -80,47 +61,106 @@ class Trader:
         self.rate = 36.00
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
+        self.history = []
 
 
 def main():
-    trader = Trader("config.json", "history.txt")
+    parser = argparse.ArgumentParser(description="Currency Trader")
+    parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
+    parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
+    args = parser.parse_args()
 
-    print("Початкові умови:")
-    print("Курс: {:.2f}".format(trader.rate))
-    print("Гривневий рахунок: {:.2f} UAH".format(trader.uah_balance))
-    print("Доларовий рахунок: {:.2f} USD".format(trader.usd_balance))
-    print("Дельта: {:.2f}".format(trader.delta))
+    trader = Trader(args.config, args.history)
+
+    print("Initial conditions:")
+    print("Rate:", trader.get_rate())
+    print("UAH balance:", trader.get_available_balance()["UAH"])
+    print("USD balance:", trader.get_available_balance()["USD"])
+    print("Delta:", trader.delta)
 
     while True:
-        command = input("Введіть команду: ")
+        command = input("Enter command: ")
         if command == "RATE":
             print(trader.get_rate())
         elif command == "AVAILABLE":
             print(trader.get_available_balance())
         elif command.startswith("BUY"):
-            amount = float(command[4:])
-            trader.buy(amount)
+            try:
+                amount = float(command[4:])
+            except ValueError:
+                if command == "BUY ALL":
+                    trader.buy_all()
+                else:
+                    print("Invalid amount format")
+            else:
+                trader.buy(amount)
         elif command.startswith("SELL"):
-            amount = float(command[5:])
-            trader.sell(amount)
-        elif command == "BUY ALL":
-            trader.buy_all()
-        elif command == "SELL ALL":
-            trader.sell_all()
+            try:
+                amount = float(command[5:])
+            except ValueError:
+                if command == "SELL ALL":
+                    trader.sell_all()
+                else:
+                    print("Invalid amount format")
+            else:
+                trader.sell(amount)
         elif command == "NEXT":
             trader.next_rate()
         elif command == "RESTART":
             trader.restart()
         else:
-            print("Невідома команда")
+            print("Unknown")
+
+
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Currency Trader")
+    parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
+    parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
+    args = parser.parse_args()
 
+    trader = Trader(args.config, args.history)
 
-    def sell_all(self):
-        amount = self.usd_balance
-        self.sell(amount)
+    print("Initial conditions:")
+    print("Rate:", trader.get_rate())
+    print("UAH balance:", trader.get_available_balance()["UAH"])
+    print("USD balance:", trader.get_available_balance()["USD"])
+    print("Delta:", trader.delta)
+
+    while True:
+        command = input("Enter command: ")
+        if command == "RATE":
+            print(trader.get_rate())
+        elif command == "AVAILABLE":
+            print(trader.get_available_balance())
+        elif command.startswith("BUY"):
+            try:
+                amount = float(command[4:])
+            except ValueError:
+                if command == "BUY ALL":
+                    trader.buy_all()
+                else:
+                    print("Invalid amount format")
+            else:
+                trader.buy(amount)
+        elif command.startswith("SELL"):
+            try:
+                amount = float(command[5:])
+            except ValueError:
+                if command == "SELL ALL":
+                    trader.sell_all()
+                else:
+                    print("Invalid amount format")
+            else:
+                trader.sell(amount)
+        elif command == "NEXT":
+            trader.next_rate()
+        elif command == "RESTART":
+            trader.restart()
+            with open(args.history, "w") as history_file:
+                history_file.write("")
+        else:
+            print("Unknown command")
 
 
