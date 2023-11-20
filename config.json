@@ -1,9 +1,3 @@
 {
-    "initial_conditions": {
-        "rate": 36.00,
-        "balance_uah": 10000.00,
-        "balance_usd": 0.00
-    },
     "delta": 0.5
 }
-
