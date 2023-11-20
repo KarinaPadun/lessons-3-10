@@ -56,6 +56,13 @@ def load_state(filename):
     return state
 
 
+def buy_all(self):
+    self.buy(self.uah_balance / self.rate)
+
+
+def sell_all(self):
+    self.sell(self.usd_balance)
+
 
 def save_state(state, filename):
     with open(filename, "w") as f:

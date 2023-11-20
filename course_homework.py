@@ -1,83 +1,71 @@
-import random
+import argparse
 import json
-import os
+import random
+from datetime import datetime
 
+def load_config():
+    with open('config.json', 'r') as file:
+        return json.load(file)
 
-def get_rate(state):
-    return state["rate"]
+def save_system_state(system_state):
+    with open('system_state.json', 'w') as file:
+        json.dump(system_state, file)
 
+def load_system_state():
+    if not os.path.exists('system_state.json'):
+        return {
+            'rate': 36.00,
+            'balance_uah': 10000.00,
+            'balance_usd': 0.00
+        }
 
-def get_available_balance(state):
-    return {"UAH": state["uah_balance"], "USD": state["usd_balance"]}
+    with open('system_state.json', 'r') as file:
+        return json.load(file)
 
-
-def buy_usd(state, amount):
-    if amount > state["uah_balance"]:
-        raise ValueError("UNAVAILABLE, REQUIRED BALANCE UAH {}".format(amount))
-
-    state["uah_balance"] -= amount
-    state["usd_balance"] += amount / state["rate"]
-
-
-def sell_usd(state, amount):
-    if amount > state["usd_balance"]:
-        raise ValueError("UNAVAILABLE, REQUIRED BALANCE USD {}".format(amount))
-
-    state["uah_balance"] += amount * state["rate"]
-    state["usd_balance"] -= amount
-
-
-def next_rate(state):
-    state["rate"] += random.uniform(-state["delta"], state["delta"])
-
-
-def restart(state):
-    state["rate"] = 36
-    state["uah_balance"] = 10000
-    state["usd_balance"] = 0
-
-
-def load_state(filename):
-    if not os.path.isfile(filename):
-        with open(filename, "w") as f:
-            json.dump({
-                "rate": 36,
-                "uah_balance": 10000,
-                "usd_balance": 0
-            }, f)
-
-    with open(filename, "r") as f:
-        state = json.load(f)
-    return state
-
-
-def save_state(state, filename):
-    with open(filename, "w") as f:
-        json.dump(state, f)
-
+# Додайте інші функції для обміну валют, отримання балансу і т.д.
 
 def main():
-    state = load_state("state.json")
+    parser = argparse.ArgumentParser(description="Currency Trader CLI")
 
-    while True:
-        command = input("Введіть команду: ")
-        if command == "RATE":
-            print("Курс: {}".format(get_rate(state)))
-        elif command == "AVAILABLE":
-            print(get_available_balance(state))
-        elif command.startswith("BUY"):
-            amount = int(command[4:])
-            buy_usd(state, amount)
-        elif command.startswith("SELL"):
-            amount = int(command[5:])
-            sell_usd(state, amount)
-        elif command == "NEXT":
-            next_rate(state)
-        elif command == "RESTART":
-            restart(state)
+    parser.add_argument("action", choices=['RATE', 'AVAILABLE', 'BUY', 'SELL', 'BUY_ALL', 'SELL_ALL', 'NEXT', 'RESTART'], help="Action to perform")
+    parser.add_argument("amount", nargs='?', type=float, default=None, help="Amount for BUY/SELL actions")
+
+    args = parser.parse_args()
+
+    config = load_config()
+    system_state = load_system_state()
+
+    if args.action == 'RATE':
+        print(get_current_rate(config))
+    elif args.action == 'AVAILABLE':
+        print_available_balance(system_state)
+    elif args.action == 'BUY':
+        if args.amount is not None:
+            buy_dollars(args.amount, config, system_state)
+            save_system_state(system_state)
         else:
-            print("Невідома команда")
-
+            print('Invalid command. Usage: BUY XXX')
+    elif args.action == 'SELL':
+        if args.amount is not None:
+            sell_dollars(args.amount, config, system_state)
+            save_system_state(system_state)
+        else:
+            print('Invalid command. Usage: SELL XXX')
+    elif args.action == 'BUY_ALL':
+        amount = system_state['balance_uah'] * get_current_rate(config)
+        buy_dollars(amount, config, system_state)
+        save_system_state(system_state)
+    elif args.action == 'SELL_ALL':
+        amount = system_state['balance_usd']
+        sell_dollars(amount, config, system_state)
+        save_system_state(system_state)
+    elif args.action == 'NEXT':
+        get_next_rate(config)
+        save_system_state(system_state)
+    elif args.action == 'RESTART':
+        system_state = restart_system()
+    else:
+        print('Invalid action. Please enter a valid action.')
 
 if __name__ == "__main__":
     main()
