@@ -25,8 +25,10 @@ class Trader:
         return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
 
     def buy(self, amount):
+        if isinstance(amount, str):
+            amount = self.uah_balance / self.rate
         if self.uah_balance < amount * self.rate:
-            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f} , AVAILABLE {self.uah_balance: .2f}")
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f} , AVAILABLE {self.uah_balance:.2f}")
             return
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
