@@ -1,4 +1,5 @@
 import random
+import random
 import json
 from datetime import datetime
 import argparse
@@ -62,19 +63,14 @@ class Trader:
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
         self.history = []
-
-
 def main():
     parser = argparse.ArgumentParser(description="Currency Trader")
     parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
     parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
     parser.add_argument("command_1", type=str,
                         choices=["RATE", "AVAILABLE", "BUY", "SELL", "BUY_ALL", "SELL_ALL", "NEXT", "RESTART"],
-                        help="Command to execute", required=True)
+                        help="Command to execute")
     parser.add_argument("command_2", nargs="?", type=float, help="Second command (optional)")
-    parser.add_argument("--command", type=str, required=True, help="Command to execute")
-    parser.add_argument("--command", type=str, help="Command to execute")
-
     args = parser.parse_args()
 
     trader = Trader(args.config, args.history)
@@ -108,10 +104,8 @@ def main():
     else:
         print("Unknown command")
 
-
 if __name__ == "__main__":
     main()
-
 
 
 
