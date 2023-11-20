@@ -13,7 +13,7 @@ class Trader:
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
         self.history_path = history_path
-        self.history = []  # List to store transaction history
+        self.history = []
 
     def save_to_history(self, action, amount):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -61,7 +61,7 @@ class Trader:
         self.rate = 36.00
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
-        self.history = []  # Clear transaction history on restart
+        self.history = []
 
 
 def main():
