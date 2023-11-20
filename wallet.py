@@ -1,4 +1,5 @@
 import argparse
+import json
 
 class Trader:
     def __init__(self, rate, uah_balance, usd_balance, delta):
@@ -15,14 +16,14 @@ class Trader:
 
     def buy(self, amount):
         if self.uah_balance < amount * self.rate:
-            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f}, AVAILABLE {self.uah_balance:.2f}")
+            print(f"Недостатньо коштів, потрібна сума UAH {amount * self.rate:.2f}, доступні {self.uah_balance:.2f}")
         else:
             self.uah_balance -= amount * self.rate
             self.usd_balance += amount
 
     def sell(self, amount):
         if self.usd_balance < amount:
-            print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f}, AVAILABLE {self.usd_balance:.2f}")
+            print(f"Недостатньо коштів, потрібна сума USD {amount:.2f}, доступні {self.usd_balance:.2f}")
         else:
             self.usd_balance -= amount
             self.uah_balance += amount / self.rate
@@ -38,56 +39,49 @@ class Trader:
         self.rate = round(self.rate + random.uniform(-self.delta, self.delta), 2)
 
     def restart(self):
+        with open("history.txt", "w") as f:
+            f.truncate(0)
         self.rate = 36.00
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
 
 def main():
-    parser = argparse.ArgumentParser(description="Currency Trader CLI")
-    parser.add_argument("command", type=str, choices=["RATE", "AVAILABLE", "BUY", "SELL", "NEXT", "RESTART"], help="Command to execute")
-    parser.add_argument("command_2", nargs="?", type=str, help="Second command (optional)")
-
-    args = parser.parse_args()
+    parser = argparse.ArgumentParser(description="Клієнтська консоль для торговця валютою")
+    parser.add_argument("command_type", type=str, choices=["RATE", "AVAILABLE", "BUY", "SELL", "NEXT", "RESTART"], help="Команда для виконання")
 
     # Початкові умови
-    initial_rate = 36.00
-    initial_uah_balance = 10000.00
-    initial_usd_balance = 0.00
-    initial_delta = 0.5
+    with open("config.json", "r") as f:
+        config = json.load(f)
+    initial_rate = config["rate"]
+    initial_uah_balance = config["uah_balance"]
+    initial_usd_balance = config["usd_balance"]
+    initial_delta = config["delta"]
 
     trader = Trader(initial_rate, initial_uah_balance, initial_usd_balance, initial_delta)
 
     # Виконання команд
-    if args.command == "RATE":
-        print(trader.get_rate())
-    elif args.command == "AVAILABLE":
-        print(trader.get_available_balance())
-    elif args.command == "BUY":
-        if args.command_2 == "ALL":
-            trader.buy_all()
-        elif args.command_2 is not None:
-            try:
-                amount = float(args.command_2)
-            except ValueError:
-                print("Invalid amount format")
-            else:
-                trader.buy(amount)
-    elif args.command == "SELL":
-        if args.command_2 == "ALL":
-            trader.sell_all()
-        elif args.command_2 is not None:
-            try:
-                amount = float(args.command_2)
-            except ValueError:
-                print("Invalid amount format")
-            else:
-                trader.sell(amount)
-    elif args.command == "NEXT":
-        trader.next_rate()
-    elif args.command == "RESTART":
-        trader.restart()
-    else:
-        print("Unknown command")
+    commands = {
+        "RATE": trader.get_rate,
+        "AVAILABLE": trader.get_available_balance,
+        "BUY": lambda amount: trader.buy(amount),
+        "SELL": lambda amount: trader.sell(amount),
+        "NEXT": trader.next_rate,
+        "RESTART": trader.restart,
+    }
 
-if __name__ == "__main__":
-    main()
+    # Фіксація дій у файлі
+    with open("history.txt", "a") as f:
+        def log(command, result):
+            f.write(f"{command}: {result}\n")
+
+        try:
+            result = commands[parser.parse_args().command_type](1)
+        except KeyError as e:
+            print(f"Невідома команда {parser.parse_args().command_type}")
+        except ValueError as e:
+            print(e)
+        else:
+            log(parser.parse_args().command_type, result)
+            print(f"Команда {parser.parse_args().command_type}: {result}")
+
+
