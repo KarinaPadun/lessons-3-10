@@ -1,35 +1,44 @@
 import random
 import json
+from datetime import datetime
 
 
 class Trader:
-    def __init__(self, config_path):
+    def __init__(self, config_path, history_path):
         with open(config_path) as f:
             config = json.load(f)
         self.delta = config["delta"]
         self.rate = 36.00
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
+        self.history_path = history_path
+
+    def save_to_history(self, action, amount):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(self.history_path, 'a') as history_file:
+            history_file.write(f"{timestamp} - {action} {amount} USD\n")
 
     def get_rate(self):
-        return self.rate
+        return round(self.rate, 2)
 
     def get_available_balance(self):
-        return {"USD": self.usd_balance, "UAH": self.uah_balance}
+        return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
 
     def buy(self, amount):
         if self.uah_balance < amount * self.rate:
-            print("UNAVAILABLE, REQUIRED BALANCE UAH {} , AVAILABLE {}".format(amount * self.rate, self.uah_balance))
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f} , AVAILABLE {self.uah_balance: .2f}")
             return
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
+        self.save_to_history("BUY", amount)
 
     def sell(self, amount):
         if self.usd_balance < amount:
-            print("UNAVAILABLE, REQUIRED BALANCE USD {} , AVAILABLE {}".format(amount, self.usd_balance))
+            print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f} , AVAILABLE {self.usd_balance:.2f}")
             return
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
+        self.save_to_history("SELL", amount)
 
     def buy_all(self):
         amount = self.uah_balance / self.rate
@@ -40,7 +49,7 @@ class Trader:
         self.sell(amount)
 
     def next_rate(self):
-        self.rate = self.rate + random.uniform(-self.delta, self.delta)
+        self.rate = round(self.rate + random.uniform(-self.delta, self.delta), 2)
 
     def restart(self):
         self.rate = 36.00
@@ -49,13 +58,13 @@ class Trader:
 
 
 def main():
-    trader = Trader("config.json")
+    trader = Trader("config.json", "history.txt")
 
     print("Початкові умови:")
-    print("Курс: {}".format(trader.rate))
-    print("Гривневий рахунок: {} UAH".format(trader.uah_balance))
-    print("Доларовий рахунок: {} USD".format(trader.usd_balance))
-    print("Дельта: {}".format(trader.delta))
+    print("Курс: {:.2f}".format(trader.rate))
+    print("Гривневий рахунок: {:.2f} UAH".format(trader.uah_balance))
+    print("Доларовий рахунок: {:.2f} USD".format(trader.usd_balance))
+    print("Дельта: {:.2f}".format(trader.delta))
 
     while True:
         command = input("Введіть команду: ")
@@ -83,4 +92,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
