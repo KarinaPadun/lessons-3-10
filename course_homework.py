@@ -1,71 +1,116 @@
-import argparse
-import json
 import random
+import json
 from datetime import datetime
+import argparse
 
-def load_config():
-    with open('config.json', 'r') as file:
-        return json.load(file)
 
-def save_system_state(system_state):
-    with open('system_state.json', 'w') as file:
-        json.dump(system_state, file)
+class Trader:
+    def __init__(self, config_path, history_path):
+        with open(config_path) as f:
+            config = json.load(f)
+        self.delta = config["delta"]
+        self.rate = 36.00
+        self.uah_balance = 10000.00
+        self.usd_balance = 0.00
+        self.history_path = history_path
+        self.history = []
 
-def load_system_state():
-    if not os.path.exists('system_state.json'):
-        return {
-            'rate': 36.00,
-            'balance_uah': 10000.00,
-            'balance_usd': 0.00
-        }
+    def save_to_history(self, action, amount):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        transaction = {"timestamp": timestamp, "action": action, "amount": amount}
+        self.history.append(transaction)
+        with open(self.history_path, "a") as history_file:
+            history_file.write(f"{timestamp} - {action}: {amount}\n")
 
-    with open('system_state.json', 'r') as file:
-        return json.load(file)
+    def get_rate(self):
+        return round(self.rate, 2)
 
-# Додайте інші функції для обміну валют, отримання балансу і т.д.
+    def get_available_balance(self):
+        return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
+
+    def buy(self, amount):
+        if self.uah_balance < amount * self.rate:
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f}, AVAILABLE {self.uah_balance:.2f}")
+            return
+        self.uah_balance -= amount * self.rate
+        self.usd_balance += amount
+        self.save_to_history("BUY", amount)
+
+    def sell(self, amount):
+        if self.usd_balance < amount:
+            print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f}, AVAILABLE {self.usd_balance:.2f}")
+            return
+        self.usd_balance -= amount
+        self.uah_balance += amount / self.rate
+        self.save_to_history("SELL", amount)
+
+    def buy_all(self):
+        if self.uah_balance == 0:
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {self.uah_balance:.2f}, AVAILABLE 0.00")
+            return
+        amount = self.uah_balance / self.rate
+        self.buy(amount)
+
+    def sell_all(self):
+        amount = self.usd_balance
+        if amount == 0:
+            print("No USD to sell.")
+            return
+        self.usd_balance = 0
+        uah_amount = amount * self.rate
+        self.uah_balance += uah_amount
+        self.save_to_history("SELL", amount)
+        return uah_amount
+
+    def next_rate(self):
+        self.rate += random.uniform(-self.delta, self.delta)
+        self.rate = round(self.rate, 2)
+
+    def restart(self):
+        self.rate = 36.00
+        self.uah_balance = 10000.00
+        self.usd_balance = 0.00
+        self.history = []
+
 
 def main():
-    parser = argparse.ArgumentParser(description="Currency Trader CLI")
-
-    parser.add_argument("action", choices=['RATE', 'AVAILABLE', 'BUY', 'SELL', 'BUY_ALL', 'SELL_ALL', 'NEXT', 'RESTART'], help="Action to perform")
-    parser.add_argument("amount", nargs='?', type=float, default=None, help="Amount for BUY/SELL actions")
+    parser = argparse.ArgumentParser(description="Currency Trader")
+    parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
+    parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
+    parser.add_argument("command", type=str, help="Command to execute", nargs="?")
+    parser.add_argument("command_2", type=float, nargs="?", help="Second command")
 
     args = parser.parse_args()
 
-    config = load_config()
-    system_state = load_system_state()
+    trader = Trader(args.config, args.history)
 
-    if args.action == 'RATE':
-        print(get_current_rate(config))
-    elif args.action == 'AVAILABLE':
-        print_available_balance(system_state)
-    elif args.action == 'BUY':
-        if args.amount is not None:
-            buy_dollars(args.amount, config, system_state)
-            save_system_state(system_state)
+    if args.command == "RATE":
+        print(trader.get_rate())
+    elif args.command == "AVAILABLE":
+        print(trader.get_available_balance())
+    elif args.command == "NEXT":
+        trader.next_rate()
+        print(trader.get_rate())
+    elif args.command == "BUY":
+        if args.command_2 is not None:
+            trader.buy(args.command_2)
+            print(trader.get_available_balance())
         else:
-            print('Invalid command. Usage: BUY XXX')
-    elif args.action == 'SELL':
-        if args.amount is not None:
-            sell_dollars(args.amount, config, system_state)
-            save_system_state(system_state)
-        else:
-            print('Invalid command. Usage: SELL XXX')
-    elif args.action == 'BUY_ALL':
-        amount = system_state['balance_uah'] * get_current_rate(config)
-        buy_dollars(amount, config, system_state)
-        save_system_state(system_state)
-    elif args.action == 'SELL_ALL':
-        amount = system_state['balance_usd']
-        sell_dollars(amount, config, system_state)
-        save_system_state(system_state)
-    elif args.action == 'NEXT':
-        get_next_rate(config)
-        save_system_state(system_state)
-    elif args.action == 'RESTART':
-        system_state = restart_system()
+            print("Invalid amount format")
+    elif args.command == "BUY_ALL":
+        trader.buy_all()
+        print(trader.get_available_balance())
+    elif args.command == "SELL_ALL":
+        uah_amount = trader.sell_all()
+        if uah_amount is not None:
+            print(trader.get_available_balance())
+    elif args.command == "RESTART":
+        trader.restart()
+        with open(args.history, "w") as history_file:
+            history_file.write("")
     else:
-        print('Invalid action. Please enter a valid action.')
+        print("Unknown command")
 
 if __name__ == "__main__":
     main()
+
