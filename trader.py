@@ -15,12 +15,13 @@ class Trader:
         self.history_path = history_path
         self.history = []
 
-    def save_to_history(self, action, amount):
+    def save_to_history(self, action, currency_amount, uah_amount):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        transaction = {"timestamp": timestamp, "action": action, "amount": amount}
+        transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
+                       "uah_amount": uah_amount}
         self.history.append(transaction)
         with open(self.history_path, "a") as history_file:
-            history_file.write(f"{timestamp} - {action}: {amount}\n")
+            history_file.write(f"{timestamp} - {action}: Currency: {currency_amount}, UAH: {uah_amount}\n")
 
     def get_rate(self):
         return round(self.rate, 2)
@@ -34,7 +35,7 @@ class Trader:
             return
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
-        self.save_to_history("BUY", amount)
+        self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell(self, amount):
         if self.usd_balance < amount:
@@ -42,14 +43,14 @@ class Trader:
             return
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
-        self.save_to_history("SELL", amount)
+        self.save_to_history("SELL", amount, amount / self.rate)
 
     def buy_all(self):
         if self.uah_balance == 0:
             print(f"UNAVAILABLE, REQUIRED BALANCE UAH {self.uah_balance:.2f}, AVAILABLE 0.00")
             return
         amount = self.uah_balance / self.rate
-        self.buy(amount)
+        self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell_all(self):
         amount = self.usd_balance
