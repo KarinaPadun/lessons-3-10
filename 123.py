@@ -82,11 +82,13 @@ def main():
         print(trader.get_available_balance())
     elif args.command == "NEXT":
         trader.next_rate()
+        print(trader.get_rate())
+    elif args.command == "BUY":
         if args.command_2 is not None:
-            if args.command_2 == "ALL":
-                trader.buy_all()
-            else:
-                trader.buy(args.command_2)
+            trader.buy(args.command_2)
+            print(trader.get_available_balance())
+        else:
+            print("Invalid amount format")
     elif args.command == "RESTART":
         trader.restart()
         with open(args.history, "w") as history_file:
@@ -96,5 +98,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
