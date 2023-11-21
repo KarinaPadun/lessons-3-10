@@ -29,14 +29,23 @@ class Trader:
         return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
 
     def buy(self, amount):
-        if self.uah_balance < amount * self.rate:
-            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f}, AVAILABLE {self.uah_balance:.2f}")
+        if self.uah_balance < amount:
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount:.2f}, AVAILABLE {self.uah_balance:.2f}")
             return
-        self.uah_balance -= amount * self.rate
-        self.usd_balance += amount
+        self.uah_balance -= amount
+        self.usd_balance += amount / self.rate
         self.save_to_history("BUY", amount)
 
     def sell(self, amount):
+        if amount == "ALL":
+            amount = self.usd_balance
+        else:
+            try:
+                amount = float(amount)
+            except ValueError:
+                print("Invalid amount format")
+                return
+
         if self.usd_balance < amount:
             print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f}, AVAILABLE {self.usd_balance:.2f}")
             return
@@ -65,7 +74,6 @@ class Trader:
     def next_rate(self):
         self.rate += random.uniform(-self.delta, self.delta)
         self.rate = round(self.rate, 2)
-        return self.rate
 
     def restart(self):
         self.rate = 36.00
@@ -90,8 +98,8 @@ def main():
     elif args.command == "AVAILABLE":
         print(trader.get_available_balance())
     elif args.command == "NEXT":
-        new_rate = trader.next_rate()
-        print(new_rate)
+        trader.next_rate()
+        print(trader.get_rate())
     elif args.command == "BUY":
         if args.command_2 is not None:
             trader.buy(args.command_2)
@@ -114,4 +122,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
