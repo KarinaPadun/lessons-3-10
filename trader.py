@@ -55,7 +55,8 @@ class Trader:
         return uah_amount
 
     def next_rate(self):
-        self.rate = round(self.rate + random.uniform(-self.delta, self.delta), 2)
+        new_rate = self.rate + random.uniform(-self.delta, self.delta)
+        self.rate = round(new_rate, 2)
 
     def restart(self):
         self.rate = 36.00
@@ -79,23 +80,13 @@ def main():
         print(trader.get_rate())
     elif args.command == "AVAILABLE":
         print(trader.get_available_balance())
-        if args.command == "BUY":
-            if args.command_2 is not None:
-                if args.command_2 == "ALL":
-                    trader.buy_all()
-                else:
-                    trader.buy(args.command_2)
-            else:
-                print("Invalid amount format")
-        elif args.command == "SELL":
-            if args.command_2 is not None:
-                if args.command_2 == "ALL":
-                    trader.sell_all()
-                else:
-                    trader.sell(args.command_2)
-            print("Invalid amount format")
     elif args.command == "NEXT":
         trader.next_rate()
+        if args.command_2 is not None:
+            if args.command_2 == "ALL":
+                trader.buy_all()
+            else:
+                trader.buy(args.command_2)
     elif args.command == "RESTART":
         trader.restart()
         with open(args.history, "w") as history_file:
@@ -105,3 +96,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
