@@ -65,6 +65,7 @@ class Trader:
     def next_rate(self):
         self.rate += random.uniform(-self.delta, self.delta)
         self.rate = round(self.rate, 2)
+        return self.rate
 
     def restart(self):
         self.rate = 36.00
@@ -89,8 +90,8 @@ def main():
     elif args.command == "AVAILABLE":
         print(trader.get_available_balance())
     elif args.command == "NEXT":
-        trader.next_rate()
-        print(trader.get_rate())
+        new_rate = trader.next_rate()
+        print(new_rate)
     elif args.command == "BUY":
         if args.command_2 is not None:
             trader.buy(args.command_2)
