@@ -46,7 +46,7 @@ class Trader:
 
     def buy_all(self):
         if self.uah_balance == 0:
-            print(f"UNAVAILABLE, REQUIRED BALANCE UAH 2593.00, AVAILABLE 0.00")
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {self.uah_balance:.2f}, AVAILABLE 0.00")
             return
         amount = self.uah_balance / self.rate
         self.buy(amount)
