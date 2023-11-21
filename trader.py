@@ -20,6 +20,9 @@ class Trader:
         transaction = {"timestamp": timestamp, "action": action, "amount": amount}
         self.history.append(transaction)
 
+        with open(self.history_path, "a") as history_file:
+            history_file.write(f"{timestamp} - {action}: {amount}\n")
+
     def get_rate(self):
         return round(self.rate, 2)
 
@@ -28,26 +31,36 @@ class Trader:
 
     def buy(self, amount):
         if self.uah_balance < amount * self.rate:
-            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f} , AVAILABLE {self.uah_balance:.2f}")
+            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f}, AVAILABLE {self.uah_balance:.2f}")
             return
+
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
         self.save_to_history("BUY", amount)
 
     def sell(self, amount):
         if self.usd_balance < amount:
-            print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f} , AVAILABLE {self.usd_balance:.2f}")
+            print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f}, AVAILABLE {self.usd_balance:.2f}")
             return
+
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
         self.save_to_history("SELL", amount)
 
     def buy_all(self):
+        if self.uah_balance == 0:
+            print("UNAVAILABLE, REQUIRED BALANCE UAH 2593.00, AVAILABLE 0.00")
+            return
+
         amount = self.uah_balance / self.rate
         self.buy(amount)
 
     def sell_all(self):
         amount = self.usd_balance
+        if amount == 0:
+            print("No USD to sell.")
+            return
+
         self.usd_balance = 0
         uah_amount = amount * self.rate
         self.uah_balance += uah_amount
@@ -55,8 +68,7 @@ class Trader:
         return uah_amount
 
     def next_rate(self):
-        self.rate += random.uniform(-self.delta, self.delta)
-        self.rate = round(self.rate, 2)
+        self.rate = round(self.rate + random.uniform(-self.delta, self.delta), 2)
 
     def restart(self):
         self.rate = 36.00
@@ -77,24 +89,30 @@ def main():
     trader = Trader(args.config, args.history)
 
     if args.command == "RATE":
-        print(trader.get_rate())
+        current_rate = trader.get_rate()
+        print(current_rate)
     elif args.command == "AVAILABLE":
-        print(trader.get_available_balance())
+        available_balance = trader.get_available_balance()
+        print(available_balance)
     elif args.command == "NEXT":
         trader.next_rate()
+        print(trader.get_rate())
+    elif args.command == "BUY":
         if args.command_2 is not None:
-            if args.command_2 == "ALL":
-                trader.buy_all()
-            else:
-                trader.buy(args.command_2)
+            trader.buy(args.command_2)
+            print(trader.get_available_balance())
+        else:
+            print("Invalid amount format")
+    elif args.command == "BUY_ALL":
+        trader.buy_all()
+        print(trader.get_available_balance())
+    elif args.command == "SELL_ALL":
+        uah_amount = trader.sell_all()
+        if uah_amount is not None:
+            print(trader.get_available_balance())
     elif args.command == "RESTART":
         trader.restart()
         with open(args.history, "w") as history_file:
             history_file.write("")
     else:
         print("Unknown command")
-
-if __name__ == "__main__":
-    main()
-
-
