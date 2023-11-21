@@ -1,5 +1,4 @@
 import random
-import random
 import json
 from datetime import datetime
 import argparse
@@ -63,41 +62,41 @@ class Trader:
         self.uah_balance = 10000.00
         self.usd_balance = 0.00
         self.history = []
+
+
 def main():
     parser = argparse.ArgumentParser(description="Currency Trader")
     parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
     parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
-    parser.add_argument("command_1", type=str,
-                        choices=["RATE", "AVAILABLE", "BUY", "SELL", "BUY_ALL", "SELL_ALL", "NEXT", "RESTART"],
-                        help="Command to execute")
-    parser.add_argument("command_2", nargs="?", type=float, help="Second command (optional)")
+    parser.add_argument("command", type=str, help="Command to execute", nargs="?")
+    parser.add_argument("command_2", type=float, nargs="?", help="Second command")
+
     args = parser.parse_args()
 
     trader = Trader(args.config, args.history)
 
-    if args.command_1 == "RATE":
+    if args.command == "RATE":
         print(trader.get_rate())
-    elif args.command_1 == "AVAILABLE":
+    elif args.command == "AVAILABLE":
         print(trader.get_available_balance())
-    elif args.command_1 == "BUY":
-        if args.command_2 is not None:
-            if args.command_2 == "ALL":
-                trader.buy_all()
+        if args.command == "BUY":
+            if args.command_2 is not None:
+                if args.command_2 == "ALL":
+                    trader.buy_all()
+                else:
+                    trader.buy(args.command_2)
             else:
-                trader.buy(args.command_2)
-        else:
+                print("Invalid amount format")
+        elif args.command == "SELL":
+            if args.command_2 is not None:
+                if args.command_2 == "ALL":
+                    trader.sell_all()
+                else:
+                    trader.sell(args.command_2)
             print("Invalid amount format")
-    elif args.command_1 == "SELL":
-        if args.command_2 is not None:
-            if args.command_2 == "ALL":
-                trader.sell_all()
-            else:
-                trader.sell(args.command_2)
-        else:
-            print("Invalid amount format")
-    elif args.command_1 == "NEXT":
+    elif args.command == "NEXT":
         trader.next_rate()
-    elif args.command_1 == "RESTART":
+    elif args.command == "RESTART":
         trader.restart()
         with open(args.history, "w") as history_file:
             history_file.write("")
@@ -106,8 +105,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
