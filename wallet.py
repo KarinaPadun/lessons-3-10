@@ -5,43 +5,35 @@ import argparse
 
 
 class Trader:
-    def __init__(self, history_path, config_path):
+    def __init__(self, config_path, history_path):
+        with open(config_path) as f:
+            config = json.load(f)
+        self.delta = config["delta"]
+        self.rate = config["rate"]
+        self.uah_balance = config["uah_balance"]
+        self.usd_balance = config["usd_balance"]
         self.history_path = history_path
-        self.config_path = config_path
-        self.load_config()
-        self.load_history()
+        self.history = []
 
-    def load_config(self):
         try:
-            with open(self.config_path, "r") as config_file:
-                config_data = json.load(config_file)
-                self.exchange_rate = float(config_data["курс"])
-                self.uah_balance = float(config_data["на гривневому рахунку"][:-4])
-                self.usd_balance = float(config_data["на доларовому рахунку"][:-4])
-                self.delta = float(config_data["дельта"])
-        except FileNotFoundError:
-            print(f"Config file '{self.config_path}' not found.")
+            with open(history_path, "r") as history_file:
+                history_data = json.load(history_file)
+                self.uah_balance = history_data["uah_balance"]
+                self.usd_balance = history_data["usd_balance"]
+        except (FileNotFoundError, json.JSONDecodeError):
+            pass
 
-    def load_history(self):
-        try:
-            with open(self.history_path, "r") as history_file:
-                lines = history_file.readlines()
-                if lines:
-                    last_line = lines[-1].strip()
-                    values = last_line.split()
-                    if len(values) == 2:
-                        uah, usd = map(float, values)
-                        self.uah_balance = uah
-                        self.usd_balance = usd
-        except FileNotFoundError:
-            print(f"History file '{self.history_path}' not found.")
-            open(self.history_path, "w").close()
+    def save_to_history(self, action, currency_amount, uah_amount):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
+                       "uah_amount": uah_amount}
+        self.history.append(transaction)
 
-history_path = "history.txt"
-config_path = "config.json"
-your_instance = Trader(history_path, config_path)
-def get_rate(self):
-    return round(self.rate, 2)
+        with open(self.history_path, "a") as history_file:
+            json.dump(transaction, history_file, indent=4)
+
+    def get_rate(self):
+        return round(self.rate, 2)
 
     def get_available_balance(self):
         return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
@@ -52,7 +44,7 @@ def get_rate(self):
             return
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
-        self.save_to_history("BUY", amount)
+        self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell(self, amount):
         if self.usd_balance < amount:
@@ -61,6 +53,7 @@ def get_rate(self):
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
         self.save_to_history("SELL", amount)
+        return amount / self.rate
 
     def buy_all(self):
         if self.uah_balance == 0:
@@ -75,9 +68,7 @@ def get_rate(self):
             print("No USD to sell.")
             return
         self.usd_balance = 0
-        uah_amount = amount * self.rate
-        self.uah_balance += uah_amount
-        self.save_to_history("SELL", amount)
+        uah_amount = self.sell(amount)
         return uah_amount
 
     def next_rate(self):

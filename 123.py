@@ -8,22 +8,10 @@ class Trader:
     def __init__(self, config_path, history_path):
         with open(config_path) as f:
             config = json.load(f)
-        self.delta = config["delta"]
-        self.rate = config["rate"]
-
-        try:
-            with open(history_path, "r") as history_file:
-                lines = history_file.readlines()
-                if lines:
-                    last_line = lines[-1].strip()
-                    values = last_line.split()
-                    if len(values) == 2:
-                        uah, usd = map(float, values)
-                        self.uah_balance = uah
-                        self.usd_balance = usd
-        except FileNotFoundError:
-            open(history_path, "w").close()
-
+        self.delta = config.get("delta", 0.0)
+        self.rate = config.get("rate", 36.00)
+        self.uah_balance = config.get("uah_balance", 10000.00)
+        self.usd_balance = config.get("usd_balance", 0.00)
         self.history_path = history_path
         self.history = []
 
@@ -45,7 +33,7 @@ class Trader:
             return
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
-        self.save_to_history("BUY", amount)
+        self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell(self, amount):
         if self.usd_balance < amount:
@@ -53,14 +41,14 @@ class Trader:
             return
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
-        self.save_to_history("SELL", amount)
+        self.save_to_history("SELL", amount, amount / self.rate)
 
     def buy_all(self):
         if self.uah_balance == 0:
             print(f"UNAVAILABLE, REQUIRED BALANCE UAH {self.uah_balance:.2f}, AVAILABLE 0.00")
             return
         amount = self.uah_balance / self.rate
-        self.buy(amount)
+        self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell_all(self):
         amount = self.usd_balance
@@ -93,7 +81,7 @@ def main():
 
     args = parser.parse_args()
 
-    trader = Trader(args.history, args.config)
+    trader = Trader(args.config, args.history)
 
     if args.command == "RATE":
         print(trader.get_rate())

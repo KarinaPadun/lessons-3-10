@@ -15,18 +15,20 @@ class Trader:
         self.history_path = history_path
         self.history = []
 
-        try:
-            with open(history_path, "r") as history_file:
-                lines = history_file.readlines()
-                if lines:
-                    last_line = lines[-1].strip()
-                    values = last_line.split()
-                    if len(values) == 2:
-                        uah, usd = map(float, values)
-                        self.uah_balance = uah
-                        self.usd_balance = usd
-        except FileNotFoundError:
-            open(history_path, "w").close()
+
+history_path = "config.json"
+try:
+    with open(history_path, "r") as history_file:
+        lines = history_file.readlines()
+        if lines:
+            last_line = lines[-1].strip()
+            if last_line:
+                history_data = json.loads(last_line)
+                uah = history_data.get("uah_balance", 0.0)
+                usd = history_data.get("usd_balance", 0.0)
+except FileNotFoundError:
+    open(history_path, "w").close()
+
 
     def save_to_history(self, action, currency_amount, uah_amount):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
