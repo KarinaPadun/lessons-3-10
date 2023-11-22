@@ -1,8 +1,6 @@
 {
   "rate": 36.00,
-  "uah_balance": "10000.00 UAH",
-  "usd_balance": "0.00 USD",
+  "uah_balance": 10000.00,
+  "usd_balance": 0.00,
   "delta": 0.5
 }
-
-

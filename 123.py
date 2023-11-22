@@ -5,25 +5,14 @@ import argparse
 
 
 class Trader:
-    def __init__(self, history_path, config_path):
-        self.history_path = history_path
-        self.config_path = config_path
-        self.load_history()
+    def __init__(self, config_path, history_path):
+        with open(config_path) as f:
+            config = json.load(f)
+        self.delta = config["delta"]
+        self.rate = config["rate"]
 
-    def load_config(self):
         try:
-            with open(self.config_path, "r") as config_file:
-                config_data = json.load(config_file)
-                self.rate = float(config_data["rate"])
-                self.uah_balance = float(config_data["uah_balance"][:-4])
-                self.usd_balance = float(config_data["usd_balance"][:-4])
-                self.delta = float(config_data["delta"])
-        except FileNotFoundError:
-            print(f"Config file '{self.config_path}' not found.")
-
-    def load_history(self):
-        try:
-            with open(self.history_path, "r") as history_file:
+            with open(history_path, "r") as history_file:
                 lines = history_file.readlines()
                 if lines:
                     last_line = lines[-1].strip()
@@ -33,13 +22,16 @@ class Trader:
                         self.uah_balance = uah
                         self.usd_balance = usd
         except FileNotFoundError:
-            print(f"History file '{self.history_path}' not found.")
-            open(self.history_path, "w").close()
+            open(history_path, "w").close()
 
-    def save_to_history(self, action, amount):
-        now = datetime.now()
-        timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
-        return timestamp
+        self.history_path = history_path
+        self.history = []
+
+    def save_to_history(self, action, currency_amount, uah_amount):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
+                       "uah_amount": uah_amount}
+        self.history.append(transaction)
 
     def get_rate(self):
         return round(self.rate, 2)
