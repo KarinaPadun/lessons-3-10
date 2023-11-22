@@ -5,25 +5,43 @@ import argparse
 
 
 class Trader:
-    def __init__(self, config_path, history_path):
-        with open(config_path) as f:
-            config = json.load(f)
-        self.delta = config["delta"]
-        self.rate = 36.00
-        self.uah_balance = 10000.00
-        self.usd_balance = 0.00
+    def __init__(self, history_path, config_path):
         self.history_path = history_path
-        self.history = []
+        self.config_path = config_path
+        self.load_config()
+        self.load_history()
 
-    def save_to_history(self, action, amount):
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        transaction = {"timestamp": timestamp, "action": action, "amount": amount}
-        self.history.append(transaction)
-        with open(self.history_path, "a") as history_file:
-            history_file.write(f"{timestamp} - {action}: {amount}\n")
+    def load_config(self):
+        try:
+            with open(self.config_path, "r") as config_file:
+                config_data = json.load(config_file)
+                self.exchange_rate = float(config_data["курс"])
+                self.uah_balance = float(config_data["на гривневому рахунку"][:-4])
+                self.usd_balance = float(config_data["на доларовому рахунку"][:-4])
+                self.delta = float(config_data["дельта"])
+        except FileNotFoundError:
+            print(f"Config file '{self.config_path}' not found.")
 
-    def get_rate(self):
-        return round(self.rate, 2)
+    def load_history(self):
+        try:
+            with open(self.history_path, "r") as history_file:
+                lines = history_file.readlines()
+                if lines:
+                    last_line = lines[-1].strip()
+                    values = last_line.split()
+                    if len(values) == 2:
+                        uah, usd = map(float, values)
+                        self.uah_balance = uah
+                        self.usd_balance = usd
+        except FileNotFoundError:
+            print(f"History file '{self.history_path}' not found.")
+            open(self.history_path, "w").close()
+
+history_path = "history.txt"
+config_path = "config.json"
+your_instance = Trader(history_path, config_path)
+def get_rate(self):
+    return round(self.rate, 2)
 
     def get_available_balance(self):
         return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
