@@ -33,8 +33,6 @@ class Trader:
         transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
                        "uah_amount": uah_amount}
         self.history.append(transaction)
-        with open(self.history_path, "a") as history_file:
-            history_file.write(f"{timestamp} - {action}: Currency: {currency_amount}, UAH: {uah_amount}\n")
 
     def get_rate(self):
         return round(self.rate, 2)

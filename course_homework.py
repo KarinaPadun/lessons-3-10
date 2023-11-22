@@ -1,17 +1,28 @@
 import random
 import json
+import os
 from datetime import datetime
 import argparse
 
 
 class Trader:
-    def __init__(self, config_path, history_path):
+    def init(self, config_path, history_path):
         with open(config_path) as f:
             config = json.load(f)
         self.delta = config["delta"]
-        self.rate = 36.00
-        self.uah_balance = 10000.00
-        self.usd_balance = 0.00
+
+        if not os.path.isfile(history_path) or os.path.getsize(history_path) == 0:
+            self.uah_balance = 10000.00
+            self.usd_balance = 0.00
+        else:
+            with open(history_path, "r") as history_file:
+                for line in history_file:
+                    data = json.loads(line)
+                    if data["action"] == "RESTART":
+                        self.uah_balance = data["amount"]
+                        self.usd_balance = 0.00
+                        break
+
         self.history_path = history_path
         self.history = []
 
