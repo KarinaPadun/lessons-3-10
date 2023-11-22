@@ -75,50 +75,54 @@ class Trader:
         self.rate += random.uniform(-self.delta, self.delta)
         self.rate = round(self.rate, 2)
 
-    def restart(self):
-        self.rate = 36.00
-        self.uah_balance = 10000.00
-        self.usd_balance = 0.00
-        self.history = []
+        def restart(self):
+            self.rate = 36.00
+            self.uah_balance = 10000.00
+            self.usd_balance = 0.00
+            self.history = []
 
+    def main():
+        parser = argparse.ArgumentParser(description="Currency Trader")
+        parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
+        parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
+        parser.add_argument("command", type=str, help="Command to execute", nargs="?")
+        parser.add_argument("command_2", type=float, nargs="?", help="Second command")
 
-def main():
-    parser = argparse.ArgumentParser(description="Currency Trader")
-    parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
-    parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
-    parser.add_argument("command", type=str, help="Command to execute", nargs="?")
-    parser.add_argument("command_2", type=float, nargs="?", help="Second command")
+        args = parser.parse_args()
 
-    args = parser.parse_args()
+        trader = Trader(args.config, args.history)
 
-    trader = Trader(args.config, args.history)
-
-    if args.command == "RATE":
-        print(trader.get_rate())
-    elif args.command == "AVAILABLE":
-        print(trader.get_available_balance())
-    elif args.command == "NEXT":
-        trader.next_rate()
-        print(trader.get_rate())
-    elif args.command == "BUY":
-        if args.command_2 is not None:
-            trader.buy(args.command_2)
+        if args.command == "RATE":
+            print(trader.get_rate())
+        elif args.command == "AVAILABLE":
             print(trader.get_available_balance())
+        elif args.command == "NEXT":
+            trader.next_rate()
+            print(trader.get_rate())
+        elif args.command == "BUY":
+            if args.command_2 is not None:
+                try:
+                    amount = float(args.command_2)
+                except ValueError:
+                    print("Invalid amount format")
+                    return
+                trader.buy(amount)
+                print(trader.get_available_balance())
+            else:
+                print("Invalid amount format")
+        elif args.command == "BUY_ALL":
+            trader.buy_all()
+            print(trader.get_available_balance())
+        elif args.command == "SELL_ALL":
+            uah_amount = trader.sell_all()
+            if uah_amount is not None:
+                print(trader.get_available_balance())
+        elif args.command == "RESTART":
+            trader.restart()
+            with open(args.history, "w") as history_file:
+                history_file.write("")
         else:
-            print("Invalid amount format")
-    elif args.command == "BUY_ALL":
-        trader.buy_all()
-        print(trader.get_available_balance())
-    elif args.command == "SELL_ALL":
-        uah_amount = trader.sell_all()
-        if uah_amount is not None:
-            print(trader.get_available_balance())
-    elif args.command == "RESTART":
-        trader.restart()
-        with open(args.history, "w") as history_file:
-            history_file.write("")
-    else:
-        print("Unknown command")
+            print("Unknown command")
 
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()

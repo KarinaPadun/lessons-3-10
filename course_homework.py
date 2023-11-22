@@ -5,37 +5,30 @@ import argparse
 
 
 class Trader:
-    def __init__(self, config_path, history_path):
-        with open(config_path) as f:
-            config = json.load(f)
-        self.delta = config["delta"]
-        self.rate = 36.00
-        self.uah_balance = 10000.00
-        self.usd_balance = 0.00
-        self.history_path = history_path
-        self.history = []
+    class Trader:
+        def __init__(self, config_path, history_path):
+            with open(config_path) as f:
+                config = json.load(f)
+            self.delta = config["delta"]
+            self.rate = config["rate"]
+            self.uah_balance = config["uah_balance"]
+            self.usd_balance = config["usd_balance"]
+            self.history_path = history_path
+            self.history = []
 
+            try:
+                with open(history_path, "r") as history_file:
+                    history_data = json.load(history_file)
+                    self.uah_balance = history_data["uah_balance"]
+                    self.usd_balance = history_data["usd_balance"]
+            except (FileNotFoundError, json.JSONDecodeError):
+                pass
 
-history_path = "config.json"
-try:
-    with open(history_path, "r") as history_file:
-        lines = history_file.readlines()
-        if lines:
-            last_line = lines[-1].strip()
-            if last_line:
-                history_data = json.loads(last_line)
-                uah = history_data.get("uah_balance", 0.0)
-                usd = history_data.get("usd_balance", 0.0)
-except FileNotFoundError:
-    open(history_path, "w").close()
-
-
-    def save_to_history(self, action, currency_amount, uah_amount):
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
-                       "uah_amount": uah_amount}
-        self.history.append(transaction)
-
+        def save_to_history(self, action, currency_amount, uah_amount):
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
+                           "uah_amount": uah_amount}
+            self.history.append(transaction)
 
     def get_rate(self):
         return round(self.rate, 2)
