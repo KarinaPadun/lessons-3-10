@@ -4,12 +4,6 @@ from datetime import datetime
 import argparse
 
 
-import random
-import json
-from datetime import datetime
-import argparse
-
-
 class Trader:
     def __init__(self, config_path, history_path):
         with open(config_path) as f:
@@ -24,7 +18,13 @@ class Trader:
     def load_history(self):
         try:
             with open(self.history_path, "r") as history_file:
-                self.history = json.load(history_file)
+                history_data = json.load(history_file)
+                if isinstance(history_data, list):
+                    self.history = history_data
+                elif isinstance(history_data, dict):
+                    self.history = history_data.get("history", [])
+                else:
+                    print("Invalid format for history data.")
         except (FileNotFoundError, json.JSONDecodeError):
             self.history = []
 
@@ -56,19 +56,25 @@ class Trader:
             self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell(self, amount):
+        amount = float(amount)  #
         if self.usd_balance < amount:
             print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f}, AVAILABLE {self.usd_balance:.2f}")
             return
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
         self.save_to_history("SELL", amount, amount / self.rate)
+        print(self.get_available_balance())
 
     def buy_all(self):
         if self.uah_balance == 0:
             print(f"UNAVAILABLE, REQUIRED BALANCE UAH {self.uah_balance:.2f}, AVAILABLE 0.00")
-            return
+            return 0.0
+
         amount = self.uah_balance / self.rate
+        self.uah_balance -= amount * self.rate
+        self.usd_balance += amount
         self.save_to_history("BUY", amount, amount * self.rate)
+        return amount
 
     def sell_all(self):
         amount = self.usd_balance
@@ -117,8 +123,17 @@ def main():
         else:
             print("Invalid amount format")
     elif args.command == "BUY_ALL":
-        trader.buy_all()
-        print(trader.get_available_balance())
+        bought_amount = trader.buy_all()
+        if bought_amount > 0:
+            print(f"Bought {bought_amount} USD. {trader.get_available_balance()}")
+        else:
+            print("No USD bought.")
+    elif args.command == "SELL":
+        if args.command_2 is not None:
+            trader.sell(args.command_2)
+            print(trader.get_available_balance())
+        else:
+            print("Invalid amount format for sell command")
     elif args.command == "SELL_ALL":
         uah_amount = trader.sell_all()
         if uah_amount is not None:

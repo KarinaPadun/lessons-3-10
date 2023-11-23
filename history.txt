@@ -1,8 +1,0 @@
-[
-    {
-        "timestamp": "2023-11-23 12:31:12",
-        "action": "BUY",
-        "currency_amount": 100.0,
-        "uah_amount": 3600.0
-    }
-]

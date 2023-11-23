@@ -1,0 +1,32 @@
+[
+    {
+        "timestamp": "2023-11-23 13:19:31",
+        "action": "BUY",
+        "currency_amount": 100.0,
+        "uah_amount": 3600.0
+    },
+    {
+        "timestamp": "2023-11-23 13:21:32",
+        "action": "BUY",
+        "currency_amount": 100.0,
+        "uah_amount": 3600.0
+    },
+    {
+        "timestamp": "2023-11-23 13:21:32",
+        "action": "BUY",
+        "currency_amount": 100.0,
+        "uah_amount": 3600.0
+    },
+    {
+        "timestamp": "2023-11-23 13:21:33",
+        "action": "BUY",
+        "currency_amount": 100.0,
+        "uah_amount": 3600.0
+    },
+    {
+        "timestamp": "2023-11-23 13:21:53",
+        "action": "BUY",
+        "currency_amount": 100.0,
+        "uah_amount": 3600.0
+    }
+]
