@@ -17,11 +17,6 @@ class Trader:
             self.uah_balance = config["uah_balance"]
             self.usd_balance = config["usd_balance"]
 
-
-
-
-
-
     def load_config(self):
         with open(self.config_path) as f:
             config = json.load(f)
