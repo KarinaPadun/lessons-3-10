@@ -8,18 +8,29 @@ class Trader:
     def __init__(self, config_path, history_path):
         with open(config_path) as f:
             config = json.load(f)
-        self.delta = config.get("delta", 0.0)
-        self.rate = config.get("rate", 36.00)
-        self.uah_balance = config.get("uah_balance", 10000.00)
-        self.usd_balance = config.get("usd_balance", 0.00)
+        self.delta = config["delta"]
+        self.rate = config["rate"]
+        self.uah_balance = config["uah_balance"]
+        self.usd_balance = config["usd_balance"]
         self.history_path = history_path
         self.history = []
+
+        try:
+            with open(history_path, "r") as history_file:
+                history_data = json.load(history_file)
+                self.uah_balance = history_data["uah_balance"]
+                self.usd_balance = history_data["usd_balance"]
+        except (FileNotFoundError, json.JSONDecodeError):
+            pass
 
     def save_to_history(self, action, currency_amount, uah_amount):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
                        "uah_amount": uah_amount}
         self.history.append(transaction)
+
+        with open(self.history_path, "a") as history_file:
+            json.dump(transaction, history_file, indent=4)
 
     def get_rate(self):
         return round(self.rate, 2)
