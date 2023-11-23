@@ -97,13 +97,17 @@ class Trader:
 
         self.save_to_history("RATE_CHANGE", old_rate, self.rate)
 
+    def get_history(self):
+        return self.history
+
     def restart(self):
-        with open("config.json") as f:
+        with open(self.config_path) as f:
             config = json.load(f)
         self.rate = config["rate"]
         self.uah_balance = config["uah_balance"]
         self.usd_balance = config["usd_balance"]
-        self.history = []  # Очистка історії
+        self.load_history()
+        self.history = []
 
 
 def main():
