@@ -4,6 +4,12 @@ from datetime import datetime
 import argparse
 
 
+import random
+import json
+from datetime import datetime
+import argparse
+
+
 class Trader:
     def __init__(self, config_path, history_path):
         with open(config_path) as f:
@@ -13,15 +19,14 @@ class Trader:
         self.uah_balance = config["uah_balance"]
         self.usd_balance = config["usd_balance"]
         self.history_path = history_path
-        self.history = []
+        self.load_history()
 
+    def load_history(self):
         try:
-            with open(history_path, "r") as history_file:
-                history_data = json.load(history_file)
-                self.uah_balance = history_data["uah_balance"]
-                self.usd_balance = history_data["usd_balance"]
+            with open(self.history_path, "r") as history_file:
+                self.history = json.load(history_file)
         except (FileNotFoundError, json.JSONDecodeError):
-            pass
+            self.history = []
 
     def save_to_history(self, action, currency_amount, uah_amount):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -29,8 +34,8 @@ class Trader:
                        "uah_amount": uah_amount}
         self.history.append(transaction)
 
-        with open(self.history_path, "a") as history_file:
-            json.dump(transaction, history_file, indent=4)
+        with open(self.history_path, "w") as history_file:
+            json.dump(self.history, history_file, indent=4)
 
     def get_rate(self):
         return round(self.rate, 2)
@@ -39,12 +44,16 @@ class Trader:
         return {"USD": round(self.usd_balance, 2), "UAH": round(self.uah_balance, 2)}
 
     def buy(self, amount):
-        if self.uah_balance < amount * self.rate:
-            print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f}, AVAILABLE {self.uah_balance:.2f}")
-            return
-        self.uah_balance -= amount * self.rate
-        self.usd_balance += amount
-        self.save_to_history("BUY", amount, amount * self.rate)
+        if amount.lower() == "all":
+            self.buy_all()
+        else:
+            amount = float(amount)
+            if self.uah_balance < amount * self.rate:
+                print(f"UNAVAILABLE, REQUIRED BALANCE UAH {amount * self.rate:.2f}, AVAILABLE {self.uah_balance:.2f}")
+                return
+            self.uah_balance -= amount * self.rate
+            self.usd_balance += amount
+            self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell(self, amount):
         if self.usd_balance < amount:
@@ -86,9 +95,9 @@ class Trader:
 def main():
     parser = argparse.ArgumentParser(description="Currency Trader")
     parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
-    parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
+    parser.add_argument("--history", type=str, default="history.json", help="Path to transaction history file")
     parser.add_argument("command", type=str, help="Command to execute", nargs="?")
-    parser.add_argument("command_2", type=float, nargs="?", help="Second command")
+    parser.add_argument("command_2", type=str, nargs="?", help="Second command")
 
     args = parser.parse_args()
 
@@ -116,8 +125,7 @@ def main():
             print(trader.get_available_balance())
     elif args.command == "RESTART":
         trader.restart()
-        with open(args.history, "w") as history_file:
-            history_file.write("")
+        trader.load_history()
     else:
         print("Unknown command")
 
