@@ -6,40 +6,55 @@ import argparse
 
 class Trader:
     def __init__(self, config_path, history_path):
-        with open(config_path) as f:
-            config = json.load(f)
         self.config_path = config_path
-        self.delta = config["delta"]
-        self.rate = config["rate"]
-        self.uah_balance = config["uah_balance"]
-        self.usd_balance = config["usd_balance"]
         self.history_path = history_path
+        self.history = []
         self.load_history()
+        if len(self.history) < 1:
+            config = self.load_config()
+            self.delta = config["delta"]
+            self.rate = config["rate"]
+            self.uah_balance = config["uah_balance"]
+            self.usd_balance = config["usd_balance"]
+
+
+
+
+
+
+    def load_config(self):
+        with open(self.config_path) as f:
+            config = json.load(f)
+        return config
+
 
     def load_history(self):
         try:
             with open(self.history_path, "r") as history_file:
                 history_data = json.load(history_file)
-                if isinstance(history_data, list):
+                if isinstance(history_data, list) and len(history_data) > 0:
                     self.history = history_data
+                    self.rate = history_data[-1].get("rate", 0)
+                    self.uah_balance = history_data[-1].get("uah_balance", 0)
+                    self.usd_balance = history_data[-1].get("usd_balance", 0)
                 elif isinstance(history_data, dict):
                     self.history = history_data.get("history", [])
-                    self.rate = history_data.get("rate", self.rate)
-                    self.uah_balance = history_data.get("uah_balance", self.uah_balance)
-                    self.usd_balance = history_data.get("usd_balance", self.usd_balance)
-                else:
-                    print("Invalid format for history data.")
+                    self.rate = history_data.get("rate", 0)
+                    self.uah_balance = history_data.get("uah_balance", 0)
+                    self.usd_balance = history_data.get("usd_balance", 0)
+
         except (FileNotFoundError, json.JSONDecodeError):
             self.history = []
 
-    def save_to_history(self, action, currency_amount, uah_amount):
+
+    def save_to_history(self, action, currency_amount, uah_amount, rate, old_rate):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        transaction = {"timestamp": timestamp, "action": action, "currency_amount": currency_amount,
-                       "uah_amount": uah_amount}
+        transaction = {"timestamp": timestamp, "action": action, "usd_balance": currency_amount,
+                       "uah_balance": uah_amount, "rate": rate, "old_rate": old_rate}
         self.history.append(transaction)
 
-        with open(self.history_path, "a") as history_file:
-            json.dump(transaction, history_file, indent=4)
+        with open(self.history_path, "w") as history_file:
+            json.dump(self.history, history_file, indent=4)
 
     def get_rate(self):
         return round(self.rate, 2)
@@ -57,7 +72,7 @@ class Trader:
                 return
             self.uah_balance -= amount * self.rate
             self.usd_balance += amount
-            self.save_to_history("BUY", amount, amount * self.rate)
+            self.save_to_history("BUY", self.usd_balance, self.uah_balance, self.rate, self.rate)
 
     def sell(self, amount):
         amount = float(amount)
@@ -66,8 +81,7 @@ class Trader:
             return
         self.usd_balance -= amount
         self.uah_balance += amount / self.rate
-        self.save_to_history("SELL", amount, amount / self.rate)
-        print(self.get_available_balance())
+        self.save_to_history("SELL", amount, amount / self.rate, self.rate, self.rate)
 
     def buy_all(self):
         if self.uah_balance == 0:
@@ -77,7 +91,7 @@ class Trader:
         amount = self.uah_balance / self.rate
         self.uah_balance -= amount * self.rate
         self.usd_balance += amount
-        self.save_to_history("BUY", amount, amount * self.rate)
+        self.save_to_history("BUY", amount, amount * self.rate, self.rate, self.rate)
         return amount
 
     def sell_all(self):
@@ -88,7 +102,7 @@ class Trader:
         self.usd_balance = 0
         uah_amount = amount * self.rate
         self.uah_balance += uah_amount
-        self.save_to_history("SELL", amount)
+        self.save_to_history("SELL", self.usd_balance, self.uah_balance, self.rate, self.rate)
         return uah_amount
 
     def next_rate(self):
@@ -96,7 +110,7 @@ class Trader:
         self.rate += random.uniform(-self.delta, self.delta)
         self.rate = round(self.rate, 2)
 
-        self.save_to_history("RATE_CHANGE", old_rate, self.rate)
+        self.save_to_history("RATE_CHANGE",self.usd_balance, self.uah_balance,  self.rate, old_rate)
 
     def get_history(self):
         return self.history
