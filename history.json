@@ -1,18 +1,1 @@
-[
-    {
-        "timestamp": "2023-11-23 16:03:28",
-        "action": "BUY",
-        "usd_balance": 100.0,
-        "uah_balance": 6400.0,
-        "rate": 36.0,
-        "old_rate": 36.0
-    },
-    {
-        "timestamp": "2023-11-23 16:03:44",
-        "action": "SELL",
-        "usd_balance": 0,
-        "uah_balance": 10000.0,
-        "rate": 36.0,
-        "old_rate": 36.0
-    }
-]
+[]
