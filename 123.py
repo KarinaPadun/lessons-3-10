@@ -23,6 +23,9 @@ class Trader:
                     self.history = history_data
                 elif isinstance(history_data, dict):
                     self.history = history_data.get("history", [])
+                    self.rate = history_data.get("rate", self.rate)
+                    self.uah_balance = history_data.get("uah_balance", self.uah_balance)
+                    self.usd_balance = history_data.get("usd_balance", self.usd_balance)
                 else:
                     print("Invalid format for history data.")
         except (FileNotFoundError, json.JSONDecodeError):
@@ -34,8 +37,8 @@ class Trader:
                        "uah_amount": uah_amount}
         self.history.append(transaction)
 
-        with open(self.history_path, "w") as history_file:
-            json.dump(self.history, history_file, indent=4)
+        with open(self.history_path, "a") as history_file:
+            json.dump(transaction, history_file, indent=4)
 
     def get_rate(self):
         return round(self.rate, 2)
@@ -88,8 +91,11 @@ class Trader:
         return uah_amount
 
     def next_rate(self):
+        old_rate = self.rate
         self.rate += random.uniform(-self.delta, self.delta)
         self.rate = round(self.rate, 2)
+
+        self.save_to_history("RATE_CHANGE", old_rate, self.rate)
 
     def restart(self):
         self.rate = 36.00

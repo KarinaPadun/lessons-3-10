@@ -29,4 +29,28 @@
         "currency_amount": 100.0,
         "uah_amount": 3600.0
     }
-]
+]{
+    "timestamp": "2023-11-23 13:39:47",
+    "action": "RATE_CHANGE",
+    "currency_amount": 36.0,
+    "uah_amount": 36.38
+}
+{
+    "timestamp": "2023-11-23 13:40:11",
+    "action": "RATE_CHANGE",
+    "currency_amount": 36.0,
+    "uah_amount": 36.32
+}
+,
+{
+    "timestamp": "2023-11-23 13:41:32",
+    "action": "RATE_CHANGE",
+    "currency_amount": 36.0,
+    "uah_amount": 35.92
+},
+{
+    "timestamp": "2023-11-23 13:41:33",
+    "action": "RATE_CHANGE",
+    "currency_amount": 36.0,
+    "uah_amount": 36.46
+}
