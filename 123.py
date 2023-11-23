@@ -56,7 +56,7 @@ class Trader:
             self.save_to_history("BUY", amount, amount * self.rate)
 
     def sell(self, amount):
-        amount = float(amount)  #
+        amount = float(amount)
         if self.usd_balance < amount:
             print(f"UNAVAILABLE, REQUIRED BALANCE USD {amount:.2f}, AVAILABLE {self.usd_balance:.2f}")
             return
