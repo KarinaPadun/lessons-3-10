@@ -22,7 +22,6 @@ class Trader:
             config = json.load(f)
         return config
 
-
     def load_history(self):
         try:
             with open(self.history_path, "r") as history_file:
@@ -40,7 +39,6 @@ class Trader:
 
         except (FileNotFoundError, json.JSONDecodeError):
             self.history = []
-
 
     def save_to_history(self, action, currency_amount, uah_amount, rate, old_rate):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
