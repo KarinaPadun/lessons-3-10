@@ -103,7 +103,7 @@ class Trader:
 
     def restart(self):
         with open(self.history_path, 'w') as history_file:
-            history_file.write('[]')  # Записати порожній масив у файл історії
+            history_file.write('[]')
 
         with open(self.config_path) as f:
             config = json.load(f)
