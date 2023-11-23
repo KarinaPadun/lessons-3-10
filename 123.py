@@ -8,6 +8,7 @@ class Trader:
     def __init__(self, config_path, history_path):
         with open(config_path) as f:
             config = json.load(f)
+        self.config_path = config_path
         self.delta = config["delta"]
         self.rate = config["rate"]
         self.uah_balance = config["uah_balance"]
@@ -101,13 +102,16 @@ class Trader:
         return self.history
 
     def restart(self):
+        with open(self.history_path, 'w') as history_file:
+            history_file.write('[]')  # Записати порожній масив у файл історії
+
         with open(self.config_path) as f:
             config = json.load(f)
+
         self.rate = config["rate"]
         self.uah_balance = config["uah_balance"]
         self.usd_balance = config["usd_balance"]
         self.load_history()
-        self.history = []
 
 
 def main():
