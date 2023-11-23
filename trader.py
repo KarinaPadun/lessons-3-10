@@ -86,7 +86,7 @@ class Trader:
 def main():
     parser = argparse.ArgumentParser(description="Currency Trader")
     parser.add_argument("--config", type=str, default="config.json", help="Path to configuration file")
-    parser.add_argument("--history", type=str, default="history.txt", help="Path to transaction history file")
+    parser.add_argument("--history", type=str, default="history.json", help="Path to transaction history file")
     parser.add_argument("command", type=str, help="Command to execute", nargs="?")
     parser.add_argument("command_2", type=float, nargs="?", help="Second command")
 
