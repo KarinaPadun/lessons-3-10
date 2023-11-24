@@ -6,12 +6,12 @@
 #
 #
 # args.add_argument("name", type=str)
-# args.add_argument("age", nargs="?", type=int, default=0)
+# args.add_argument("age", nargs="?" - не обовязковий , type=int, default=0)
 # args.add_argument("--job", nargs="?", type=str, default='qa')
 #
-# args = vars(args.parse_args())
+# args = vars(args.parse_args())  - розперсити елементи
 #
-# print(args)
+# print(args) - працює як звичайний словний
 # print(args['name'])
 
 
