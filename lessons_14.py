@@ -7,23 +7,24 @@
 #
 # args.add_argument("name", type=str)
 # args.add_argument("age", nargs="?" - не обовязковий , type=int, default=0)
-# args.add_argument("--job", nargs="?", type=str, default='qa')
+# args.add_argument("--job", nargs="?", type=str, default='qa') - аргумент можуть викликати за іменем
 #
 # args = vars(args.parse_args())  - розперсити елементи
 #
 # print(args) - працює як звичайний словний
 # print(args['name'])
 
+# передавати в одному порядку
 
-
+# принципи програмування
 # наслідування
-# інкапсуляція
+# інкапсуляція та полімозфізм
 
 # декоратори  @property, @staticmethod
 
 ############# Наслідування #################
 #
-# class Transport:
+# class Transport: - батьківський класс на найвищому рівні
 #
 #     def __init__(self, color):
 #         self.color = color
@@ -45,7 +46,7 @@
 #
 #     def __init__(self, model, color):
 #         self.model = model
-#         super().__init__(color)
+#         super().__init__(color) - щоб працювати з батьківським классом потрібна функція супер
 #
 #     def __str__(self):
 #         return super().__str__() + f" a car the model is {self.model}"
