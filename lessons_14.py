@@ -60,6 +60,7 @@
 
 
 ########## інкапсуляція ############ - захищаемо обьект(капсула)
+# два рівня захищенності: _ (перший рівень) , __ (після)
 
 # class Transport:
 #
@@ -83,7 +84,7 @@
 # # print(mercedes.model)
 # # print(mercedes.color)
 # # print(mercedes.fuel)
-# print(mercedes._Transport__get_fuel())
+# print(mercedes._Transport__get_fuel()) - достучатись до другого рівня захищенності
 # # mercedes.get_fuel()
 
 
@@ -93,7 +94,7 @@
 # декоратори  @property, @staticmethod
 
 
-# def can_do():
+# def can_do(): -не можна видозмінювати
 #     return "I can move"
 
 
@@ -111,7 +112,8 @@
 #     def __str__(self):
 #         return "The transport is"
 #
-#     @staticmethod
+#     @staticmethod - працює однаково не зважаючи на те що попадає
+#     НТМЛ- статичний, не важливо що будуть за данні, буде відбуватися те саме
 #     def can_do():
 #         return "I can move"
 #
