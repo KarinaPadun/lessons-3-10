@@ -105,7 +105,7 @@
 #         # self.fuel = self._get_fuel()
 #         # self.fuel = self.get_fuel()
 #
-#     @property
+#     @property - зробить з методу атрибут  ( пишемо НЕ через дієслово)
 #     def fuel(self):
 #         return "OIL"
 #
