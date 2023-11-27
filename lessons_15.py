@@ -11,7 +11,7 @@ from requests_oauthlib import OAuth1
 
 # # class BBox:
 # #     def __init__(self, x0, y0, x1, y1):
-# #         self._x0 = x0
+# #         self._x0 = x0 - протекція
 # #         self._y0 = y0
 # #         self._x1 = x1
 # #         self._y1 = y1
