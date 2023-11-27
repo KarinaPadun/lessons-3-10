@@ -124,17 +124,16 @@
 
 
 
-# модуль requests
+# модуль requests - треба встановлювати
+# щоб встановити треба прописати в консолі pip install (імя бібліотеки)
+# витягти інформацію з веб сторінок
 
 import requests
 
 
-response = requests.get('https://www.google.com')
-print(response.status_code)
+response = requests.get('https://www.google.com') # get - взяти
+print(response.status_code) # статус видає 200
 print(response.content)
 
 
-
-
-
-# API
+# API - 
