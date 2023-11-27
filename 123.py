@@ -10,9 +10,9 @@ class Trader:
         self.history_path = history_path
         self.history = []
         self.load_history()
+        config = self.load_config()
+        self.delta = config["delta"]
         if len(self.history) < 1:
-            config = self.load_config()
-            self.delta = config["delta"]
             self.rate = config["rate"]
             self.uah_balance = config["uah_balance"]
             self.usd_balance = config["usd_balance"]

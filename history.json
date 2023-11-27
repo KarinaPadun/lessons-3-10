@@ -30,5 +30,21 @@
         "uah_balance": 10000.0,
         "rate": 36.11,
         "old_rate": 36.11
+    },
+    {
+        "timestamp": "2023-11-24 21:12:56",
+        "action": "RATE_CHANGE",
+        "usd_balance": 0,
+        "uah_balance": 10000.0,
+        "rate": 36.24,
+        "old_rate": 36.11
+    },
+    {
+        "timestamp": "2023-11-24 21:12:58",
+        "action": "RATE_CHANGE",
+        "usd_balance": 0,
+        "uah_balance": 10000.0,
+        "rate": 35.81,
+        "old_rate": 36.24
     }
 ]

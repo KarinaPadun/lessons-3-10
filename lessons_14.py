@@ -29,10 +29,10 @@
 #     def __init__(self, color):
 #         self.color = color
 #
-#     def __str__(self):
+#     def __str__(self): - видает строку , на видачу клиентов
 #         return "The transport is"
 #
-#     # def __repr__(self):
+#     # def __repr__(self): - головниша , для розробныкив  (для дебагу)
 #     #     return f"{self.color}"
 #
 #     def can_do(self):
