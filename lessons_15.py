@@ -1,4 +1,5 @@
 #поліморфізм
+# абстракція- не відноситься до пайтона
 #re
 
 #requests (urllib.parse, urlparse)
