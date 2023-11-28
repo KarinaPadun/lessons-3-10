@@ -47,8 +47,9 @@ from requests_oauthlib import OAuth1
 # # box_list = [bb_box_1, bb_box_2]
 # # print(sorted(box_list, reverse=True))
 #
-# ########### re #########
-#
+# ########### re #########  - регулярні функції , дозволяють дешифувати, розшифровати,
+# дозволяють витягнути певну інформацію
+# r' - сира строчка
 #
 # def read_json(filename):
 #     with open(filename, 'r') as f:
@@ -56,14 +57,17 @@ from requests_oauthlib import OAuth1
 #     return data
 #
 #
-# def sort_by_name(some_dict):
+# def sort_by_name(some_dict): - сортировка за імям
 #     return some_dict["name"].split()[-1]
 #
 #
 # def sort_by_bday(some_dict):
 #     yaers = some_dict["years"]
-#     # patern = r'\d+'    # [0-9] = \d - only digits \w - word only letters, [a-z] - всі маленькі літери латиницею [A-Za-z] - вся латиниця [А-Я] - всі великі кирилиці(рос) [А-ЯІЇГ] - українська
-#     # years = re.findall(r'\d+', yaers)
+#     # patern = r'\d+'    # [0-9] = \d - only digits \w - word only letters,
+#     [a-z] - всі маленькі літери латиницею [A-Za-z] - вся латиниця
+#     [А-Я] - всі великі кирилиці(рос)
+#     [А-ЯІЇГ] - українська
+#     # years = re.findall(r'\d+', yaers) - плюсик після , підсвічує як регулярку
 #     years = re.findall(r'[0-9]+', yaers)
 #     bday = int(years[0]) if "BC" not in some_dict["years"] else - int(years[0])
 #     # print(years)
