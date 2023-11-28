@@ -1,4 +1,4 @@
-#поліморфізм
+#поліморфізм - оптимазація
 # абстракція- не відноситься до пайтона
 #re
 
@@ -19,14 +19,14 @@ from requests_oauthlib import OAuth1
 # #     def __repr__(self):
 # #         return f"({self._x0};{self._y0})-({self._x1};{self._y1})"
 # #
-# #     def __add__(self, other):
+# #     def __add__(self, other): - додавання
 # #         new_x0 = min(self._x0, other._x0)
 # #         new_y0 = min(self._y0, other._y0)
 # #         new_x1 = max(self._x1, other._x1)
 # #         new_y1 = max(self._y1, other._y1)
 # #         return BBox(new_x0, new_y0, new_x1,new_y1)
 # #
-# #     def __gt__(self, other):
+# #     def __gt__(self, other):- порівняння (більше ніж)
 # #         area_1 = self.get_area()
 # #         area_2 = other.get_area()
 # #         return area_1 > area_2
