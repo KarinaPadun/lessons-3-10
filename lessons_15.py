@@ -92,24 +92,6 @@ from requests_oauthlib import OAuth1
 # те з чим ми можемо взаємодіяти завдяки коду
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # response = requests.get('https://forismatic.com/en/#50716b4968/')
 # print(response.status_code, response.content)
 
@@ -127,6 +109,19 @@ from requests_oauthlib import OAuth1
 # data = response.json()
 # print(data['quoteText'])
 
+
+
+
+
+# 1
+#  зберегти ключ в оперативній памяті компютера
+# % TEST=12345
+# % ECHO $TEST
+#
+#
+#
+#
+#
 
 
 
