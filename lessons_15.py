@@ -110,15 +110,26 @@ from requests_oauthlib import OAuth1
 # print(data['quoteText'])
 
 
-
-
-
 # 1
+
 #  зберегти ключ в оперативній памяті компютера
 # % TEST=12345
 # % ECHO $TEST
 #  після вимкнення очищается память
-#
+
+
+# 2
+
+# edit configurations в пайчармі
+
+
+# 3
+
+# новий файл
+# .еnv
+#    import dotenv
+# from dotenv import load_dotenv
+# load_dotenv()
 #
 #
 #
