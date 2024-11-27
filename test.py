@@ -6,16 +6,20 @@ class Car:
         self.model = model
         self.color = color
 
-    def model(self):
-        return f"This is {self.model()}"
+    def get_fuel(self):
+        return f"This car uses {self.fuel}."
 
-    def fuel(self):
-        return f"this is {self.fuel()}"
+    def get_model(self):
+        return f"This is a {self.model}."
 
-    def color(self):
-        return f"Car is {self.color}"
+    def get_color(self):
+        return f"The car is {self.color}."
+
 
 
 car = Car("Benz", "BMW", "red")
 
-print(car.color())
+
+print(car.get_fuel())
+print(car.get_model())
+print(car.get_color())
