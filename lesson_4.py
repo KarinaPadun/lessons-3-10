@@ -159,3 +159,11 @@
 # first_name = input("name: ")
 #
 # print(first_name.capitalize())
+
+try:
+    x = int(input("Введите число: "))
+except ValueError:
+    print("Это не число!")
+finally:
+    print("Эта строка всегда выполнится, независимо от ошибки")
+
