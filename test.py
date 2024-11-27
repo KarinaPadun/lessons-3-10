@@ -16,7 +16,6 @@ class Car:
         return f"The car is {self.color}."
 
 
-
 car = Car("Benz", "BMW", "red")
 
 
