@@ -29,10 +29,25 @@ class BankAccount:
         self.owner = owner
         self.balance = balance
 
-    def deposit(self, balance):
-        if balance <= 0:
-            return f'ERROR'
+    def deposit(self, amount):
+        if amount <= 0:
+            return "Error: Deposit amount must be positive."
         else:
-            return f"Balance is {self.balance}"
+            self.balance += amount
+            return f"Deposited {amount}. New balance: {self.balance}"
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            return "Error: Insufficient funds."
+        self.balance -= amount
+        return f"Withdrew {amount}. Remaining balance: {self.balance}"
+
     def __str__(self):
-        return "Bank account of [owner]: Balance = [balance]".
+        return f"Bank account of {self.owner}: Balance = {self.balance}"
+
+
+account = BankAccount("Alice", 100)
+
+print(account.deposit(50))
+print(account.withdraw(30))
+print(account)
