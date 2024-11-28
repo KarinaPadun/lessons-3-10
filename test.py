@@ -66,3 +66,6 @@ def count_vowels(s: str) -> int:
         if char in list_1:
             count += 1
     return count
+
+def is_prime(n: int) -> bool:
+    dividers = 0
