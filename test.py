@@ -51,3 +51,18 @@ account = BankAccount("Alice", 100)
 print(account.deposit(50))
 print(account.withdraw(30))
 print(account)
+
+
+# Написать функцию, которая переворачивает строку.
+
+def reverse_string(s: str) -> str:
+    return s[::-1]
+
+
+def count_vowels(s: str) -> int:
+    list_1 = ['a', 'e', 'y', 'u', 'i', 'o']
+    count = 0
+    for char in s.lower():
+        if char in list_1:
+            count += 1
+    return count
