@@ -22,3 +22,17 @@ car = Car("Benz", "BMW", "red")
 print(car.get_fuel())
 print(car.get_model())
 print(car.get_color())
+
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, balance):
+        if balance <= 0:
+            return f'ERROR'
+        else:
+            return f"Balance is {self.balance}"
+    def __str__(self):
+        return "Bank account of [owner]: Balance = [balance]".
