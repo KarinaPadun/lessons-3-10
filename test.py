@@ -70,3 +70,15 @@ def count_vowels(s: str) -> int:
 
 def find_min_max(arr: list[int]) -> tuple[int, int]:
     return (min(arr), max(arr))
+
+
+def remove_duplicates(arr: list[int]) -> list[int]:
+    return list(set(arr))
+
+
+def words_to_dict(words: list[str]) -> dict[str, int]:
+    return {word: len(word) for word in words}
+
+
+def is_palindrome(s: str) -> bool:
+    return s == s[::-1]
