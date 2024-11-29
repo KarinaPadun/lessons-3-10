@@ -67,5 +67,6 @@ def count_vowels(s: str) -> int:
             count += 1
     return count
 
-def is_prime(n: int) -> bool:
-    dividers = 0
+
+def find_min_max(arr: list[int]) -> tuple[int, int]:
+    return (min(arr), max(arr))
