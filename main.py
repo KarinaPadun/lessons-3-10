@@ -1,15 +1,28 @@
-import pymysql
-from config1 import host, user, password, db_name
+import sqlite3
 
-try:
-    connection = pymysql.connect(
-        host=host,
-        port=3306,
-        user=user,
-        password=password,
-        database=db_name,
-        cursorclass=pymysql.cursors.DictCursor
-    )
-    print("successfully connected...")
-except Exception as ex:
-    print("connection refused...")
+db = sqlite3.connect('test.db')
+
+# create cursor
+c = db.cursor()
+
+# создание таблицы
+# c.execute("""CREATE TABLE articles (
+#    title text,
+#    full_text text,
+#    views intenger,
+#    author text
+# ) """)
+
+# добавление данных
+# c.execute("INSERT INTO articles VALUES('facebook','facebooktest','3','admin2')")
+
+# выборка данных, * - все
+# rowid  -  уникальный номер
+c.execute("SELECT title FROM articles")
+# print(c.fetchall()) СПИСОК
+# print(c.fetchmany(2))  # только опеределенное количество записей . СПИСОК
+# print(c.fetchone()[index]) только первую запись , кортеж
+
+db.commit()
+
+db.close()
