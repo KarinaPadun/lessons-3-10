@@ -25,6 +25,10 @@ items = c.fetchall()
 # print(c.fetchone()[index]) только первую запись , кортеж
 # <> - не равен, DESC - по спаданию
 
+# удаление
+# c.execute("DELETE FROM articles WHERE rowid = '1' ")
+
+c.execute("UPDATE articles SET author= 'admin' WHERE")
 
 for item in items:
     print(item[1] + "\n" + item[4])
