@@ -18,10 +18,16 @@ c = db.cursor()
 
 # выборка данных, * - все
 # rowid  -  уникальный номер
-c.execute("SELECT title FROM articles")
+c.execute("SELECT rowid, * FROM articles WHERE rowid < 2 ORDER BY rowid DESC")
+items = c.fetchall()
 # print(c.fetchall()) СПИСОК
 # print(c.fetchmany(2))  # только опеределенное количество записей . СПИСОК
 # print(c.fetchone()[index]) только первую запись , кортеж
+# <> - не равен, DESC - по спаданию
+
+
+for item in items:
+    print(item[1] + "\n" + item[4])
 
 db.commit()
 
