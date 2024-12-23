@@ -16,6 +16,7 @@ def calculate(num_1, num_2, op):
         return "Error: invalid statement"
     return result
 
+
 continue_calculating = True
 
 while continue_calculating:
